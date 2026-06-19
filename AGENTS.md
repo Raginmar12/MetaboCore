@@ -34,10 +34,12 @@ Antes de realizar cambios arquitectónicos relacionados con pacientes, consultas
 - `docs/03_capa_nom/nom_004/matriz_requisitos.md`
 - `docs/03_capa_nom/mapeo_nom_004.md`
 
-La fuente oficial en Markdown se agregará manualmente en:
+La fuente oficial en Markdown ya fue incorporada manualmente y está disponible en:
 
 - `docs/03_capa_nom/nom_004/fuente_oficial/NOM-004-SSA3-2012_DOF.md`
 - `docs/03_capa_nom/nom_004/fuente_oficial/README.md`
+
+Los agentes no deben reemplazar ni reescribir automáticamente la fuente oficial completa. Cualquier actualización de la fuente normativa debe hacerse de forma explícita y revisada.
 
 No declarar cumplimiento completo de la NOM-004 hasta que exista una revisión específica y documentada.
 

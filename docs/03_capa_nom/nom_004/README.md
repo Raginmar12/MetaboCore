@@ -18,14 +18,16 @@ Cualquier cambio arquitectónico relacionado con pacientes, consultas, documento
 
 También deben revisarse estos documentos antes de proponer modelos de datos, generación de documentos, expediente electrónico, mecanismos de firma, exportación, impresión o políticas de resguardo.
 
-## Fuente oficial pendiente de incorporación manual
+## Fuente oficial integrada
 
-La fuente oficial en Markdown se agregará manualmente después en:
+La fuente oficial en Markdown ya fue incorporada manualmente y está disponible en:
 
 - `docs/03_capa_nom/nom_004/fuente_oficial/NOM-004-SSA3-2012_DOF.md`
 - `docs/03_capa_nom/nom_004/fuente_oficial/README.md`
 
-Los agentes de IA no deben copiar automáticamente el texto completo de la norma en esta carpeta.
+Estos archivos son fuente normativa de referencia. No implican cumplimiento completo de la NOM-004 por sí mismos. La interpretación operativa, checklist, matriz de requisitos y guía de revisión arquitectónica viven en los documentos auxiliares de esta carpeta.
+
+Los agentes de IA no deben copiar, reemplazar ni reescribir automáticamente el texto completo de la norma en esta carpeta.
 
 ## Estado actual
 

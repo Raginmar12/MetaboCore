@@ -20,4 +20,4 @@ Aplica al personal de salud y a los establecimientos prestadores de servicios de
 
 - Este documento es una referencia interna resumida; para interpretación exacta debe consultarse siempre la fuente oficial.
 - Este documento no representa cumplimiento completo de la norma.
-- El texto completo en Markdown se agregará manualmente después en `fuente_oficial/`.
+- El texto completo en Markdown está disponible en `docs/03_capa_nom/nom_004/fuente_oficial/`.
