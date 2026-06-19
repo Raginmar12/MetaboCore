@@ -4,7 +4,7 @@
 >
 > Este documento mantiene el mapeo operativo entre flujo MetaboCare y capa documental NOM. La carpeta `nom_004/` contiene la referencia normativa resumida, checklist inicial, matriz de requisitos y guía de revisión arquitectónica.
 >
-> La fuente oficial en Markdown se agregará manualmente después en `docs/03_capa_nom/nom_004/fuente_oficial/`.
+> La fuente oficial en Markdown ya está disponible en `docs/03_capa_nom/nom_004/fuente_oficial/`.
 
 ## Objetivo
 
