@@ -1,5 +1,11 @@
 # Mapeo inicial NOM-004
 
+> Para referencia normativa inicial, revisar `docs/03_capa_nom/nom_004/`.
+>
+> Este documento mantiene el mapeo operativo entre flujo MetaboCare y capa documental NOM. La carpeta `nom_004/` contiene la referencia normativa resumida, checklist inicial, matriz de requisitos y guía de revisión arquitectónica.
+>
+> La fuente oficial en Markdown se agregará manualmente después en `docs/03_capa_nom/nom_004/fuente_oficial/`.
+
 ## Objetivo
 
 Explicar que la NOM-004 se implementará como capa documental y no como flujo principal de la consulta MetaboCare.
