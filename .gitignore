@@ -1,0 +1,12 @@
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+.env
+.env.*
+*.sqlite3
+*.db
+data/
+private/
+patient_data/
+real_patients/
