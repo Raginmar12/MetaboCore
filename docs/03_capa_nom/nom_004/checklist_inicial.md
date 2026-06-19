@@ -43,8 +43,12 @@ Este documento no declara cumplimiento completo de la NOM-004. Su objetivo es se
 - [ ] Conservación.
 - [ ] Trazabilidad de cambios.
 
+## Fuente oficial
+La fuente oficial de la NOM-004 ya se encuentra integrada en `docs/03_capa_nom/nom_004/fuente_oficial/`.
+
+- [x] Fuente oficial integrada manualmente en `fuente_oficial/`.
+
 ## Pendientes
-- [ ] Agregar manualmente la fuente oficial en Markdown.
 - [ ] Revisar numerales específicos de la NOM-004.
 - [ ] Mapear cada requisito contra formatos actuales.
 - [ ] Definir documentos mínimos para consulta ambulatoria MetaboCare.

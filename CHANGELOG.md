@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.1.3 - Checklist NOM-004 actualizado
+
+- Actualiza la checklist inicial NOM-004 para reflejar que la fuente oficial ya fue integrada manualmente.
+- Retira referencia obsoleta a la incorporación pendiente de la fuente oficial.
+
 ## v0.1.2 - Fuente oficial NOM-004 integrada
 
 - Registra la incorporación manual de la fuente oficial de la NOM-004-SSA3-2012 en Markdown.
