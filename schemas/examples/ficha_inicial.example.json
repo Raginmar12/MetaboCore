@@ -1,0 +1,32 @@
+{
+  "formato_id": "ficha_inicial",
+  "version_schema": "0.1.0",
+  "identidad_paciente": {
+    "nombre_completo": "Paciente Ficticia MetaboCore",
+    "nombre_preferido": "Lina",
+    "fecha_nacimiento": "1988-04-12",
+    "edad": 38,
+    "sexo_registrado": "femenino",
+    "genero": "no_especificado"
+  },
+  "contacto": {
+    "telefono_principal": "000-000-0000",
+    "municipio_o_localidad": "Localidad Ficticia"
+  },
+  "contexto_administrativo": {
+    "fecha_primera_consulta": "2026-06-23",
+    "medico_responsable": "Medico Ficticio",
+    "id_expediente_interno": "EXP-FICTICIO-0001"
+  },
+  "contexto_visita_inicial": {
+    "motivo_breve_consulta": "Desea mejorar su salud metabolica y entender opciones de tratamiento.",
+    "preocupacion_inicial": "Le preocupa recuperar peso despues de intentos previos.",
+    "ocupacion_o_actividad_principal": "Actividad ficticia de oficina",
+    "consentimiento_verbal_flujo_consulta": true
+  },
+  "metadatos": {
+    "creado_en": "2026-06-23T00:00:00Z",
+    "clasificacion_datos": "datos_personales_clinicos",
+    "ejemplo_es_ficticio": true
+  }
+}

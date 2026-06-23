@@ -48,7 +48,9 @@ Recibir al paciente, explicar la dinámica de consulta y establecer un ambiente 
 - Consentimiento verbal para el flujo de consulta.
 
 ### Formato asociado
-Formato libre dentro de `docs/01_flujo_consulta/primera_consulta.md`.
+`docs/02_formatos/ficha_inicial.md`
+
+La ficha inicial puede llenarse antes de la consulta, durante recepción o al inicio de este bloque. Debe mantenerse breve y no reemplaza el rapport ni la exploración del motivo de consulta.
 
 ### Alimenta capa NOM
 - Identificación del paciente, cuando aplique en el sistema formal.

@@ -6,7 +6,8 @@ Borrador inicial. No exhaustivo.
 Este documento no declara cumplimiento completo de la NOM-004. Su objetivo es servir como lista de vigilancia normativa durante el diseño progresivo de MetaboCore.
 
 ## Identificación del paciente
-- [ ] Datos mínimos de identificación del paciente.
+- [x] Formato operativo inicial para datos mínimos de identificación del paciente.
+- [ ] Validar datos mínimos definitivos contra implementación futura.
 - [ ] Mecanismo para evitar duplicidad de pacientes.
 - [ ] Manejo de datos sensibles.
 

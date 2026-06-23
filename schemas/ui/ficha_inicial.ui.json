@@ -1,0 +1,178 @@
+{
+  "ui:formato": "ficha_inicial",
+  "ui:version": "0.1.0",
+  "ui:orden_secciones": [
+    "identidad_paciente",
+    "contacto",
+    "contexto_administrativo",
+    "contexto_visita_inicial",
+    "metadatos"
+  ],
+  "identidad_paciente": {
+    "ui:titulo": "Datos de identificacion",
+    "ui:descripcion": "Datos minimos para identificar al paciente y preparar documentos clinicos posteriores.",
+    "ui:orden_campos": [
+      "nombre_completo",
+      "nombre_preferido",
+      "fecha_nacimiento",
+      "edad",
+      "sexo_registrado",
+      "genero"
+    ],
+    "nombre_completo": {
+      "ui:widget": "text",
+      "ui:placeholder": "Nombre completo del paciente",
+      "ui:requerido_visual": true
+    },
+    "nombre_preferido": {
+      "ui:widget": "text",
+      "ui:placeholder": "Nombre o forma de trato",
+      "ui:ayuda": "Use el nombre o forma de trato que el paciente prefiera durante la consulta."
+    },
+    "fecha_nacimiento": {
+      "ui:widget": "date",
+      "ui:requerido_visual": true
+    },
+    "edad": {
+      "ui:widget": "number",
+      "ui:ayuda": "En un sistema futuro puede calcularse desde la fecha de nacimiento y la fecha de consulta.",
+      "ui:requerido_visual": true
+    },
+    "sexo_registrado": {
+      "ui:widget": "select",
+      "ui:requerido_visual": true
+    },
+    "genero": {
+      "ui:widget": "text",
+      "ui:ayuda": "Campo opcional; capturar solo si es clinicamente relevante o si el paciente desea expresarlo.",
+      "ui:colapsado": true
+    }
+  },
+  "contacto": {
+    "ui:titulo": "Contacto y ubicacion",
+    "ui:descripcion": "Datos de contacto operativo y ubicacion general. Evitar friccion innecesaria al inicio.",
+    "ui:orden_campos": [
+      "telefono_principal",
+      "telefono_alterno",
+      "correo_electronico",
+      "municipio_o_localidad",
+      "domicilio"
+    ],
+    "telefono_principal": {
+      "ui:widget": "tel",
+      "ui:placeholder": "000-000-0000",
+      "ui:requerido_visual": true
+    },
+    "telefono_alterno": {
+      "ui:widget": "tel",
+      "ui:colapsado": true
+    },
+    "correo_electronico": {
+      "ui:widget": "email",
+      "ui:colapsado": true
+    },
+    "municipio_o_localidad": {
+      "ui:widget": "text",
+      "ui:requerido_visual": true
+    },
+    "domicilio": {
+      "ui:widget": "object/collapsible",
+      "ui:ayuda": "Capturar domicilio completo solo si el flujo operativo o documental lo requiere.",
+      "ui:colapsado": true
+    }
+  },
+  "contexto_administrativo": {
+    "ui:titulo": "Contexto administrativo",
+    "ui:descripcion": "Datos administrativos minimos de la primera consulta. Algunos campos podran llenarse desde configuracion futura del sistema.",
+    "ui:orden_campos": [
+      "fecha_primera_consulta",
+      "medico_responsable",
+      "id_expediente_interno",
+      "establecimiento"
+    ],
+    "fecha_primera_consulta": {
+      "ui:widget": "date",
+      "ui:requerido_visual": true
+    },
+    "medico_responsable": {
+      "ui:widget": "text",
+      "ui:ayuda": "En un sistema futuro podria seleccionarse desde un catalogo."
+    },
+    "id_expediente_interno": {
+      "ui:widget": "hidden",
+      "ui:solo_lectura": true,
+      "ui:ayuda": "Campo diferible para sistema digital futuro."
+    },
+    "establecimiento": {
+      "ui:widget": "object/collapsible",
+      "ui:ayuda": "Se recomienda poblar este dato desde configuracion futura del sistema, no como carga manual repetida.",
+      "ui:colapsado": true
+    }
+  },
+  "contexto_visita_inicial": {
+    "ui:titulo": "Contexto clinico inicial",
+    "ui:descripcion": "Entrada breve al motivo de consulta sin sustituir la entrevista motivacional ni la historia clinica.",
+    "ui:orden_campos": [
+      "motivo_breve_consulta",
+      "preocupacion_inicial",
+      "ocupacion_o_actividad_principal",
+      "contacto_emergencia",
+      "referencia_aviso_privacidad",
+      "consentimiento_verbal_flujo_consulta"
+    ],
+    "motivo_breve_consulta": {
+      "ui:widget": "textarea",
+      "ui:placeholder": "Motivo breve en palabras del paciente",
+      "ui:ayuda": "Registrar en una frase corta, idealmente con palabras del paciente.",
+      "ui:requerido_visual": true
+    },
+    "preocupacion_inicial": {
+      "ui:widget": "textarea"
+    },
+    "ocupacion_o_actividad_principal": {
+      "ui:widget": "text"
+    },
+    "contacto_emergencia": {
+      "ui:widget": "object/collapsible",
+      "ui:ayuda": "Campo opcional; puede diferirse si genera friccion.",
+      "ui:colapsado": true
+    },
+    "referencia_aviso_privacidad": {
+      "ui:widget": "object/collapsible",
+      "ui:ayuda": "Referencia futura al aviso de privacidad; no sustituye el documento correspondiente.",
+      "ui:colapsado": true
+    },
+    "consentimiento_verbal_flujo_consulta": {
+      "ui:widget": "checkbox",
+      "ui:ayuda": "Registrar solo si aplica al flujo operativo de la consulta."
+    }
+  },
+  "metadatos": {
+    "ui:titulo": "Metadatos",
+    "ui:descripcion": "Campos tecnicos para sistema digital futuro.",
+    "ui:orden_campos": [
+      "creado_en",
+      "actualizado_en",
+      "capturado_por",
+      "clasificacion_datos",
+      "ejemplo_es_ficticio"
+    ],
+    "ui:widget": "hidden",
+    "ui:oculto": true,
+    "creado_en": {
+      "ui:widget": "hidden"
+    },
+    "actualizado_en": {
+      "ui:widget": "hidden"
+    },
+    "capturado_por": {
+      "ui:widget": "hidden"
+    },
+    "clasificacion_datos": {
+      "ui:widget": "hidden"
+    },
+    "ejemplo_es_ficticio": {
+      "ui:widget": "hidden"
+    }
+  }
+}

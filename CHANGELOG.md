@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.1.4 - Ficha inicial y schemas clínicos base
+
+- Agrega `ficha_inicial` como primer formato clínico estructurado.
+- Agrega arquitectura base de schemas para formularios clínicos.
+- Agrega schema de datos, UI schema y ejemplo ficticio para `ficha_inicial`.
+- Agrega ADR-0005 sobre formatos clínicos con schemas JSON.
+- Actualiza flujo de primera consulta y mapeo NOM-004 para usar `ficha_inicial`.
+
 ## v0.1.3 - Checklist NOM-004 actualizado
 
 - Actualiza la checklist inicial NOM-004 para reflejar que la fuente oficial ya fue integrada manualmente.
