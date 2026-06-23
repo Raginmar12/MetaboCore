@@ -30,6 +30,11 @@ Nunca se deben guardar datos reales de pacientes en `schemas/examples/` ni en ni
 
 Los campos `required` de los schemas representan requeridos técnicos para validar una estructura digital mínima. Los requeridos visuales del UI schema orientan la captura en pantalla. Los campos clínicamente recomendados en Markdown pueden incluir información útil que se mantenga opcional o diferible para evitar fricción en consulta.
 
+
+## Uso por el visor Django
+
+Los schemas pueden ser usados por el visor Django de `metabocore_app/` para renderizar formatos clínicos en HTML. El renderizado no cambia el contrato del schema y el visor no guarda datos.
+
 ## Convención de nombres
 
 Los campos propios de MetaboCore deben escribirse:

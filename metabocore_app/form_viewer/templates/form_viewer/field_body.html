@@ -1,0 +1,26 @@
+<p><code>{{ field.key }}</code> · <span class="muted">{{ field.widget }} / {{ field.type }}</span></p>
+{% if field.help %}<p class="help">{{ field.help }}</p>{% endif %}
+{% if field.readonly %}<p class="muted">Solo lectura</p>{% endif %}
+{% if field.options %}
+  <p>Opciones:</p>
+  <ul class="inline-list">
+    {% for option in field.options %}<li><code>{{ option }}</code></li>{% endfor %}
+  </ul>
+{% endif %}
+{% if field.children %}
+  <div class="nested-fields">
+    {% for child in field.children %}
+      <div class="nested-field">
+        <strong>{{ child.label }}</strong> <code>{{ child.key }}</code>
+        {% if child.required %}<span class="badge">requerido técnico</span>{% endif %}
+        {% if child.value %}<p class="value">{{ child.value }}</p>{% endif %}
+      </div>
+    {% endfor %}
+  </div>
+{% else %}
+  {% if field.value %}
+    <p class="value">{{ field.value }}</p>
+  {% else %}
+    <p class="empty-value">Sin valor en preview.</p>
+  {% endif %}
+{% endif %}

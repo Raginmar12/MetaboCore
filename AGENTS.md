@@ -44,3 +44,12 @@ Los agentes no deben reemplazar ni reescribir automáticamente la fuente oficial
 No declarar cumplimiento completo de la NOM-004 hasta que exista una revisión específica y documentada.
 
 La NOM-004 debe guiar la capa documental y de cumplimiento, pero no debe reemplazar el flujo clínico humano de MetaboCare.
+
+## Reglas para el visor Django
+
+- El visor Django en `metabocore_app/` es un prototipo de visualización de formatos clínicos, no un expediente clínico electrónico.
+- No crear modelos clínicos sin ADR y revisión arquitectónica previa.
+- No crear modelos `Paciente`, `Expediente` ni `Consulta` sin revisión NOM-004 documentada.
+- No agregar persistencia de datos de pacientes sin revisión NOM-004.
+- El visor no debe guardar datos reales de pacientes.
+- Cualquier evolución hacia pacientes, expedientes, consultas, autenticación, persistencia o generación documental requiere revisión arquitectónica y NOM-004.

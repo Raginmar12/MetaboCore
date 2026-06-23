@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.1.6 - Visor Django de formatos clínicos
+
+- Agrega Django como visor local/prototipo de formatos clínicos.
+- Renderiza formatos desde JSON Schema, UI schema y ejemplos ficticios.
+- Agrega vistas para lista, preview, ejemplo ficticio, schema, UI schema y JSON de ejemplo.
+- Agrega pruebas mínimas para carga, validación y rutas del visor.
+- Agrega ADR-0006 sobre Django como visor sin persistencia clínica.
+
 ## v0.1.5 - Alineación de ficha inicial
 
 - Alinea campos mínimos operativos de `ficha_inicial` con los requeridos técnicos del schema.

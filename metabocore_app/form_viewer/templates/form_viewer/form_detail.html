@@ -1,0 +1,66 @@
+{% extends "form_viewer/base.html" %}
+
+{% block title %}{{ title }} · MetaboCore{% endblock %}
+
+{% block content %}
+<section class="card">
+  <p><a href="{% url 'form_viewer:form_list' %}">← Volver a formatos</a></p>
+  <h1>{{ title }}</h1>
+  <p><code>{{ formato_id }}</code></p>
+  <p>{{ description }}</p>
+  {% if is_example %}
+    <p class="example-badge">Ejemplo ficticio. No corresponde a una persona real.</p>
+  {% else %}
+    <p class="muted">Preview estructural sin datos. No hay guardado ni envío de formulario.</p>
+  {% endif %}
+</section>
+
+{% for section in sections %}
+  {% if section.hidden %}
+    <details class="card technical-section">
+      <summary>{{ section.title }} · sección técnica oculta</summary>
+      {% if section.description %}<p>{{ section.description }}</p>{% endif %}
+      {% for field in section.fields %}
+        <div class="field technical-field">
+          <strong>{{ field.label }}</strong>
+          <code>{{ field.key }}</code>
+          {% if field.value %}<pre>{{ field.value }}</pre>{% endif %}
+        </div>
+      {% endfor %}
+    </details>
+  {% else %}
+    <section class="card form-section">
+      <h2>{{ section.title }}</h2>
+      {% if section.description %}<p>{{ section.description }}</p>{% endif %}
+
+      {% for field in section.fields %}
+        {% if field.hidden %}
+          <details class="field technical-field">
+            <summary>{{ field.label }} · campo técnico oculto</summary>
+            <code>{{ field.key }}</code>
+            {% if field.value %}<pre>{{ field.value }}</pre>{% endif %}
+          </details>
+        {% elif field.collapsed %}
+          <details class="field collapsed-field">
+            <summary>
+              {{ field.label }}
+              {% if field.required %}<span class="badge">requerido técnico</span>{% endif %}
+              {% if field.required_visual %}<span class="badge badge-visual">requerido visual</span>{% endif %}
+            </summary>
+            {% include "form_viewer/field_body.html" with field=field %}
+          </details>
+        {% else %}
+          <div class="field">
+            <h3>
+              {{ field.label }}
+              {% if field.required %}<span class="badge">requerido técnico</span>{% endif %}
+              {% if field.required_visual %}<span class="badge badge-visual">requerido visual</span>{% endif %}
+            </h3>
+            {% include "form_viewer/field_body.html" with field=field %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </section>
+  {% endif %}
+{% endfor %}
+{% endblock %}

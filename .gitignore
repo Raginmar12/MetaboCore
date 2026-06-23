@@ -10,3 +10,6 @@ data/
 private/
 patient_data/
 real_patients/
+__pycache__/
+*.py[cod]
+*.egg-info/

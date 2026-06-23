@@ -1,0 +1,18 @@
+{% extends "form_viewer/base.html" %}
+
+{% block title %}{{ document_title }} · {{ formato_id }}{% endblock %}
+
+{% block content %}
+<section class="card">
+  <p><a href="{% url 'form_viewer:form_list' %}">← Volver a formatos</a></p>
+  <h1>{{ document_title }}</h1>
+  <p><code>{{ formato_id }}</code></p>
+  {% if is_example %}
+    <p class="example-badge">Ejemplo ficticio. No corresponde a una persona real.</p>
+  {% endif %}
+</section>
+
+<section class="card">
+  <pre class="json-block">{{ json_document }}</pre>
+</section>
+{% endblock %}

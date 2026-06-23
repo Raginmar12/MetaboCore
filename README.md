@@ -40,3 +40,26 @@ Las integraciones con sistemas externos, como sistemas contables, facturación, 
 ## Advertencia de seguridad y privacidad
 
 **Nunca se deben guardar datos reales de pacientes en este repositorio.** Solo se permiten ejemplos ficticios, claramente marcados como ficticios, para fines de documentación, pruebas o diseño operativo.
+
+## Visor Django de formatos clínicos
+
+MetaboCore incluye un visor local/prototipo para renderizar formatos clínicos desde `schemas/`.
+
+Este visor:
+
+- No guarda datos.
+- No debe usarse con datos reales de pacientes.
+- No es expediente clínico electrónico.
+- No declara cumplimiento NOM-004.
+- Sirve para revisar el diseño de formatos durante el desarrollo.
+
+Comandos sugeridos:
+
+```bash
+python -m pip install -e .
+cd metabocore_app
+python manage.py test
+python manage.py runserver
+```
+
+El visor queda disponible en `http://127.0.0.1:8000/formatos/`.
