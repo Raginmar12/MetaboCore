@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.1.5 - Alineación de ficha inicial
+
+- Alinea campos mínimos operativos de `ficha_inicial` con los requeridos técnicos del schema.
+- Requiere `contacto`, `telefono_principal` y `municipio_o_localidad` en el schema de ficha inicial.
+- Agrega `preferencia_comunicacion` como campo opcional de contacto.
+- Agrega `observaciones` como campo opcional de contexto inicial.
+- Actualiza UI schema, ejemplo ficticio y documentación relacionada.
+
 ## v0.1.4 - Ficha inicial y schemas clínicos base
 
 - Agrega `ficha_inicial` como primer formato clínico estructurado.

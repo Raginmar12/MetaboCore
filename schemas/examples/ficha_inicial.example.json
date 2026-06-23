@@ -11,7 +11,8 @@
   },
   "contacto": {
     "telefono_principal": "000-000-0000",
-    "municipio_o_localidad": "Localidad Ficticia"
+    "municipio_o_localidad": "Localidad Ficticia",
+    "preferencia_comunicacion": "whatsapp"
   },
   "contexto_administrativo": {
     "fecha_primera_consulta": "2026-06-23",
@@ -22,7 +23,8 @@
     "motivo_breve_consulta": "Desea mejorar su salud metabolica y entender opciones de tratamiento.",
     "preocupacion_inicial": "Le preocupa recuperar peso despues de intentos previos.",
     "ocupacion_o_actividad_principal": "Actividad ficticia de oficina",
-    "consentimiento_verbal_flujo_consulta": true
+    "consentimiento_verbal_flujo_consulta": true,
+    "observaciones": "Ejemplo ficticio para validar estructura; no corresponde a una persona real."
   },
   "metadatos": {
     "creado_en": "2026-06-23T00:00:00Z",

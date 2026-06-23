@@ -9,6 +9,7 @@
     "formato_id",
     "version_schema",
     "identidad_paciente",
+    "contacto",
     "contexto_administrativo",
     "contexto_visita_inicial",
     "metadatos"
@@ -79,6 +80,16 @@
         "municipio_o_localidad": {
           "type": "string"
         },
+        "preferencia_comunicacion": {
+          "type": "string",
+          "description": "Canal preferido para comunicación operativa con el paciente.",
+          "enum": [
+            "telefono",
+            "whatsapp",
+            "correo_electronico",
+            "no_especificado"
+          ]
+        },
         "domicilio": {
           "type": "object",
           "additionalProperties": false,
@@ -106,7 +117,11 @@
             }
           }
         }
-      }
+      },
+      "required": [
+        "telefono_principal",
+        "municipio_o_localidad"
+      ]
     },
     "contexto_administrativo": {
       "type": "object",
@@ -196,6 +211,10 @@
         },
         "consentimiento_verbal_flujo_consulta": {
           "type": "boolean"
+        },
+        "observaciones": {
+          "type": "string",
+          "description": "Observaciones breves de recepción o encuadre inicial. No sustituye historia clínica ni nota médica."
         }
       }
     },

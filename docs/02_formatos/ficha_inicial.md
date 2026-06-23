@@ -52,6 +52,7 @@ No deben guardarse datos reales de pacientes en este repositorio. Los ejemplos, 
 - **Correo electrónico, si aplica:**
 - **Municipio o localidad:**
 - **Domicilio completo, si el flujo operativo o documental lo requiere:**
+- **Preferencia de comunicación, si aplica:**
 
 ### Contexto administrativo
 
@@ -77,19 +78,23 @@ No deben guardarse datos reales de pacientes en este repositorio. Los ejemplos, 
 
 ### Observaciones
 
--
+- **Observaciones breves de recepción o encuadre inicial:**
 
 ## Campos mínimos recomendados
+
+En el schema de datos, los campos técnicamente requeridos representan el mínimo necesario para validar una ficha inicial digital. Algunos campos clínicamente recomendados pueden seguir siendo opcionales o diferibles para evitar fricción en consulta.
 
 - Nombre completo.
 - Fecha de nacimiento.
 - Edad.
 - Sexo registrado.
 - Nombre o forma preferida de trato.
-- Teléfono principal.
-- Municipio o localidad.
+- Teléfono principal, requerido técnicamente dentro de `contacto`.
+- Municipio o localidad, requerido técnicamente dentro de `contacto`.
 - Fecha de primera consulta.
 - Motivo breve de consulta.
+
+El domicilio completo sigue siendo opcional o diferible. La preferencia de comunicación es opcional.
 
 ## Campos opcionales
 
@@ -101,6 +106,7 @@ No deben guardarse datos reales de pacientes en este repositorio. Los ejemplos, 
 - Médico responsable, si aplica.
 - Establecimiento, si aplica.
 - Referencia a aviso de privacidad.
+- Preferencia de comunicación.
 
 ## Campos sensibles
 
@@ -128,7 +134,7 @@ No deben guardarse datos reales de pacientes en este repositorio. Los ejemplos, 
 
 La ficha debe ser breve. Puede llenarse antes de la consulta o durante recepción, pero debe confirmarse de manera respetuosa al inicio.
 
-No sustituye la historia clínica ni la entrevista motivacional. El motivo breve de consulta debe registrarse idealmente con palabras del paciente y después profundizarse en el flujo clínico correspondiente.
+No sustituye la historia clínica ni la entrevista motivacional. El motivo breve de consulta debe registrarse idealmente con palabras del paciente y después profundizarse en el flujo clínico correspondiente. Las observaciones son opcionales y no sustituyen historia clínica ni nota médica.
 
 ## Relación con schemas
 

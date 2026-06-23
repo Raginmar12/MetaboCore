@@ -56,6 +56,7 @@
       "telefono_alterno",
       "correo_electronico",
       "municipio_o_localidad",
+      "preferencia_comunicacion",
       "domicilio"
     ],
     "telefono_principal": {
@@ -79,6 +80,10 @@
       "ui:widget": "object/collapsible",
       "ui:ayuda": "Capturar domicilio completo solo si el flujo operativo o documental lo requiere.",
       "ui:colapsado": true
+    },
+    "preferencia_comunicacion": {
+      "ui:widget": "select",
+      "ui:ayuda": "Canal preferido para comunicación operativa. No sustituye consentimiento ni aviso de privacidad."
     }
   },
   "contexto_administrativo": {
@@ -118,7 +123,8 @@
       "ocupacion_o_actividad_principal",
       "contacto_emergencia",
       "referencia_aviso_privacidad",
-      "consentimiento_verbal_flujo_consulta"
+      "consentimiento_verbal_flujo_consulta",
+      "observaciones"
     ],
     "motivo_breve_consulta": {
       "ui:widget": "textarea",
@@ -145,6 +151,10 @@
     "consentimiento_verbal_flujo_consulta": {
       "ui:widget": "checkbox",
       "ui:ayuda": "Registrar solo si aplica al flujo operativo de la consulta."
+    },
+    "observaciones": {
+      "ui:widget": "textarea",
+      "ui:ayuda": "Notas breves de recepción o encuadre inicial; no usar como historia clínica completa."
     }
   },
   "metadatos": {
