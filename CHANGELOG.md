@@ -1,5 +1,14 @@
 # Changelog
 
+## v0.1.7 - Vista imprimible de formatos clínicos
+
+- Agrega vista imprimible al visor Django de formatos.
+- Permite generar formatos en papel desde schema y UI schema.
+- Agrega ruta `/formatos/<formato_id>/imprimir/`.
+- Conserva vistas de Preview, Ejemplo ficticio, Schema, UI schema y JSON ejemplo.
+- Agrega ADR-0007 sobre MetaboCore como generador de formatos imprimibles.
+- Actualiza documentación del visor y reglas para agentes.
+
 ## v0.1.6 - Visor Django de formatos clínicos
 
 - Agrega Django como visor local/prototipo de formatos clínicos.

@@ -63,3 +63,21 @@ python manage.py runserver
 ```
 
 El visor queda disponible en `http://127.0.0.1:8000/formatos/`.
+
+### Vista imprimible
+
+El visor incluye una vista imprimible para generar formatos en papel a partir de los schemas.
+
+Esta vista:
+
+- Está pensada para imprimir y llenar a mano.
+- No guarda datos.
+- No debe usarse con datos reales dentro del visor.
+- No genera PDF desde backend.
+- No declara cumplimiento completo NOM-004.
+
+Ruta inicial disponible:
+
+```txt
+/formatos/ficha_inicial/imprimir/
+```

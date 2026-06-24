@@ -35,6 +35,8 @@ Los campos `required` de los schemas representan requeridos técnicos para valid
 
 Los schemas pueden ser usados por el visor Django de `metabocore_app/` para renderizar formatos clínicos en HTML. El renderizado no cambia el contrato del schema y el visor no guarda datos.
 
+Los schemas pueden alimentar el visor estructural, los ejemplos ficticios y la vista imprimible. La vista imprimible no cambia el contrato del schema, no implica captura electrónica, no guarda datos y no declara cumplimiento completo NOM-004.
+
 ## Convención de nombres
 
 Los campos propios de MetaboCore deben escribirse:

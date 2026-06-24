@@ -53,3 +53,14 @@ La NOM-004 debe guiar la capa documental y de cumplimiento, pero no debe reempla
 - No agregar persistencia de datos de pacientes sin revisión NOM-004.
 - El visor no debe guardar datos reales de pacientes.
 - Cualquier evolución hacia pacientes, expedientes, consultas, autenticación, persistencia o generación documental requiere revisión arquitectónica y NOM-004.
+
+
+## Formatos imprimibles
+
+La vista imprimible debe derivarse de `schemas/forms/` y `schemas/ui/`.
+
+No duplicar manualmente la estructura de un formato en templates.
+
+No agregar captura persistente, modelos clínicos ni datos reales para hacer formatos imprimibles.
+
+La generación de PDF backend, captura electrónica persistente o documentos NOM generados requiere revisión arquitectónica posterior.

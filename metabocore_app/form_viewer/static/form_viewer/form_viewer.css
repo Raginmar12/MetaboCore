@@ -119,3 +119,176 @@ a { color: var(--accent); }
 
 summary { cursor: pointer; font-weight: 700; }
 code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+
+.print-only { display: none; }
+
+.print-button {
+  border: 0;
+  border-radius: 0.5rem;
+  background: var(--accent);
+  color: white;
+  cursor: pointer;
+  font-weight: 700;
+  padding: 0.65rem 1rem;
+}
+
+.print-screen-warning { font-weight: 700; color: #92400e; }
+
+.print-container {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 0.9rem;
+  padding: 1.25rem;
+}
+
+.print-header {
+  border-bottom: 2px solid var(--text);
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+}
+
+.print-kicker,
+.print-subtitle { font-weight: 700; margin: 0 0 0.35rem; }
+.print-description { color: var(--muted); }
+.print-note { font-size: 0.9rem; font-weight: 700; }
+
+.print-section {
+  border: 1px solid var(--border);
+  border-radius: 0.7rem;
+  margin: 0 0 1rem;
+  padding: 0.9rem;
+}
+
+.print-section h2 { margin: 0 0 0.25rem; }
+.print-section-description { color: var(--muted); margin-top: 0; }
+.print-fields { display: grid; gap: 0.85rem; }
+
+.print-field {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.print-field-label { font-weight: 700; }
+.print-required { font-size: 1.1rem; }
+.print-technical-required,
+.print-optional {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+  margin-left: 0.35rem;
+}
+
+.print-help {
+  color: var(--muted);
+  font-size: 0.88rem;
+  margin: 0.15rem 0 0.25rem;
+}
+
+.print-line {
+  border-bottom: 1px solid #111827;
+  min-height: 1.6rem;
+}
+
+.print-lines {
+  display: grid;
+  gap: 0.85rem;
+  padding-top: 0.25rem;
+}
+
+.print-lines span {
+  border-bottom: 1px solid #111827;
+  min-height: 1.35rem;
+}
+
+.print-checkbox-row { display: flex; align-items: center; gap: 0.45rem; }
+
+.print-checkbox {
+  border: 1.5px solid #111827;
+  display: inline-block;
+  height: 0.9rem;
+  min-width: 0.9rem;
+  width: 0.9rem;
+}
+
+.print-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 1rem;
+  list-style: none;
+  margin: 0.35rem 0 0;
+  padding: 0;
+}
+
+.print-options li { align-items: center; display: flex; gap: 0.35rem; }
+
+.print-subsection {
+  border-left: 3px solid var(--border);
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 0.45rem;
+  padding-left: 0.75rem;
+}
+
+@page {
+  size: letter;
+  margin: 12mm;
+}
+
+@media print {
+  body {
+    background: white;
+    color: black;
+    font-size: 10.5pt;
+  }
+
+  .site-header,
+  .screen-only,
+  .print-actions,
+  .warning,
+  .technical-section,
+  .technical-field,
+  .json-block {
+    display: none !important;
+  }
+
+  .print-only { display: block !important; }
+
+  .container,
+  .print-container {
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    margin: 0;
+    max-width: none;
+    padding: 0;
+  }
+
+  .card,
+  .print-section {
+    background: white;
+    border-color: #9ca3af;
+    box-shadow: none;
+  }
+
+  .print-header {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .print-section {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    margin-bottom: 7mm;
+    padding: 0 0 4mm;
+  }
+
+  .print-note,
+  .print-help,
+  .print-section-description,
+  .print-technical-required,
+  .print-optional {
+    color: #374151;
+  }
+
+  a { color: black; text-decoration: none; }
+}

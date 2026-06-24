@@ -6,6 +6,7 @@ from django.test import Client, TestCase
 from jsonschema import validate
 
 from .loaders import get_form_bundle, list_form_ids
+from .renderers import build_print_sections
 
 WARNING_FRAGMENT = "No introducir datos reales"
 
@@ -32,6 +33,37 @@ class FormViewerLoaderTests(TestCase):
             section_schema_properties = schema_properties[section_key].get("properties", {})
             for field_key in bundle.ui_schema[section_key].get("ui:orden_campos", []):
                 self.assertIn(field_key, section_schema_properties)
+
+    def test_print_sections_omit_metadata(self):
+        bundle = get_form_bundle("ficha_inicial")
+        sections = build_print_sections(bundle.schema, bundle.ui_schema)
+        self.assertNotIn("metadatos", [section["key"] for section in sections])
+
+    def test_print_sections_convert_controls(self):
+        bundle = get_form_bundle("ficha_inicial")
+        sections = build_print_sections(bundle.schema, bundle.ui_schema)
+        fields = {
+            field["key"]: field
+            for section in sections
+            for field in section["fields"]
+        }
+        self.assertEqual(fields["sexo_registrado"]["print_control"], "checkbox_group")
+        self.assertEqual(
+            fields["consentimiento_verbal_flujo_consulta"]["print_control"],
+            "checkbox",
+        )
+        self.assertEqual(fields["motivo_breve_consulta"]["print_control"], "multiline")
+
+    def test_print_sections_render_objects_as_subsections(self):
+        bundle = get_form_bundle("ficha_inicial")
+        sections = build_print_sections(bundle.schema, bundle.ui_schema)
+        fields = {
+            field["key"]: field
+            for section in sections
+            for field in section["fields"]
+        }
+        self.assertEqual(fields["domicilio"]["print_control"], "subsection")
+        self.assertGreater(len(fields["domicilio"]["children"]), 0)
 
     def test_no_clinical_models_defined(self):
         form_viewer_models = list(apps.get_app_config("form_viewer").get_models())
@@ -62,6 +94,37 @@ class FormViewerRouteTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Ejemplo ficticio")
         self.assert_warning_present(response)
+
+    def test_form_list_links_to_print_view(self):
+        response = self.client.get("/formatos/")
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Imprimible")
+        self.assertContains(response, "/formatos/ficha_inicial/imprimir/")
+
+    def test_form_detail_links_to_print_view(self):
+        response = self.client.get("/formatos/ficha_inicial/")
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Imprimible")
+        self.assertContains(response, "/formatos/ficha_inicial/imprimir/")
+
+    def test_form_print_responds_200(self):
+        response = self.client.get("/formatos/ficha_inicial/imprimir/")
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Formato imprimible")
+        self.assertContains(response, "No introducir datos reales")
+        self.assertContains(response, "No declara cumplimiento completo NOM-004")
+        self.assertContains(response, "Nombre completo")
+        self.assertContains(response, "Telefono principal")
+        self.assertContains(response, "Municipio o localidad")
+        self.assertContains(response, "Motivo breve")
+        self.assertNotContains(response, "Paciente Ficticia MetaboCore")
+        self.assertNotContains(response, "Metadatos")
+
+    def test_form_print_post_is_not_allowed(self):
+        response = self.client.post(
+            "/formatos/ficha_inicial/imprimir/", {"nombre_completo": "No guardar"}
+        )
+        self.assertEqual(response.status_code, 405)
 
     def test_schema_view_responds_200(self):
         response = self.client.get("/formatos/ficha_inicial/schema/")

@@ -3,10 +3,19 @@ from __future__ import annotations
 
 import json
 
+from django.http import Http404
 from django.shortcuts import render
+from django.views.decorators.http import require_GET
 
-from .loaders import get_form_bundle_or_404, list_form_ids
-from .renderers import build_form_sections
+from .loaders import (
+    FormViewerError,
+    get_form_bundle_or_404,
+    list_form_ids,
+    load_form_schema,
+    load_ui_schema,
+    validate_formato_id,
+)
+from .renderers import build_form_sections, build_print_sections
 
 WARNING_TEXT = (
     "Prototipo de visualización. No introducir datos reales de pacientes. "
@@ -57,6 +66,42 @@ def form_example(request, formato_id: str):
             "description": bundle.schema.get("description", ""),
             "sections": sections,
             "is_example": True,
+        },
+    )
+
+
+@require_GET
+def form_print(request, formato_id: str):
+    try:
+        formato_id = validate_formato_id(formato_id)
+        schema = load_form_schema(formato_id)
+        ui_schema = load_ui_schema(formato_id)
+    except FormViewerError as exc:
+        raise Http404(str(exc)) from exc
+
+    sections = build_print_sections(schema, ui_schema)
+    page_title = f"{schema.get('title', formato_id)} · Formato imprimible"
+    return render(
+        request,
+        "form_viewer/form_print.html",
+        {
+            **_base_context(),
+            "formato_id": formato_id,
+            "schema": schema,
+            "ui_schema": ui_schema,
+            "sections": sections,
+            "is_print_view": True,
+            "page_title": page_title,
+            "title": schema.get("title", formato_id),
+            "description": schema.get("description", ""),
+            "print_note": (
+                "Formato para uso clínico interno. "
+                "No declara cumplimiento completo NOM-004 por sí mismo."
+            ),
+            "screen_warning": (
+                "Prototipo de visualización. "
+                "No introducir datos reales en el visor."
+            ),
         },
     )
 

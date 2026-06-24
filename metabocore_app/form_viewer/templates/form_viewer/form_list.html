@@ -15,6 +15,7 @@
       <nav class="link-list" aria-label="Acciones para {{ formato.formato_id }}">
         <a href="{% url 'form_viewer:form_detail' formato.formato_id %}">Preview</a>
         <a href="{% url 'form_viewer:form_example' formato.formato_id %}">Ejemplo ficticio</a>
+        <a href="{% url 'form_viewer:form_print' formato.formato_id %}">Imprimible</a>
         <a href="{% url 'form_viewer:schema_view' formato.formato_id %}">Schema</a>
         <a href="{% url 'form_viewer:ui_schema_view' formato.formato_id %}">UI schema</a>
         <a href="{% url 'form_viewer:example_json_view' formato.formato_id %}">JSON ejemplo</a>

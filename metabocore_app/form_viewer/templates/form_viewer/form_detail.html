@@ -5,6 +5,7 @@
 {% block content %}
 <section class="card">
   <p><a href="{% url 'form_viewer:form_list' %}">← Volver a formatos</a></p>
+  <p><a href="{% url 'form_viewer:form_print' formato_id %}">Imprimible</a></p>
   <h1>{{ title }}</h1>
   <p><code>{{ formato_id }}</code></p>
   <p>{{ description }}</p>

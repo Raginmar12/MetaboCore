@@ -1,0 +1,34 @@
+{% extends "form_viewer/base.html" %}
+
+{% block title %}{{ page_title }} · MetaboCore{% endblock %}
+
+{% block content %}
+<section class="card print-actions screen-only">
+  <p><a href="{% url 'form_viewer:form_detail' formato_id %}">← Volver al visor del formato</a></p>
+  <button class="print-button" type="button" onclick="window.print()">Imprimir</button>
+  <p class="print-screen-warning">{{ screen_warning }}</p>
+</section>
+
+<article class="print-container" aria-label="Formato imprimible">
+  <header class="print-header">
+    <p class="print-kicker">MetaboCare / MetaboCore</p>
+    <h1>{{ title }}</h1>
+    <p class="print-subtitle">Formato imprimible para consulta</p>
+    <p><code>{{ formato_id }}</code></p>
+    {% if description %}<p class="print-description">{{ description }}</p>{% endif %}
+    <p class="print-note">{{ print_note }}</p>
+  </header>
+
+  {% for section in sections %}
+    <section class="print-section">
+      <h2>{{ section.title }}</h2>
+      {% if section.description %}<p class="print-section-description">{{ section.description }}</p>{% endif %}
+      <div class="print-fields">
+        {% for field in section.fields %}
+          {% include "form_viewer/print_field.html" with field=field %}
+        {% endfor %}
+      </div>
+    </section>
+  {% endfor %}
+</article>
+{% endblock %}
