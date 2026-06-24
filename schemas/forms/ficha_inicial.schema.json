@@ -1,0 +1,261 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://metabocore.local/schemas/forms/ficha_inicial.schema.json",
+  "title": "Ficha inicial MetaboCore",
+  "description": "Schema de datos para la ficha inicial de MetaboCore. Estructura datos minimos de identificacion y contexto breve de primera consulta. No declara cumplimiento completo de la NOM-004.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "formato_id",
+    "version_schema",
+    "identidad_paciente",
+    "contacto",
+    "contexto_administrativo",
+    "contexto_visita_inicial",
+    "metadatos"
+  ],
+  "properties": {
+    "formato_id": {
+      "type": "string",
+      "const": "ficha_inicial"
+    },
+    "version_schema": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "identidad_paciente": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "nombre_completo",
+        "fecha_nacimiento",
+        "edad",
+        "sexo_registrado"
+      ],
+      "properties": {
+        "nombre_completo": {
+          "type": "string",
+          "minLength": 1
+        },
+        "nombre_preferido": {
+          "type": "string"
+        },
+        "fecha_nacimiento": {
+          "type": "string",
+          "format": "date"
+        },
+        "edad": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 130
+        },
+        "sexo_registrado": {
+          "type": "string",
+          "enum": [
+            "femenino",
+            "masculino",
+            "intersex",
+            "no_especificado"
+          ]
+        },
+        "genero": {
+          "type": "string"
+        }
+      }
+    },
+    "contacto": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "telefono_principal": {
+          "type": "string"
+        },
+        "telefono_alterno": {
+          "type": "string"
+        },
+        "correo_electronico": {
+          "type": "string",
+          "format": "email"
+        },
+        "municipio_o_localidad": {
+          "type": "string"
+        },
+        "preferencia_comunicacion": {
+          "type": "string",
+          "description": "Canal preferido para comunicación operativa con el paciente.",
+          "enum": [
+            "telefono",
+            "whatsapp",
+            "correo_electronico",
+            "no_especificado"
+          ]
+        },
+        "domicilio": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "calle": {
+              "type": "string"
+            },
+            "numero_exterior": {
+              "type": "string"
+            },
+            "numero_interior": {
+              "type": "string"
+            },
+            "colonia": {
+              "type": "string"
+            },
+            "municipio": {
+              "type": "string"
+            },
+            "estado": {
+              "type": "string"
+            },
+            "codigo_postal": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "required": [
+        "telefono_principal",
+        "municipio_o_localidad"
+      ]
+    },
+    "contexto_administrativo": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "fecha_primera_consulta"
+      ],
+      "properties": {
+        "fecha_primera_consulta": {
+          "type": "string",
+          "format": "date"
+        },
+        "medico_responsable": {
+          "type": "string"
+        },
+        "id_expediente_interno": {
+          "type": "string"
+        },
+        "establecimiento": {
+          "type": "object",
+          "description": "Se poblara preferentemente desde configuracion futura del sistema, no como carga manual repetida.",
+          "additionalProperties": false,
+          "properties": {
+            "nombre": {
+              "type": "string"
+            },
+            "tipo": {
+              "type": "string"
+            },
+            "domicilio": {
+              "type": "string"
+            },
+            "institucion": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "contexto_visita_inicial": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "motivo_breve_consulta"
+      ],
+      "properties": {
+        "motivo_breve_consulta": {
+          "type": "string",
+          "minLength": 1
+        },
+        "preocupacion_inicial": {
+          "type": "string"
+        },
+        "ocupacion_o_actividad_principal": {
+          "type": "string"
+        },
+        "contacto_emergencia": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "nombre": {
+              "type": "string"
+            },
+            "relacion": {
+              "type": "string"
+            },
+            "telefono": {
+              "type": "string"
+            }
+          }
+        },
+        "referencia_aviso_privacidad": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "revisado": {
+              "type": "boolean"
+            },
+            "version": {
+              "type": "string"
+            },
+            "revisado_en": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        },
+        "consentimiento_verbal_flujo_consulta": {
+          "type": "boolean"
+        },
+        "observaciones": {
+          "type": "string",
+          "description": "Observaciones breves de recepción o encuadre inicial. No sustituye historia clínica ni nota médica."
+        }
+      }
+    },
+    "metadatos": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "creado_en",
+        "clasificacion_datos"
+      ],
+      "properties": {
+        "creado_en": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "actualizado_en": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "capturado_por": {
+          "type": "string"
+        },
+        "clasificacion_datos": {
+          "type": "string",
+          "const": "datos_personales_clinicos"
+        },
+        "ejemplo_es_ficticio": {
+          "type": "boolean"
+        }
+      }
+    }
+  },
+  "x-metabocore": {
+    "flujo": "primera_consulta",
+    "bloque": "bloque_1_bienvenida_y_encuadre",
+    "formato": "ficha_inicial",
+    "nom_004": [
+      "datos_generales_expediente",
+      "ficha_identificacion"
+    ],
+    "contiene_datos_paciente": true,
+    "declara_cumplimiento_nom_004": false
+  }
+}

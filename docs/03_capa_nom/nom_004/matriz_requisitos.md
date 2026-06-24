@@ -7,7 +7,7 @@ Esta matriz sirve para conectar requisitos normativos generales con el flujo cl�
 
 | Área NOM-004 | Requisito resumido | Fuente en flujo MetaboCare | Formato operativo | Documento generado | Estado |
 |---|---|---|---|---|---|
-| Identificación | Datos del paciente | Primera consulta | Ficha inicial futura | Historia clínica | Pendiente |
+| Identificación | Datos del paciente | Primera consulta | `docs/02_formatos/ficha_inicial.md` | Historia clínica | Parcial / formato operativo inicial |
 | Padecimiento actual | Motivo y evolución | Motivo de consulta / rapport | Primera consulta | Historia clínica / nota médica | Parcial |
 | Antecedentes | Antecedentes clínicos relevantes | Historia metabólica dirigida | Formato futuro | Historia clínica | Pendiente |
 | Exploración física | Datos objetivos y mediciones | Mediciones y análisis corporal | analisis_corporal.md | Historia clínica / nota médica | Parcial |

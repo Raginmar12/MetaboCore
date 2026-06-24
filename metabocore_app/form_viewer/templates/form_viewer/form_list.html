@@ -1,0 +1,29 @@
+{% extends "form_viewer/base.html" %}
+
+{% block title %}Formatos clínicos · MetaboCore{% endblock %}
+
+{% block content %}
+<section class="card">
+  <h1>Formatos clínicos</h1>
+  <p>Lista generada desde <code>schemas/forms/</code>. Este visor solo muestra estructuras y ejemplos ficticios.</p>
+</section>
+
+<section class="grid">
+  {% for formato in formatos %}
+    <article class="card">
+      <h2><code>{{ formato.formato_id }}</code></h2>
+      <nav class="link-list" aria-label="Acciones para {{ formato.formato_id }}">
+        <a href="{% url 'form_viewer:form_detail' formato.formato_id %}">Preview</a>
+        <a href="{% url 'form_viewer:form_example' formato.formato_id %}">Ejemplo ficticio</a>
+        <a href="{% url 'form_viewer:schema_view' formato.formato_id %}">Schema</a>
+        <a href="{% url 'form_viewer:ui_schema_view' formato.formato_id %}">UI schema</a>
+        <a href="{% url 'form_viewer:example_json_view' formato.formato_id %}">JSON ejemplo</a>
+      </nav>
+    </article>
+  {% empty %}
+    <article class="card">
+      <p>No se encontraron formatos en <code>schemas/forms/</code>.</p>
+    </article>
+  {% endfor %}
+</section>
+{% endblock %}

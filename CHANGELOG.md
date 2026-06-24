@@ -1,5 +1,29 @@
 # Changelog
 
+## v0.1.6 - Visor Django de formatos clínicos
+
+- Agrega Django como visor local/prototipo de formatos clínicos.
+- Renderiza formatos desde JSON Schema, UI schema y ejemplos ficticios.
+- Agrega vistas para lista, preview, ejemplo ficticio, schema, UI schema y JSON de ejemplo.
+- Agrega pruebas mínimas para carga, validación y rutas del visor.
+- Agrega ADR-0006 sobre Django como visor sin persistencia clínica.
+
+## v0.1.5 - Alineación de ficha inicial
+
+- Alinea campos mínimos operativos de `ficha_inicial` con los requeridos técnicos del schema.
+- Requiere `contacto`, `telefono_principal` y `municipio_o_localidad` en el schema de ficha inicial.
+- Agrega `preferencia_comunicacion` como campo opcional de contacto.
+- Agrega `observaciones` como campo opcional de contexto inicial.
+- Actualiza UI schema, ejemplo ficticio y documentación relacionada.
+
+## v0.1.4 - Ficha inicial y schemas clínicos base
+
+- Agrega `ficha_inicial` como primer formato clínico estructurado.
+- Agrega arquitectura base de schemas para formularios clínicos.
+- Agrega schema de datos, UI schema y ejemplo ficticio para `ficha_inicial`.
+- Agrega ADR-0005 sobre formatos clínicos con schemas JSON.
+- Actualiza flujo de primera consulta y mapeo NOM-004 para usar `ficha_inicial`.
+
 ## v0.1.3 - Checklist NOM-004 actualizado
 
 - Actualiza la checklist inicial NOM-004 para reflejar que la fuente oficial ya fue integrada manualmente.

@@ -21,6 +21,7 @@ Explicar que la NOM-004 se implementará como capa documental y no como flujo pr
 
 | Dato capturado en flujo MetaboCare | Formato operativo fuente | Documento NOM que alimenta | Observaciones |
 | --- | --- | --- | --- |
+| Identificación del paciente | `docs/02_formatos/ficha_inicial.md` | Datos generales del expediente / ficha de identificación | Cobertura inicial y parcial; no declara cumplimiento completo NOM-004. |
 | Motivo de consulta | `docs/01_flujo_consulta/primera_consulta.md` / `docs/02_formatos/entrevista_motivacional.md` | Historia clínica / nota médica | Debe conservar el lenguaje principal del paciente cuando sea útil. |
 | Antecedentes | Historia metabólica futura | Historia clínica | Se desarrollará un formato específico para antecedentes metabólicos. |
 | Mediciones | `docs/02_formatos/analisis_corporal.md` | Exploración física | Incluye signos vitales, antropometría y análisis corporal cuando aplique. |

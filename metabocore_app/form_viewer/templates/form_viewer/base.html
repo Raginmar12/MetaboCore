@@ -1,0 +1,23 @@
+{% load static %}
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Visor MetaboCore{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'form_viewer/form_viewer.css' %}">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="{% url 'form_viewer:form_list' %}">MetaboCore · Visor de formatos</a>
+  </header>
+
+  <aside class="warning" role="note">
+    {{ warning_text }}
+  </aside>
+
+  <main class="container">
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>
