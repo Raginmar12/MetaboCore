@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.1.12 - Formato técnico interno de entrevista motivacional
+
+- Define la primera versión documental del formato técnico interno de entrevista motivacional.
+
 ## v0.1.11 - Guías clínicas base
 
 - Integra `docs/05_guias_clinicas/` como biblioteca de referencia clínica para MetaboCare.
