@@ -63,3 +63,20 @@ python manage.py runserver
 ```
 
 El visor queda disponible en `http://127.0.0.1:8000/formatos/`.
+
+### Vistas imprimibles
+
+El visor incluye dos salidas imprimibles a partir de los schemas:
+
+- Vista para pacientes: hoja sencilla para llenar a mano antes de la consulta.
+- Vista técnica: hoja de revisión interna del formato.
+
+Ambas derivan de schema + UI schema, no guardan datos y no generan PDF desde backend.
+
+Rutas iniciales disponibles:
+
+```txt
+/formatos/ficha_inicial/imprimir/
+/formatos/ficha_inicial/imprimir/paciente/
+/formatos/ficha_inicial/imprimir/tecnica/
+```

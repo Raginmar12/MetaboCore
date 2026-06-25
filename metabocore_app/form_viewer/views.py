@@ -3,10 +3,19 @@ from __future__ import annotations
 
 import json
 
+from django.http import Http404
 from django.shortcuts import render
+from django.views.decorators.http import require_GET
 
-from .loaders import get_form_bundle_or_404, list_form_ids
-from .renderers import build_form_sections
+from .loaders import (
+    FormViewerError,
+    get_form_bundle_or_404,
+    list_form_ids,
+    load_form_schema,
+    load_ui_schema,
+    validate_formato_id,
+)
+from .renderers import build_form_sections, build_print_sections
 
 WARNING_TEXT = (
     "Prototipo de visualización. No introducir datos reales de pacientes. "
@@ -59,6 +68,72 @@ def form_example(request, formato_id: str):
             "is_example": True,
         },
     )
+
+
+def _load_print_assets_or_404(formato_id: str):
+    try:
+        formato_id = validate_formato_id(formato_id)
+        schema = load_form_schema(formato_id)
+        ui_schema = load_ui_schema(formato_id)
+    except FormViewerError as exc:
+        raise Http404(str(exc)) from exc
+    return formato_id, schema, ui_schema
+
+
+def _patient_title(schema: dict, formato_id: str) -> str:
+    title = schema.get("title", formato_id)
+    return title.replace(" MetaboCore", "")
+
+
+def _render_print_view(request, formato_id: str, variant: str):
+    formato_id, schema, ui_schema = _load_print_assets_or_404(formato_id)
+    sections = build_print_sections(schema, ui_schema, variant=variant)
+    title = _patient_title(schema, formato_id)
+    is_patient = variant == "paciente"
+    return render(
+        request,
+        "form_viewer/form_print.html",
+        {
+            **_base_context(),
+            "formato_id": formato_id,
+            "schema": schema,
+            "ui_schema": ui_schema,
+            "sections": sections,
+            "is_print_view": True,
+            "print_variant": variant,
+            "is_patient_print": is_patient,
+            "page_title": title if is_patient else f"{title} · Vista imprimible técnica",
+            "title": title,
+            "heading": "MetaboCare" if is_patient else "MetaboCare / MetaboCore",
+            "subheading": (
+                "Por favor llene este formato antes de su consulta."
+                if is_patient
+                else "Vista imprimible técnica"
+            ),
+            "print_note": (
+                ""
+                if is_patient
+                else (
+                    "Formato para uso clínico interno. "
+                    "No declara cumplimiento completo NOM-004 por sí mismo."
+                )
+            ),
+            "screen_warning": (
+                "Prototipo de visualización. "
+                "No introducir datos reales en el visor."
+            ),
+        },
+    )
+
+
+@require_GET
+def form_print_patient(request, formato_id: str):
+    return _render_print_view(request, formato_id, "paciente")
+
+
+@require_GET
+def form_print_technical(request, formato_id: str):
+    return _render_print_view(request, formato_id, "tecnica")
 
 
 def _json_context(formato_id: str, document: dict, document_title: str, is_example: bool = False):
