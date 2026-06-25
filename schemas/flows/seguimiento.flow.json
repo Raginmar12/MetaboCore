@@ -15,11 +15,11 @@
   ],
   "etapas": [
     {
-      "etapa_id": "recepcion_y_revision",
-      "slug": "recepcion-y-revision",
+      "etapa_id": "recepcion_y_objetivo",
+      "slug": "recepcion-y-objetivo",
       "orden": 1,
-      "titulo": "Recepción y revisión",
-      "descripcion": "Recepción breve, revisión del objetivo previo y contexto inicial del seguimiento.",
+      "titulo": "Recepción y objetivo previo",
+      "descripcion": "Inicio breve del seguimiento y revisión de la meta acordada previamente.",
       "bloques": [
         "recepcion_breve",
         "revision_objetivo_previo"
@@ -30,32 +30,34 @@
       "slug": "evaluacion-de-evolucion",
       "orden": 2,
       "titulo": "Evaluación de evolución",
-      "descripcion": "Mediciones, adherencia, barreras, estudios, síntomas y seguridad.",
+      "descripcion": "Mediciones, síntomas, adherencia, seguridad y barreras que orientan el ajuste clínico.",
       "bloques": [
-        "revision_mediciones_signos",
-        "revision_adherencia_barreras",
-        "revision_estudios_sintomas"
+        "revision_peso_cintura_sintomas_mediciones",
+        "revision_adherencia",
+        "revision_efectos_adversos",
+        "revision_barreras"
       ]
     },
     {
-      "etapa_id": "ajuste_de_plan",
-      "slug": "ajuste-de-plan",
+      "etapa_id": "ajuste_y_metas",
+      "slug": "ajuste-y-metas",
       "orden": 3,
-      "titulo": "Ajuste de plan",
-      "descripcion": "Ajustes terapéuticos y nuevas metas según respuesta y factibilidad.",
+      "titulo": "Ajuste y metas",
+      "descripcion": "Ajuste del plan y definición de metas próximas, simples y factibles.",
       "bloques": [
         "ajuste_plan",
         "nuevas_metas"
       ]
     },
     {
-      "etapa_id": "cierre_y_seguimiento",
-      "slug": "cierre-y-seguimiento",
+      "etapa_id": "cierre_documental",
+      "slug": "cierre-documental",
       "orden": 4,
-      "titulo": "Cierre y seguimiento",
-      "descripcion": "Continuidad, próxima cita y motivos para contactar antes.",
+      "titulo": "Cierre y capa documental",
+      "descripcion": "Continuidad de atención y datos que alimentan la nota de evolución como capa documental secundaria.",
       "bloques": [
-        "cierre_proxima_cita"
+        "proxima_cita",
+        "datos_nota_evolucion_nom"
       ]
     }
   ],
@@ -93,7 +95,7 @@
       "bloque_id": "revision_objetivo_previo",
       "slug": "revision-objetivo-previo",
       "orden": 2,
-      "titulo": "Revisión de objetivo previo",
+      "titulo": "Revisión del objetivo previo",
       "objetivo": "Revisar la meta acordada y explorar logros parciales, dificultades y aprendizajes.",
       "que_hace_el_medico": [
         "Revisa la meta acordada en la consulta anterior.",
@@ -110,7 +112,7 @@
           "formato_id": "objetivos_y_plan",
           "estado": "existente",
           "tipo": "formato",
-          "momento_uso": "Para revisar y actualizar objetivos clínicos y personales.",
+          "momento_uso": "Para revisar o actualizar objetivos, plan y prioridades.",
           "enlaces": [
             "documento"
           ]
@@ -124,19 +126,19 @@
       "nota_diseno": "La revisión debe aprender del proceso, no regañar al paciente."
     },
     {
-      "bloque_id": "revision_mediciones_signos",
-      "slug": "revision-mediciones-signos",
+      "bloque_id": "revision_peso_cintura_sintomas_mediciones",
+      "slug": "revision-peso-cintura-sintomas-mediciones",
       "orden": 3,
-      "titulo": "Revisión de mediciones y signos",
-      "objetivo": "Revisar peso, cintura, signos vitales, síntomas y mediciones relevantes según riesgo.",
+      "titulo": "Revisión de peso, cintura, síntomas y mediciones",
+      "objetivo": "Revisar mediciones y síntomas relevantes para interpretar la evolución clínica en contexto.",
       "que_hace_el_medico": [
         "Registra peso y cintura cuando aplique.",
         "Revisa presión arterial, frecuencia cardiaca u otras mediciones según riesgo.",
-        "Interpreta tendencias, no solo datos aislados."
+        "Pregunta por síntomas nuevos o cambios percibidos e interpreta tendencias."
       ],
       "que_registra": [
         "Peso y cintura cuando aplique.",
-        "Signos vitales relevantes.",
+        "Signos vitales o mediciones relevantes.",
         "Síntomas nuevos o cambios percibidos."
       ],
       "formatos_asociados": [
@@ -152,25 +154,26 @@
       ],
       "salida": "Tendencia clínica objetiva interpretada en contexto.",
       "nom_004": [
-        "Signos vitales y mediciones relevantes."
+        "Signos vitales y mediciones relevantes.",
+        "Evolución clínica desde la consulta previa."
       ],
       "nota_diseno": "Las mediciones se interpretan como tendencia clínica, no como juicio aislado."
     },
     {
-      "bloque_id": "revision_adherencia_barreras",
-      "slug": "revision-adherencia-barreras",
+      "bloque_id": "revision_adherencia",
+      "slug": "revision-adherencia",
       "orden": 4,
-      "titulo": "Revisión de adherencia y barreras",
-      "objetivo": "Entender qué partes del plan fueron posibles, cuáles no y qué barreras influyeron.",
+      "titulo": "Revisión de adherencia",
+      "objetivo": "Entender qué partes del plan fueron posibles y cuáles requieren ajuste.",
       "que_hace_el_medico": [
-        "Revisa alimentación, actividad física, sueño, estrés, estudios y medicamentos si aplica.",
+        "Revisa alimentación, actividad física, sueño, estrés, estudios solicitados y medicamentos si aplica.",
         "Identifica qué parte del plan fue más fácil y cuál fue más difícil.",
-        "Explora barreras prácticas, económicas, familiares, laborales, emocionales o de comprensión."
+        "Usa la información para ajustar el plan sin regaños."
       ],
       "que_registra": [
-        "Adherencia general.",
-        "Barrera principal.",
-        "Estrategia de ajuste."
+        "Adherencia general al plan.",
+        "Componentes más fáciles y difíciles.",
+        "Elementos que requieren ajuste."
       ],
       "formatos_asociados": [
         {
@@ -181,27 +184,28 @@
           "enlaces": []
         }
       ],
-      "salida": "Barreras y adherencia entendidas para ajustar el plan.",
+      "salida": "Adherencia comprendida para orientar ajustes realistas.",
       "nom_004": [
-        "Adherencia y barreras."
+        "Adherencia y barreras.",
+        "Respuesta al tratamiento."
       ],
       "nota_diseno": "La información se usa para ajustar el plan, no para sancionar."
     },
     {
-      "bloque_id": "revision_estudios_sintomas",
-      "slug": "revision-estudios-sintomas",
+      "bloque_id": "revision_efectos_adversos",
+      "slug": "revision-efectos-adversos",
       "orden": 5,
-      "titulo": "Revisión de estudios y síntomas",
-      "objetivo": "Revisar resultados, síntomas, tolerancia y efectos adversos cuando haya tratamiento.",
+      "titulo": "Revisión de efectos adversos",
+      "objetivo": "Valorar seguridad, tolerancia y conducta terapéutica cuando hay medicamento.",
       "que_hace_el_medico": [
-        "Revisa estudios solicitados y síntomas nuevos.",
-        "Pregunta por efectos adversos si hay medicamento.",
-        "Define si se mantiene, ajusta o suspende el tratamiento cuando aplique."
+        "Pregunta por efectos adversos relevantes según el medicamento.",
+        "Revisa dosis, horario, tolerancia y cambios hechos por el paciente.",
+        "Define si el tratamiento se mantiene, ajusta o suspende cuando aplique."
       ],
       "que_registra": [
-        "Resultados relevantes.",
-        "Síntomas nuevos.",
-        "Efectos adversos, dosis, horario y tolerancia si aplica."
+        "Efectos adversos referidos o negados.",
+        "Dosis, horario y tolerancia si aplica.",
+        "Conducta terapéutica acordada."
       ],
       "formatos_asociados": [
         {
@@ -212,18 +216,50 @@
           "enlaces": []
         }
       ],
-      "salida": "Seguridad y respuesta clínica revisadas.",
+      "salida": "Seguridad farmacológica revisada antes de ajustar el plan.",
       "nom_004": [
         "Efectos adversos.",
-        "Respuesta al tratamiento."
+        "Respuesta al tratamiento.",
+        "Ajustes terapéuticos."
       ],
       "nota_diseno": "La seguridad clínica guía ajustes sin generar persistencia digital en esta fase."
     },
     {
+      "bloque_id": "revision_barreras",
+      "slug": "revision-barreras",
+      "orden": 6,
+      "titulo": "Revisión de barreras",
+      "objetivo": "Explorar obstáculos prácticos, económicos, familiares, laborales, emocionales o de comprensión.",
+      "que_hace_el_medico": [
+        "Explora barreras que afectaron el seguimiento del plan.",
+        "Pregunta qué ayudaría a mejorar la confianza para el siguiente paso.",
+        "Identifica una estrategia de ajuste prioritaria."
+      ],
+      "que_registra": [
+        "Barrera principal.",
+        "Necesidad de apoyo o ajuste.",
+        "Estrategia acordada."
+      ],
+      "formatos_asociados": [
+        {
+          "formato_id": "nota_evolucion",
+          "estado": "futuro",
+          "tipo": "formato",
+          "momento_uso": "Como insumo futuro para nota de evolución.",
+          "enlaces": []
+        }
+      ],
+      "salida": "Barrera principal y estrategia de ajuste identificadas.",
+      "nom_004": [
+        "Adherencia y barreras."
+      ],
+      "nota_diseno": "El bloque separa barreras de adherencia para respetar el flujo humano sin convertirlo en checklist rígida."
+    },
+    {
       "bloque_id": "ajuste_plan",
       "slug": "ajuste-plan",
-      "orden": 6,
-      "titulo": "Ajuste de plan",
+      "orden": 7,
+      "titulo": "Ajuste del plan",
       "objetivo": "Ajustar el plan según respuesta, seguridad, adherencia y barreras.",
       "que_hace_el_medico": [
         "Ajusta alimentación, actividad física, sueño/estrés, estudios o tratamiento farmacológico según respuesta y seguridad.",
@@ -240,7 +276,7 @@
           "formato_id": "objetivos_y_plan",
           "estado": "existente",
           "tipo": "formato",
-          "momento_uso": "Para actualizar plan, indicaciones y prioridades.",
+          "momento_uso": "Para revisar o actualizar objetivos, plan y prioridades.",
           "enlaces": [
             "documento"
           ]
@@ -256,7 +292,7 @@
     {
       "bloque_id": "nuevas_metas",
       "slug": "nuevas-metas",
-      "orden": 7,
+      "orden": 8,
       "titulo": "Nuevas metas",
       "objetivo": "Definir una o dos metas medibles y realistas antes de la próxima cita.",
       "que_hace_el_medico": [
@@ -274,7 +310,7 @@
           "formato_id": "objetivos_y_plan",
           "estado": "existente",
           "tipo": "formato",
-          "momento_uso": "Para definir metas nuevas y primer paso concreto.",
+          "momento_uso": "Para revisar o actualizar objetivos, plan y prioridades.",
           "enlaces": [
             "documento"
           ]
@@ -287,20 +323,18 @@
       "nota_diseno": "Las metas deben ser pocas, claras y factibles."
     },
     {
-      "bloque_id": "cierre_proxima_cita",
-      "slug": "cierre-proxima-cita",
-      "orden": 8,
-      "titulo": "Cierre y próxima cita",
-      "objetivo": "Definir continuidad, intervalo de seguimiento y motivos para contactar antes de la cita.",
+      "bloque_id": "proxima_cita",
+      "slug": "proxima-cita",
+      "orden": 9,
+      "titulo": "Próxima cita",
+      "objetivo": "Definir intervalo de seguimiento y motivos para contactar antes de la cita.",
       "que_hace_el_medico": [
-        "Define intervalo de seguimiento según riesgo y estabilidad clínica.",
-        "Indica motivos para contactar antes de la cita.",
-        "Cierra con dirección clara."
+        "Define intervalo según riesgo, tratamiento, necesidad de laboratorios y estabilidad clínica.",
+        "Indica motivos para contactar antes de la cita."
       ],
       "que_registra": [
-        "Intervalo de seguimiento.",
-        "Motivos de contacto anticipado.",
-        "Resumen del plan de seguimiento."
+        "Fecha o intervalo de seguimiento.",
+        "Motivos de contacto anticipado."
       ],
       "formatos_asociados": [
         {
@@ -311,11 +345,48 @@
           "enlaces": []
         }
       ],
-      "salida": "Seguimiento cerrado con continuidad definida.",
+      "salida": "Continuidad del seguimiento definida.",
       "nom_004": [
         "Pronóstico y plan de seguimiento."
       ],
       "nota_diseno": "El cierre mantiene continuidad clínica sin generar documento NOM formal en esta fase."
+    },
+    {
+      "bloque_id": "datos_nota_evolucion_nom",
+      "slug": "datos-nota-evolucion-nom",
+      "orden": 10,
+      "titulo": "Datos para nota de evolución NOM",
+      "objetivo": "Identificar los datos clínicos que alimentan una futura nota de evolución, como capa documental secundaria.",
+      "que_hace_el_medico": [
+        "Recapitula evolución, mediciones, respuesta, adherencia, barreras, seguridad y ajustes.",
+        "Distingue la conversación clínica de los insumos documentales NOM."
+      ],
+      "que_registra": [
+        "Evolución clínica y mediciones relevantes.",
+        "Respuesta al tratamiento, efectos adversos y ajustes.",
+        "Nuevas indicaciones, pronóstico y plan de seguimiento."
+      ],
+      "formatos_asociados": [
+        {
+          "formato_id": "nota_evolucion",
+          "estado": "futuro",
+          "tipo": "formato",
+          "momento_uso": "Como insumo futuro para nota de evolución.",
+          "enlaces": []
+        }
+      ],
+      "salida": "Insumos para nota de evolución identificados sin declarar cumplimiento completo NOM-004.",
+      "nom_004": [
+        "Evolución clínica desde la consulta previa.",
+        "Signos vitales y mediciones relevantes.",
+        "Respuesta al tratamiento.",
+        "Adherencia y barreras.",
+        "Efectos adversos.",
+        "Ajustes terapéuticos.",
+        "Nuevas indicaciones.",
+        "Pronóstico y plan de seguimiento."
+      ],
+      "nota_diseno": "La NOM-004 se presenta como capa documental y de cumplimiento, no como orden conversacional del seguimiento."
     }
   ]
 }

@@ -48,6 +48,36 @@ class FlowViewerLoaderTests(TestCase):
             ],
         )
 
+    def test_seguimiento_flow_matches_declared_ten_step_map(self):
+        flow = load_flow("seguimiento")
+        block_ids = [block["bloque_id"] for block in flow.data["bloques"]]
+        self.assertEqual(
+            block_ids,
+            [
+                "recepcion_breve",
+                "revision_objetivo_previo",
+                "revision_peso_cintura_sintomas_mediciones",
+                "revision_adherencia",
+                "revision_efectos_adversos",
+                "revision_barreras",
+                "ajuste_plan",
+                "nuevas_metas",
+                "proxima_cita",
+                "datos_nota_evolucion_nom",
+            ],
+        )
+
+    def test_seguimiento_stages_reference_all_and_only_existing_blocks(self):
+        flow = load_flow("seguimiento")
+        block_ids = {block["bloque_id"] for block in flow.data["bloques"]}
+        stage_block_ids = [
+            block_id
+            for stage in flow.data["etapas"]
+            for block_id in stage["bloques"]
+        ]
+        self.assertEqual(set(stage_block_ids), block_ids)
+        self.assertEqual(len(stage_block_ids), len(block_ids))
+
     def test_antecedentes_before_habitos(self):
         flow = load_flow("primera_consulta")
         blocks = {block["bloque_id"]: block for block in flow.data["bloques"]}
