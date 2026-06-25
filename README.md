@@ -64,21 +64,19 @@ python manage.py runserver
 
 El visor queda disponible en `http://127.0.0.1:8000/formatos/`.
 
-### Vista imprimible
+### Vistas imprimibles
 
-El visor incluye una vista imprimible para generar formatos en papel a partir de los schemas.
+El visor incluye dos salidas imprimibles a partir de los schemas:
 
-Esta vista:
+- Vista para pacientes: hoja sencilla para llenar a mano antes de la consulta.
+- Vista técnica: hoja de revisión interna del formato.
 
-- Está pensada para imprimir y llenar a mano.
-- Muestra etiquetas clínicas y humanas, no claves técnicas del schema.
-- No guarda datos.
-- No debe usarse con datos reales dentro del visor.
-- No genera PDF desde backend.
-- No declara cumplimiento completo NOM-004.
+Ambas derivan de schema + UI schema, no guardan datos y no generan PDF desde backend.
 
-Ruta inicial disponible:
+Rutas iniciales disponibles:
 
 ```txt
 /formatos/ficha_inicial/imprimir/
+/formatos/ficha_inicial/imprimir/paciente/
+/formatos/ficha_inicial/imprimir/tecnica/
 ```

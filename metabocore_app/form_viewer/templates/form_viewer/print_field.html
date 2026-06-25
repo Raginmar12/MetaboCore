@@ -2,12 +2,12 @@
   {% if field.print_control == "checkbox" %}
     <label class="print-checkbox-row">
       <span class="print-checkbox" aria-hidden="true"></span>
-      <span>{{ field.display_label }}{% if field.is_required %} <span class="print-required">*</span>{% endif %}</span>
+      <span>{{ field.display_label }}{% if field.is_required %} <span class="print-star">*</span>{% endif %}</span>
     </label>
     {% if field.help %}<p class="print-help">{{ field.help }}</p>{% endif %}
   {% elif field.print_control == "checkbox_group" %}
     <div class="print-field-label">
-      <span>{{ field.display_label }}</span>{% if field.is_required %} <span class="print-required">*</span>{% endif %}
+      <span>{{ field.display_label }}</span>{% if field.is_required %} <span class="print-star">*</span>{% endif %}
     </div>
     {% if field.help %}<p class="print-help">{{ field.help }}</p>{% endif %}
     <ul class="print-options">
@@ -19,13 +19,13 @@
     </ul>
   {% elif field.print_control == "multiline" %}
     <div class="print-field-label">
-      <span>{{ field.display_label }}</span>{% if field.is_required %} <span class="print-required">*</span>{% endif %}
+      <span>{{ field.display_label }}</span>{% if field.is_required %} <span class="print-star">*</span>{% endif %}
     </div>
     {% if field.help %}<p class="print-help">{{ field.help }}</p>{% endif %}
     <div class="print-lines" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
   {% elif field.print_control == "subsection" %}
     <section class="print-subsection">
-      <h3>{{ field.display_label }}{% if field.is_required %} <span class="print-required">*</span>{% endif %}</h3>
+      <h3>{{ field.display_label }}{% if field.is_required %} <span class="print-star">*</span>{% endif %}</h3>
       {% if field.help %}<p class="print-help">{{ field.help }}</p>{% endif %}
       <div class="print-subsection-fields">
         {% for child in field.children %}
@@ -35,7 +35,7 @@
     </section>
   {% else %}
     <div class="print-line-field">
-      <span class="print-field-label">{{ field.display_label }}{% if field.is_required %} <span class="print-required">*</span>{% endif %}</span>
+      <span class="print-field-label">{{ field.display_label }}{% if field.is_required %} <span class="print-star">*</span>{% endif %}</span>
       <span class="print-line" aria-hidden="true"></span>
     </div>
     {% if field.help %}<p class="print-help">{{ field.help }}</p>{% endif %}

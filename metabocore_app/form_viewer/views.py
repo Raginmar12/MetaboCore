@@ -70,17 +70,26 @@ def form_example(request, formato_id: str):
     )
 
 
-@require_GET
-def form_print(request, formato_id: str):
+def _load_print_assets_or_404(formato_id: str):
     try:
         formato_id = validate_formato_id(formato_id)
         schema = load_form_schema(formato_id)
         ui_schema = load_ui_schema(formato_id)
     except FormViewerError as exc:
         raise Http404(str(exc)) from exc
+    return formato_id, schema, ui_schema
 
-    sections = build_print_sections(schema, ui_schema)
-    page_title = f"{schema.get('title', formato_id)} · Formato imprimible"
+
+def _patient_title(schema: dict, formato_id: str) -> str:
+    title = schema.get("title", formato_id)
+    return title.replace(" MetaboCore", "")
+
+
+def _render_print_view(request, formato_id: str, variant: str):
+    formato_id, schema, ui_schema = _load_print_assets_or_404(formato_id)
+    sections = build_print_sections(schema, ui_schema, variant=variant)
+    title = _patient_title(schema, formato_id)
+    is_patient = variant == "paciente"
     return render(
         request,
         "form_viewer/form_print.html",
@@ -91,12 +100,23 @@ def form_print(request, formato_id: str):
             "ui_schema": ui_schema,
             "sections": sections,
             "is_print_view": True,
-            "page_title": page_title,
-            "title": schema.get("title", formato_id),
-            "description": schema.get("description", ""),
+            "print_variant": variant,
+            "is_patient_print": is_patient,
+            "page_title": title if is_patient else f"{title} · Vista imprimible técnica",
+            "title": title,
+            "heading": "MetaboCare" if is_patient else "MetaboCare / MetaboCore",
+            "subheading": (
+                "Por favor llene este formato antes de su consulta."
+                if is_patient
+                else "Vista imprimible técnica"
+            ),
             "print_note": (
-                "Formato para uso clínico interno. "
-                "No declara cumplimiento completo NOM-004 por sí mismo."
+                ""
+                if is_patient
+                else (
+                    "Formato para uso clínico interno. "
+                    "No declara cumplimiento completo NOM-004 por sí mismo."
+                )
             ),
             "screen_warning": (
                 "Prototipo de visualización. "
@@ -104,6 +124,16 @@ def form_print(request, formato_id: str):
             ),
         },
     )
+
+
+@require_GET
+def form_print_patient(request, formato_id: str):
+    return _render_print_view(request, formato_id, "paciente")
+
+
+@require_GET
+def form_print_technical(request, formato_id: str):
+    return _render_print_view(request, formato_id, "tecnica")
 
 
 def _json_context(formato_id: str, document: dict, document_title: str, is_example: bool = False):

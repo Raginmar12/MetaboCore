@@ -169,7 +169,7 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monos
 }
 
 .print-field-label { font-weight: 700; }
-.print-required { font-size: 1.1rem; }
+.print-star { font-size: 1.1rem; }
 .print-technical-required,
 .print-optional {
   color: var(--muted);
@@ -336,11 +336,11 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monos
   line-height: 1.2;
 }
 
-.print-required {
+.print-star {
   font-weight: 700;
 }
 
-.print-required-note {
+.print-star-note {
   font-size: 0.82rem;
   margin: 0 0 0.2rem;
 }
@@ -420,5 +420,36 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monos
   .print-field { margin-bottom: 2.5mm; }
   .print-help { font-size: 8.5pt; }
   .print-note,
-  .print-required-note { font-size: 8pt; }
+  .print-star-note { font-size: 8pt; }
+}
+
+.print-variant-paciente .print-container {
+  max-width: 860px;
+}
+
+.print-variant-paciente .print-section-description,
+.print-variant-paciente .print-note {
+  display: none;
+}
+
+.print-variant-paciente .print-section {
+  margin-bottom: 0.75rem;
+}
+
+.print-variant-tecnica .print-container {
+  border-top: 4px solid var(--accent);
+}
+
+.print-variant-tecnica .print-kicker {
+  color: var(--accent);
+}
+
+@media print {
+  .print-variant-paciente .print-section {
+    margin-bottom: 4mm;
+  }
+
+  .print-variant-tecnica .print-container {
+    border-top: 0;
+  }
 }

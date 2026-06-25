@@ -57,9 +57,13 @@ La NOM-004 debe guiar la capa documental y de cumplimiento, pero no debe reempla
 
 ## Formatos imprimibles
 
-La vista imprimible debe derivarse de `schemas/forms/` y `schemas/ui/`.
+Las variantes imprimibles deben derivarse de `schemas/forms/` y `schemas/ui/`.
 
 No duplicar manualmente la estructura de un formato en templates.
+
+La vista imprimible para pacientes no debe exponer ayudas internas, jerga técnica, referencias a sistema futuro ni notas normativas internas.
+
+La vista imprimible técnica puede mostrar más detalle operativo, pero no debe convertirse en schema crudo ni mostrar JSON técnico.
 
 No agregar captura persistente, modelos clínicos ni datos reales para hacer formatos imprimibles.
 

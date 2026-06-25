@@ -1,36 +1,45 @@
-{% extends "form_viewer/base.html" %}
+{% load static %}
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page_title }}</title>
+  <link rel="stylesheet" href="{% static 'form_viewer/form_viewer.css' %}">
+</head>
+<body class="print-body print-variant-{{ print_variant }}">
+  <section class="card print-actions screen-only">
+    <p><a href="{% url 'form_viewer:form_detail' formato_id %}">← Volver al visor del formato</a></p>
+    <button class="print-button" type="button" onclick="window.print()">Imprimir</button>
+    <p class="print-screen-warning">{{ screen_warning }}</p>
+  </section>
 
-{% block title %}{{ page_title }} · MetaboCore{% endblock %}
+  <article class="print-container" aria-label="Formato imprimible {{ print_variant }}">
+    <header class="print-header">
+      <p class="print-kicker">{{ heading }}</p>
+      <h1>{{ title }}</h1>
+      <p class="print-subtitle">{{ subheading }}</p>
+    </header>
 
-{% block content %}
-<section class="card print-actions screen-only">
-  <p><a href="{% url 'form_viewer:form_detail' formato_id %}">← Volver al visor del formato</a></p>
-  <button class="print-button" type="button" onclick="window.print()">Imprimir</button>
-  <p class="print-screen-warning">{{ screen_warning }}</p>
-</section>
+    {% for section in sections %}
+      {% if section.fields %}
+        <section class="print-section">
+          <h2>{{ section.display_title }}</h2>
+          {% if section.description and not is_patient_print %}<p class="print-section-description">{{ section.description }}</p>{% endif %}
+          <div class="print-fields">
+            {% for field in section.fields %}
+              {% include "form_viewer/print_field.html" with field=field %}
+            {% endfor %}
+          </div>
+        </section>
+      {% endif %}
+    {% endfor %}
 
-<article class="print-container" aria-label="Formato imprimible">
-  <header class="print-header">
-    <p class="print-kicker">MetaboCare / MetaboCore</p>
-    <h1>{{ title }}</h1>
-    <p class="print-subtitle">Formato imprimible para consulta</p>
-  </header>
-
-  {% for section in sections %}
-    <section class="print-section">
-      <h2>{{ section.display_title }}</h2>
-      {% if section.description %}<p class="print-section-description">{{ section.description }}</p>{% endif %}
-      <div class="print-fields">
-        {% for field in section.fields %}
-          {% include "form_viewer/print_field.html" with field=field %}
-        {% endfor %}
-      </div>
-    </section>
-  {% endfor %}
-
-  <footer class="print-footer">
-    <p class="print-required-note">* Campo recomendado para identificación inicial.</p>
-    <p class="print-note">{{ print_note }}</p>
-  </footer>
-</article>
-{% endblock %}
+    {% if print_note %}
+      <footer class="print-footer">
+        <p class="print-note">{{ print_note }}</p>
+      </footer>
+    {% endif %}
+  </article>
+</body>
+</html>

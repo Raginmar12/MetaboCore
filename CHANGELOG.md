@@ -1,10 +1,12 @@
 # Changelog
 
-## v0.1.8 - Refinamiento de vista imprimible clínica
+## v0.1.8 - Variantes imprimibles para pacientes y técnica
 
-- Humaniza títulos, etiquetas y opciones en la vista imprimible.
-- Oculta jerga técnica, claves internas y marcas de requerimiento técnico en la hoja imprimible.
-- Mejora espacios, líneas, casillas y subsecciones para llenado manual en papel carta.
+- Separa la impresión en vista para pacientes y vista técnica.
+- Mantiene `/formatos/<formato_id>/imprimir/` como alias de la vista para pacientes.
+- Simplifica la vista para pacientes para uso en sala de espera.
+- Conserva una vista técnica para revisión interna del formato.
+- Mantiene ambas variantes derivadas de schema + UI schema.
 
 ## v0.1.7 - Vista imprimible de formatos clínicos
 

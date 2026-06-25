@@ -41,7 +41,7 @@ class FormViewerLoaderTests(TestCase):
 
     def test_print_sections_convert_controls(self):
         bundle = get_form_bundle("ficha_inicial")
-        sections = build_print_sections(bundle.schema, bundle.ui_schema)
+        sections = build_print_sections(bundle.schema, bundle.ui_schema, variant="tecnica")
         fields = {
             field["key"]: field
             for section in sections
@@ -75,13 +75,13 @@ class FormViewerLoaderTests(TestCase):
         self.assertEqual(fields["telefono_principal"]["display_label"], "Teléfono")
         self.assertEqual(
             fields["motivo_breve_consulta"]["display_label"],
-            "Motivo breve de consulta",
+            "Motivo de consulta",
         )
         self.assertTrue(fields["nombre_completo"]["is_required"])
 
     def test_print_sections_render_objects_as_subsections(self):
         bundle = get_form_bundle("ficha_inicial")
-        sections = build_print_sections(bundle.schema, bundle.ui_schema)
+        sections = build_print_sections(bundle.schema, bundle.ui_schema, variant="tecnica")
         fields = {
             field["key"]: field
             for section in sections
@@ -89,6 +89,39 @@ class FormViewerLoaderTests(TestCase):
         }
         self.assertEqual(fields["domicilio"]["print_control"], "subsection")
         self.assertGreater(len(fields["domicilio"]["children"]), 0)
+
+
+    def test_patient_print_sections_omit_internal_fields(self):
+        bundle = get_form_bundle("ficha_inicial")
+        sections = build_print_sections(bundle.schema, bundle.ui_schema)
+        fields = {
+            field["key"]: field
+            for section in sections
+            for field in section["fields"]
+        }
+        self.assertNotIn("medico_responsable", fields)
+        self.assertNotIn("establecimiento", fields)
+        self.assertNotIn("domicilio", fields)
+        self.assertNotIn("contacto_emergencia", fields)
+        self.assertEqual(
+            fields["nombre_preferido"]["display_label"],
+            "¿Cómo prefiere que le llamemos?",
+        )
+        self.assertEqual(
+            fields["preferencia_comunicacion"]["display_label"],
+            "¿Cómo prefiere que le contactemos?",
+        )
+
+    def test_technical_print_sections_keep_internal_fields(self):
+        bundle = get_form_bundle("ficha_inicial")
+        sections = build_print_sections(bundle.schema, bundle.ui_schema, variant="tecnica")
+        fields = {
+            field["key"]: field
+            for section in sections
+            for field in section["fields"]
+        }
+        self.assertIn("medico_responsable", fields)
+        self.assertIn("establecimiento", fields)
 
     def test_no_clinical_models_defined(self):
         form_viewer_models = list(apps.get_app_config("form_viewer").get_models())
@@ -120,48 +153,86 @@ class FormViewerRouteTests(TestCase):
         self.assertContains(response, "Ejemplo ficticio")
         self.assert_warning_present(response)
 
-    def test_form_list_links_to_print_view(self):
+    def test_form_list_links_to_print_views(self):
         response = self.client.get("/formatos/")
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "Imprimible")
-        self.assertContains(response, "/formatos/ficha_inicial/imprimir/")
+        self.assertContains(response, "Imprimir paciente")
+        self.assertContains(response, "Imprimir técnica")
+        self.assertContains(response, "/formatos/ficha_inicial/imprimir/paciente/")
+        self.assertContains(response, "/formatos/ficha_inicial/imprimir/tecnica/")
 
-    def test_form_detail_links_to_print_view(self):
+    def test_form_detail_links_to_print_views(self):
         response = self.client.get("/formatos/ficha_inicial/")
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "Imprimible")
-        self.assertContains(response, "/formatos/ficha_inicial/imprimir/")
+        self.assertContains(response, "Imprimir paciente")
+        self.assertContains(response, "Imprimir técnica")
+        self.assertContains(response, "/formatos/ficha_inicial/imprimir/paciente/")
+        self.assertContains(response, "/formatos/ficha_inicial/imprimir/tecnica/")
 
-    def test_form_print_responds_200(self):
-        response = self.client.get("/formatos/ficha_inicial/imprimir/")
+    def assert_patient_print_response(self, response):
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "Formato imprimible")
-        self.assertContains(response, "No introducir datos reales")
-        self.assertContains(response, "No declara cumplimiento completo NOM-004")
+        self.assertContains(response, "Ficha inicial")
+        self.assertContains(response, "Por favor llene este formato antes de su consulta")
         self.assertContains(response, "Datos del paciente")
         self.assertContains(response, "Contacto")
-        self.assertContains(response, "Datos de la consulta")
         self.assertContains(response, "Motivo de consulta")
         self.assertContains(response, "Nombre completo")
         self.assertContains(response, "Teléfono")
         self.assertContains(response, "Municipio o localidad")
-        self.assertContains(response, "Motivo breve de consulta")
-        self.assertContains(response, "* Campo recomendado para identificación inicial.")
-        self.assertNotContains(response, "Paciente Ficticia MetaboCore")
+        self.assertContains(response, "¿Cómo prefiere que le llamemos?")
+        self.assertContains(response, "¿Cómo prefiere que le contactemos?")
+        self.assertNotContains(response, "MetaboCore")
+        self.assertNotContains(response, "No declara cumplimiento completo NOM-004")
+        self.assertNotContains(response, "sistema futuro")
+        self.assertNotContains(response, "configuración futura")
+        self.assertNotContains(response, "documentos clínicos posteriores")
+        self.assertNotContains(response, "referencia futura")
+        self.assertNotContains(response, "Médico responsable")
+        self.assertNotContains(response, "medico_responsable")
+        self.assertNotContains(response, "id_expediente_interno")
+        self.assertNotContains(response, "Establecimiento")
+        self.assertNotContains(response, "establecimiento")
+        self.assertNotContains(response, "aviso de privacidad")
+        self.assertNotContains(response, "consentimiento verbal")
         self.assertNotContains(response, "Metadatos")
-        self.assertNotContains(response, "identidad_paciente")
-        self.assertNotContains(response, "contexto_visita_inicial")
-        self.assertNotContains(response, "req. técnico")
-        self.assertNotContains(response, "requerido visual")
-        self.assertNotContains(response, "ui:widget")
+        self.assertNotContains(response, "formato_id")
         self.assertNotContains(response, "schema")
+        self.assertNotContains(response, "JSON")
+        self.assertNotContains(response, "required")
+        self.assertNotContains(response, "ui:widget")
+        self.assertNotContains(response, "Paciente Ficticia MetaboCore")
+        self.assertNotContains(response, "000-000-0000")
+
+    def test_form_print_default_responds_as_patient_view(self):
+        response = self.client.get("/formatos/ficha_inicial/imprimir/")
+        self.assertContains(response, "print-variant-paciente")
+        self.assert_patient_print_response(response)
+
+    def test_form_print_patient_responds_200(self):
+        response = self.client.get("/formatos/ficha_inicial/imprimir/paciente/")
+        self.assertContains(response, "print-variant-paciente")
+        self.assert_patient_print_response(response)
+
+    def test_form_print_technical_responds_200(self):
+        response = self.client.get("/formatos/ficha_inicial/imprimir/tecnica/")
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Vista imprimible técnica")
+        self.assertContains(response, "MetaboCare / MetaboCore")
+        self.assertContains(response, "No declara cumplimiento completo NOM-004")
+        self.assertContains(response, "Médico responsable")
+        self.assertContains(response, "Establecimiento")
+        self.assertNotContains(response, "Paciente Ficticia MetaboCore")
+        self.assertNotContains(response, "000-000-0000")
         self.assertNotContains(response, "JSON")
 
     def test_form_print_post_is_not_allowed(self):
-        response = self.client.post(
-            "/formatos/ficha_inicial/imprimir/", {"nombre_completo": "No guardar"}
-        )
-        self.assertEqual(response.status_code, 405)
+        for path in (
+            "/formatos/ficha_inicial/imprimir/",
+            "/formatos/ficha_inicial/imprimir/paciente/",
+            "/formatos/ficha_inicial/imprimir/tecnica/",
+        ):
+            response = self.client.post(path, {"nombre_completo": "No guardar"})
+            self.assertEqual(response.status_code, 405)
 
     def test_schema_view_responds_200(self):
         response = self.client.get("/formatos/ficha_inicial/schema/")

@@ -39,8 +39,37 @@ PRINT_FIELD_LABELS = {
 }
 
 PRINT_OPTION_LABELS = {
+    "telefono": "Teléfono",
+    "whatsapp": "WhatsApp",
     "correo_electronico": "Correo electrónico",
     "no_especificado": "No especificado",
+}
+
+PRINT_PATIENT_EXCLUDED_FIELDS = {
+    "medico_responsable",
+    "id_expediente_interno",
+    "establecimiento",
+    "referencia_aviso_privacidad",
+    "consentimiento_verbal_flujo_consulta",
+    "domicilio",
+    "contacto_emergencia",
+}
+
+PRINT_EXCLUDED_SECTIONS = {"metadatos"}
+
+PRINT_PATIENT_HELP_ALLOWED = {
+    "nombre_preferido": "Puede escribir el nombre o forma de trato que prefiera.",
+    "motivo_breve_consulta": "Cuéntenos brevemente el motivo de su visita.",
+    "preocupacion_inicial": "Puede escribir lo que más le preocupa en este momento.",
+}
+
+PRINT_PATIENT_FIELD_LABELS = {
+    "nombre_preferido": "¿Cómo prefiere que le llamemos?",
+    "genero": "Género, opcional",
+    "preferencia_comunicacion": "¿Cómo prefiere que le contactemos?",
+    "fecha_primera_consulta": "Fecha de consulta",
+    "motivo_breve_consulta": "Motivo de consulta",
+    "preocupacion_inicial": "¿Qué le preocupa principalmente?",
 }
 
 
@@ -158,7 +187,9 @@ def _humanize_print_text(value: str) -> str:
     return value.replace("_", " ").capitalize()
 
 
-def _humanize_field_label(key: str) -> str:
+def _humanize_field_label(key: str, variant: str) -> str:
+    if variant == "paciente" and key in PRINT_PATIENT_FIELD_LABELS:
+        return PRINT_PATIENT_FIELD_LABELS[key]
     return PRINT_FIELD_LABELS.get(key, _humanize_print_text(key))
 
 
@@ -171,6 +202,27 @@ def _humanize_section_title(key: str, section_ui: dict[str, Any]) -> str:
 def _humanize_option(option: Any) -> str:
     option_text = str(option)
     return PRINT_OPTION_LABELS.get(option_text, _humanize_print_text(option_text))
+
+
+def _field_is_excluded_from_print(
+    field_key: str, field_ui: dict[str, Any], variant: str
+) -> bool:
+    if _is_hidden_field(field_ui):
+        return True
+    if variant == "paciente" and field_key in PRINT_PATIENT_EXCLUDED_FIELDS:
+        return True
+    return False
+
+
+def _print_help(
+    field_key: str,
+    field_schema: dict[str, Any],
+    field_ui: dict[str, Any],
+    variant: str,
+) -> str:
+    if variant == "paciente":
+        return PRINT_PATIENT_HELP_ALLOWED.get(field_key, "")
+    return field_ui.get("ui:ayuda", field_schema.get("description", ""))
 
 
 def _print_control_for_field(field_schema: dict[str, Any], field_ui: dict[str, Any]) -> str:
@@ -190,6 +242,7 @@ def _print_control_for_field(field_schema: dict[str, Any], field_ui: dict[str, A
 def _build_print_children(
     field_schema: dict[str, Any],
     field_ui: dict[str, Any],
+    variant: str,
 ) -> list[dict[str, Any]]:
     properties = field_schema.get("properties", {})
     required = set(field_schema.get("required", []))
@@ -199,22 +252,22 @@ def _build_print_children(
     for child_key in field_order:
         child_schema = properties.get(child_key, {})
         child_ui = field_ui.get(child_key, {})
-        if _is_hidden_field(child_ui):
+        if _field_is_excluded_from_print(child_key, child_ui, variant):
             continue
         children.append(
             {
                 "key": child_key,
-                "display_label": _humanize_field_label(child_key),
+                "display_label": _humanize_field_label(child_key, variant),
                 "print_control": _print_control_for_field(child_schema, child_ui),
                 "is_required": bool(
                     child_key in required or child_ui.get("ui:requerido_visual")
                 ),
-                "help": child_ui.get("ui:ayuda", child_schema.get("description", "")),
+                "help": _print_help(child_key, child_schema, child_ui, variant),
                 "options": [
                     {"value": option, "label": _humanize_option(option)}
                     for option in child_schema.get("enum", [])
                 ],
-                "children": _build_print_children(child_schema, child_ui)
+                "children": _build_print_children(child_schema, child_ui, variant)
                 if child_schema.get("type") == "object"
                 else [],
                 "optional": child_key not in required,
@@ -226,8 +279,12 @@ def _build_print_children(
 def build_print_sections(
     schema: dict[str, Any],
     ui_schema: dict[str, Any],
+    *,
+    variant: str = "paciente",
 ) -> list[dict[str, Any]]:
     """Build sections for print rendering from JSON Schema + UI schema only."""
+    if variant not in {"paciente", "tecnica"}:
+        raise ValueError("variant must be 'paciente' or 'tecnica'")
     schema_properties = schema.get("properties", {})
     root_required = set(schema.get("required", []))
     section_order = ui_schema.get("ui:orden_secciones", list(schema_properties.keys()))
@@ -237,7 +294,7 @@ def build_print_sections(
         section_schema = schema_properties.get(section_key, {})
         section_ui = ui_schema.get(section_key, {})
         section_is_hidden = bool(
-            section_key == "metadatos"
+            section_key in PRINT_EXCLUDED_SECTIONS
             or section_ui.get("ui:oculto")
             or section_ui.get("ui:widget") == "hidden"
         )
@@ -252,25 +309,25 @@ def build_print_sections(
         for field_key in field_order:
             field_schema = section_properties.get(field_key, {})
             field_ui = section_ui.get(field_key, {})
-            if _is_hidden_field(field_ui):
+            if _field_is_excluded_from_print(field_key, field_ui, variant):
                 continue
 
             print_control = _print_control_for_field(field_schema, field_ui)
             section_fields.append(
                 {
                     "key": field_key,
-                    "display_label": _humanize_field_label(field_key),
+                    "display_label": _humanize_field_label(field_key, variant),
                     "print_control": print_control,
                     "is_required": bool(
                         field_key in section_required
                         or field_ui.get("ui:requerido_visual")
                     ),
-                    "help": field_ui.get("ui:ayuda", field_schema.get("description", "")),
+                    "help": _print_help(field_key, field_schema, field_ui, variant),
                     "options": [
                         {"value": option, "label": _humanize_option(option)}
                         for option in field_schema.get("enum", [])
                     ],
-                    "children": _build_print_children(field_schema, field_ui)
+                    "children": _build_print_children(field_schema, field_ui, variant)
                     if print_control == "subsection"
                     else [],
                     "optional": field_key not in section_required,
