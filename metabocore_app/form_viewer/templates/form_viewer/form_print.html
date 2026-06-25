@@ -14,14 +14,11 @@
     <p class="print-kicker">MetaboCare / MetaboCore</p>
     <h1>{{ title }}</h1>
     <p class="print-subtitle">Formato imprimible para consulta</p>
-    <p><code>{{ formato_id }}</code></p>
-    {% if description %}<p class="print-description">{{ description }}</p>{% endif %}
-    <p class="print-note">{{ print_note }}</p>
   </header>
 
   {% for section in sections %}
     <section class="print-section">
-      <h2>{{ section.title }}</h2>
+      <h2>{{ section.display_title }}</h2>
       {% if section.description %}<p class="print-section-description">{{ section.description }}</p>{% endif %}
       <div class="print-fields">
         {% for field in section.fields %}
@@ -30,5 +27,10 @@
       </div>
     </section>
   {% endfor %}
+
+  <footer class="print-footer">
+    <p class="print-required-note">* Campo recomendado para identificación inicial.</p>
+    <p class="print-note">{{ print_note }}</p>
+  </footer>
 </article>
 {% endblock %}

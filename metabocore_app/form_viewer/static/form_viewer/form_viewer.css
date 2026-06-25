@@ -292,3 +292,133 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monos
 
   a { color: black; text-decoration: none; }
 }
+
+/* Refinamientos de formato clínico imprimible. */
+.print-container {
+  color: #111827;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.print-header {
+  align-items: end;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.15rem;
+}
+
+.print-header h1 {
+  font-size: 1.45rem;
+  margin: 0.15rem 0;
+}
+
+.print-section {
+  border: 1px solid #cbd5e1;
+  padding: 0.75rem 0.85rem;
+}
+
+.print-section h2 {
+  border-bottom: 1px solid #cbd5e1;
+  font-size: 1.05rem;
+  padding-bottom: 0.25rem;
+}
+
+.print-fields { gap: 0.65rem; }
+
+.print-line-field {
+  align-items: baseline;
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.5rem;
+}
+
+.print-field-label {
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.print-required {
+  font-weight: 700;
+}
+
+.print-required-note {
+  font-size: 0.82rem;
+  margin: 0 0 0.2rem;
+}
+
+.print-line {
+  border-bottom: 1px solid #111827;
+  display: inline-block;
+  min-height: 1.35rem;
+  width: 100%;
+}
+
+.print-lines {
+  gap: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+.print-lines span { min-height: 1.45rem; }
+
+.print-checkbox-row {
+  align-items: center;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.print-checkbox {
+  background: white;
+  border: 1.6px solid #111827;
+  height: 1rem;
+  min-width: 1rem;
+  width: 1rem;
+}
+
+.print-options {
+  gap: 0.5rem 1.25rem;
+  margin-top: 0.45rem;
+}
+
+.print-subsection {
+  border: 1px dashed #cbd5e1;
+  border-left: 4px solid #cbd5e1;
+  border-radius: 0.35rem;
+  padding: 0.55rem 0.7rem;
+}
+
+.print-subsection h3 {
+  font-size: 0.95rem;
+  margin: 0 0 0.45rem;
+}
+
+.print-subsection-fields {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.print-footer {
+  border-top: 1px solid #cbd5e1;
+  margin-top: 0.75rem;
+  padding-top: 0.45rem;
+}
+
+@media print {
+  .print-container {
+    font-family: Georgia, "Times New Roman", serif;
+  }
+
+  .print-header h1 { font-size: 16pt; }
+  .print-subtitle,
+  .print-kicker { font-size: 10pt; }
+
+  .print-section {
+    border: 1px solid #9ca3af;
+    margin-bottom: 5mm;
+    padding: 3mm 4mm;
+  }
+
+  .print-section h2 { font-size: 12pt; }
+  .print-field { margin-bottom: 2.5mm; }
+  .print-help { font-size: 8.5pt; }
+  .print-note,
+  .print-required-note { font-size: 8pt; }
+}

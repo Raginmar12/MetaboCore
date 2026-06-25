@@ -1,32 +1,43 @@
 <div class="print-field print-field-{{ field.print_control }}">
-  <div class="print-field-label">
-    <span>{{ field.label }}</span>
-    {% if field.required_visual %}<span class="print-required" title="Requerido visual">*</span>{% endif %}
-    {% if field.required %}<span class="print-technical-required">req. técnico</span>{% endif %}
-    {% if field.optional %}<span class="print-optional">opcional</span>{% endif %}
-  </div>
-
-  {% if field.help %}<p class="print-help">{{ field.help }}</p>{% endif %}
-
   {% if field.print_control == "checkbox" %}
-    <div class="print-checkbox-row"><span class="print-checkbox" aria-hidden="true"></span><span>Sí / aplica</span></div>
+    <label class="print-checkbox-row">
+      <span class="print-checkbox" aria-hidden="true"></span>
+      <span>{{ field.display_label }}{% if field.is_required %} <span class="print-required">*</span>{% endif %}</span>
+    </label>
+    {% if field.help %}<p class="print-help">{{ field.help }}</p>{% endif %}
   {% elif field.print_control == "checkbox_group" %}
+    <div class="print-field-label">
+      <span>{{ field.display_label }}</span>{% if field.is_required %} <span class="print-required">*</span>{% endif %}
+    </div>
+    {% if field.help %}<p class="print-help">{{ field.help }}</p>{% endif %}
     <ul class="print-options">
       {% for option in field.options %}
-        <li><span class="print-checkbox" aria-hidden="true"></span><span>{{ option }}</span></li>
+        <li><span class="print-checkbox" aria-hidden="true"></span><span>{{ option.label }}</span></li>
       {% empty %}
         <li><span class="print-checkbox" aria-hidden="true"></span><span>Opción</span></li>
       {% endfor %}
     </ul>
   {% elif field.print_control == "multiline" %}
-    <div class="print-lines" aria-hidden="true"><span></span><span></span><span></span></div>
-  {% elif field.print_control == "subsection" %}
-    <div class="print-subsection">
-      {% for child in field.children %}
-        {% include "form_viewer/print_field.html" with field=child %}
-      {% endfor %}
+    <div class="print-field-label">
+      <span>{{ field.display_label }}</span>{% if field.is_required %} <span class="print-required">*</span>{% endif %}
     </div>
+    {% if field.help %}<p class="print-help">{{ field.help }}</p>{% endif %}
+    <div class="print-lines" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+  {% elif field.print_control == "subsection" %}
+    <section class="print-subsection">
+      <h3>{{ field.display_label }}{% if field.is_required %} <span class="print-required">*</span>{% endif %}</h3>
+      {% if field.help %}<p class="print-help">{{ field.help }}</p>{% endif %}
+      <div class="print-subsection-fields">
+        {% for child in field.children %}
+          {% include "form_viewer/print_field.html" with field=child %}
+        {% endfor %}
+      </div>
+    </section>
   {% else %}
-    <div class="print-line" aria-hidden="true"></div>
+    <div class="print-line-field">
+      <span class="print-field-label">{{ field.display_label }}{% if field.is_required %} <span class="print-required">*</span>{% endif %}</span>
+      <span class="print-line" aria-hidden="true"></span>
+    </div>
+    {% if field.help %}<p class="print-help">{{ field.help }}</p>{% endif %}
   {% endif %}
 </div>

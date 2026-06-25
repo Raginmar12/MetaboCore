@@ -71,6 +71,7 @@ El visor incluye una vista imprimible para generar formatos en papel a partir de
 Esta vista:
 
 - Está pensada para imprimir y llenar a mano.
+- Muestra etiquetas clínicas y humanas, no claves técnicas del schema.
 - No guarda datos.
 - No debe usarse con datos reales dentro del visor.
 - No genera PDF desde backend.

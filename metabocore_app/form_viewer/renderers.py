@@ -4,6 +4,46 @@ from __future__ import annotations
 from typing import Any
 
 
+PRINT_SECTION_TITLES = {
+    "identidad_paciente": "Datos del paciente",
+    "contacto": "Contacto",
+    "contexto_administrativo": "Datos de la consulta",
+    "contexto_visita_inicial": "Motivo de consulta",
+}
+
+PRINT_FIELD_LABELS = {
+    "nombre_completo": "Nombre completo",
+    "nombre_preferido": "Nombre preferido",
+    "fecha_nacimiento": "Fecha de nacimiento",
+    "sexo_registrado": "Sexo",
+    "genero": "Género",
+    "telefono_principal": "Teléfono",
+    "telefono_alterno": "Teléfono alterno",
+    "correo_electronico": "Correo electrónico",
+    "municipio_o_localidad": "Municipio o localidad",
+    "preferencia_comunicacion": "Preferencia de comunicación",
+    "fecha_primera_consulta": "Fecha de primera consulta",
+    "medico_responsable": "Médico responsable",
+    "motivo_breve_consulta": "Motivo breve de consulta",
+    "preocupacion_inicial": "Preocupación inicial",
+    "ocupacion_o_actividad_principal": "Ocupación o actividad principal",
+    "contacto_emergencia": "Contacto de emergencia",
+    "referencia_aviso_privacidad": "Aviso de privacidad",
+    "consentimiento_verbal_flujo_consulta": (
+        "Consentimiento verbal para flujo de consulta"
+    ),
+    "observaciones": "Observaciones",
+    "codigo_postal": "Código postal",
+    "numero_exterior": "Número exterior",
+    "numero_interior": "Número interior",
+}
+
+PRINT_OPTION_LABELS = {
+    "correo_electronico": "Correo electrónico",
+    "no_especificado": "No especificado",
+}
+
+
 def humanize_key(key: str) -> str:
     """Convert a snake_case technical key into a readable Spanish label."""
     return key.replace("_", " ").capitalize()
@@ -68,7 +108,9 @@ def build_form_sections(
             field_type = field_schema.get("type", "string")
             children = []
             if field_type == "object":
-                children = _nested_fields(field_schema, value if isinstance(value, dict) else None)
+                children = _nested_fields(
+                    field_schema, value if isinstance(value, dict) else None
+                )
 
             section_fields.append(
                 {
@@ -96,7 +138,10 @@ def build_form_sections(
                     "ui:descripcion", section_schema.get("description", "")
                 ),
                 "required": section_key in root_required,
-                "hidden": bool(section_ui.get("ui:oculto") or section_ui.get("ui:widget") == "hidden"),
+                "hidden": bool(
+                    section_ui.get("ui:oculto")
+                    or section_ui.get("ui:widget") == "hidden"
+                ),
                 "fields": section_fields,
             }
         )
@@ -109,8 +154,23 @@ def _is_hidden_field(field_ui: dict[str, Any]) -> bool:
     return bool(field_ui.get("ui:oculto") or widget == "hidden")
 
 
+def _humanize_print_text(value: str) -> str:
+    return value.replace("_", " ").capitalize()
+
+
 def _humanize_field_label(key: str) -> str:
-    return humanize_key(key)
+    return PRINT_FIELD_LABELS.get(key, _humanize_print_text(key))
+
+
+def _humanize_section_title(key: str, section_ui: dict[str, Any]) -> str:
+    return PRINT_SECTION_TITLES.get(
+        key, section_ui.get("ui:titulo", _humanize_print_text(key))
+    )
+
+
+def _humanize_option(option: Any) -> str:
+    option_text = str(option)
+    return PRINT_OPTION_LABELS.get(option_text, _humanize_print_text(option_text))
 
 
 def _print_control_for_field(field_schema: dict[str, Any], field_ui: dict[str, Any]) -> str:
@@ -144,12 +204,16 @@ def _build_print_children(
         children.append(
             {
                 "key": child_key,
-                "label": _humanize_field_label(child_key),
+                "display_label": _humanize_field_label(child_key),
                 "print_control": _print_control_for_field(child_schema, child_ui),
-                "required": child_key in required,
-                "required_visual": bool(child_ui.get("ui:requerido_visual")),
+                "is_required": bool(
+                    child_key in required or child_ui.get("ui:requerido_visual")
+                ),
                 "help": child_ui.get("ui:ayuda", child_schema.get("description", "")),
-                "options": child_schema.get("enum", []),
+                "options": [
+                    {"value": option, "label": _humanize_option(option)}
+                    for option in child_schema.get("enum", [])
+                ],
                 "children": _build_print_children(child_schema, child_ui)
                 if child_schema.get("type") == "object"
                 else [],
@@ -195,12 +259,17 @@ def build_print_sections(
             section_fields.append(
                 {
                     "key": field_key,
-                    "label": _humanize_field_label(field_key),
+                    "display_label": _humanize_field_label(field_key),
                     "print_control": print_control,
-                    "required": field_key in section_required,
-                    "required_visual": bool(field_ui.get("ui:requerido_visual")),
+                    "is_required": bool(
+                        field_key in section_required
+                        or field_ui.get("ui:requerido_visual")
+                    ),
                     "help": field_ui.get("ui:ayuda", field_schema.get("description", "")),
-                    "options": field_schema.get("enum", []),
+                    "options": [
+                        {"value": option, "label": _humanize_option(option)}
+                        for option in field_schema.get("enum", [])
+                    ],
                     "children": _build_print_children(field_schema, field_ui)
                     if print_control == "subsection"
                     else [],
@@ -211,11 +280,14 @@ def build_print_sections(
         sections.append(
             {
                 "key": section_key,
-                "title": section_ui.get("ui:titulo", humanize_key(section_key)),
+                "display_title": _humanize_section_title(section_key, section_ui),
                 "description": section_ui.get(
                     "ui:descripcion", section_schema.get("description", "")
                 ),
-                "required": section_key in root_required,
+                "is_required": section_key in root_required,
+                "has_required_fields": any(
+                    field["is_required"] for field in section_fields
+                ),
                 "fields": section_fields,
             }
         )

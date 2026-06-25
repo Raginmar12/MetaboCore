@@ -54,6 +54,31 @@ class FormViewerLoaderTests(TestCase):
         )
         self.assertEqual(fields["motivo_breve_consulta"]["print_control"], "multiline")
 
+
+    def test_print_sections_use_human_labels(self):
+        bundle = get_form_bundle("ficha_inicial")
+        sections = build_print_sections(bundle.schema, bundle.ui_schema)
+        self.assertEqual(
+            [section["display_title"] for section in sections],
+            [
+                "Datos del paciente",
+                "Contacto",
+                "Datos de la consulta",
+                "Motivo de consulta",
+            ],
+        )
+        fields = {
+            field["key"]: field
+            for section in sections
+            for field in section["fields"]
+        }
+        self.assertEqual(fields["telefono_principal"]["display_label"], "Teléfono")
+        self.assertEqual(
+            fields["motivo_breve_consulta"]["display_label"],
+            "Motivo breve de consulta",
+        )
+        self.assertTrue(fields["nombre_completo"]["is_required"])
+
     def test_print_sections_render_objects_as_subsections(self):
         bundle = get_form_bundle("ficha_inicial")
         sections = build_print_sections(bundle.schema, bundle.ui_schema)
@@ -113,12 +138,24 @@ class FormViewerRouteTests(TestCase):
         self.assertContains(response, "Formato imprimible")
         self.assertContains(response, "No introducir datos reales")
         self.assertContains(response, "No declara cumplimiento completo NOM-004")
+        self.assertContains(response, "Datos del paciente")
+        self.assertContains(response, "Contacto")
+        self.assertContains(response, "Datos de la consulta")
+        self.assertContains(response, "Motivo de consulta")
         self.assertContains(response, "Nombre completo")
-        self.assertContains(response, "Telefono principal")
+        self.assertContains(response, "Teléfono")
         self.assertContains(response, "Municipio o localidad")
-        self.assertContains(response, "Motivo breve")
+        self.assertContains(response, "Motivo breve de consulta")
+        self.assertContains(response, "* Campo recomendado para identificación inicial.")
         self.assertNotContains(response, "Paciente Ficticia MetaboCore")
         self.assertNotContains(response, "Metadatos")
+        self.assertNotContains(response, "identidad_paciente")
+        self.assertNotContains(response, "contexto_visita_inicial")
+        self.assertNotContains(response, "req. técnico")
+        self.assertNotContains(response, "requerido visual")
+        self.assertNotContains(response, "ui:widget")
+        self.assertNotContains(response, "schema")
+        self.assertNotContains(response, "JSON")
 
     def test_form_print_post_is_not_allowed(self):
         response = self.client.post(
