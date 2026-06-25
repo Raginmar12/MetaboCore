@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.1.11 - Guías clínicas base
+
+- Integra `docs/05_guias_clinicas/` como biblioteca de referencia clínica para MetaboCare.
+- Agrega README de guías clínicas base y delimita que no son formatos, schemas, capa normativa, expediente ni protocolo rígido.
+- Referencia la guía de entrevista motivacional desde el flujo de primera consulta y el formato de entrevista motivacional.
+- Actualiza instrucciones para agentes para revisar guías clínicas relevantes antes de modificar flujos, formatos o schemas relacionados.
+
 ## v0.1.10 - Macro-etapas del flujo de primera consulta
 
 - Agrupa la primera consulta en macro-etapas clínicas.

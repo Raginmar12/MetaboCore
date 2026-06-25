@@ -6,6 +6,7 @@ MetaboCore es el núcleo clínico-operativo, documental y posteriormente digital
 
 - Un repositorio de documentación viva para diseñar la operación clínica de MetaboCare.
 - Un marco de trabajo para ordenar la primera consulta, seguimientos, formatos clínicos operativos y generación documental.
+- Una biblioteca clínica de referencia para sustentar lenguaje, criterios conversacionales y diseño operativo.
 - La base desde la cual, más adelante, podrán derivarse modelos digitales, software clínico e integraciones externas.
 - Un proyecto independiente, profesional y portable.
 
@@ -29,9 +30,16 @@ La documentación se mantiene como código: versionada, revisable, auditable y o
 
 1. Flujo de consulta.
 2. Formatos operativos.
-3. Capa documental NOM.
-4. Sistema digital.
-5. Integraciones futuras mediante API.
+3. Guías clínicas base como referencia de criterio y lenguaje.
+4. Capa documental NOM.
+5. Sistema digital.
+6. Integraciones futuras mediante API.
+
+## Guías clínicas base
+
+La carpeta `docs/05_guias_clinicas/` funciona como biblioteca de referencia clínica para MetaboCare. Estas guías ayudan a justificar criterios conversacionales, lenguaje no estigmatizante, manejo de barreras, adherencia y diseño de formatos.
+
+Las guías clínicas base no reemplazan `docs/01_flujo_consulta/` como fuente humana principal del flujo, no son formatos operativos, no son schemas, no son capa normativa oficial, no declaran cumplimiento NOM-004 y no constituyen expediente clínico ni protocolo rígido.
 
 ## Integraciones futuras
 

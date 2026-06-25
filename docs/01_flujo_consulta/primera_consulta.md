@@ -134,6 +134,10 @@ Base de confianza para explorar motivación, historia y plan.
 
 ## Bloque 4. Entrevista motivacional breve
 
+Referencia clínica base: `docs/05_guias_clinicas/entrevista_motivacional_metabocare.md`.
+
+Esta referencia orienta el lenguaje y la exploración de motivación, barreras y confianza; no sustituye el flujo de consulta ni convierte el bloque en protocolo rígido.
+
 ### Objetivo
 Explorar disposición al cambio, motivaciones personales, obstáculos y nivel de confianza del paciente.
 
