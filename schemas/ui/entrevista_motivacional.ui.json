@@ -1,0 +1,341 @@
+{
+  "ui:formato": "entrevista_motivacional",
+  "ui:version": "0.1.0",
+  "ui:orden_secciones": [
+    "datos_encuentro",
+    "encuadre_permiso",
+    "motivo_expectativas",
+    "valores_impacto",
+    "ambivalencia",
+    "escalas_cambio",
+    "barreras_recursos",
+    "lenguaje_cambio",
+    "informacion_medica_permiso",
+    "primer_paso",
+    "seguimiento",
+    "notas_internas",
+    "metadatos"
+  ],
+  "formato_id": {
+    "ui:widget": "hidden"
+  },
+  "version_schema": {
+    "ui:widget": "hidden"
+  },
+  "datos_encuentro": {
+    "ui:titulo": "Datos del encuentro",
+    "ui:descripcion": "Ubicacion operativa de la entrevista breve.",
+    "ui:orden_campos": [
+      "fecha",
+      "tipo_de_consulta",
+      "nombre_o_referencia",
+      "profesional"
+    ],
+    "fecha": {
+      "ui:widget": "date"
+    },
+    "tipo_de_consulta": {
+      "ui:widget": "select"
+    },
+    "nombre_o_referencia": {
+      "ui:widget": "text"
+    },
+    "profesional": {
+      "ui:widget": "text"
+    }
+  },
+  "encuadre_permiso": {
+    "ui:titulo": "Encuadre y permiso",
+    "ui:descripcion": "Confirmar permiso antes de explorar temas sensibles.",
+    "ui:ayuda": "Pedir permiso antes de hablar de peso, habitos o metabolismo.",
+    "ui:orden_campos": [
+      "permiso_para_hablar_de_peso_y_metabolismo",
+      "tema_autorizado",
+      "tema_preferido_por_el_paciente",
+      "observaciones_de_permiso"
+    ],
+    "permiso_para_hablar_de_peso_y_metabolismo": {
+      "ui:widget": "select"
+    },
+    "tema_autorizado": {
+      "ui:widget": "checkboxes"
+    },
+    "tema_preferido_por_el_paciente": {
+      "ui:widget": "text"
+    },
+    "observaciones_de_permiso": {
+      "ui:widget": "textarea"
+    }
+  },
+  "motivo_expectativas": {
+    "ui:titulo": "Motivo personal y expectativas",
+    "ui:descripcion": "Registrar el motivo en palabras del paciente y lo que espera de la consulta.",
+    "ui:orden_campos": [
+      "motivo_principal_en_palabras_del_paciente",
+      "expectativas_de_la_consulta",
+      "preocupacion_principal",
+      "objetivo_sentido_por_el_paciente"
+    ],
+    "motivo_principal_en_palabras_del_paciente": {
+      "ui:widget": "textarea",
+      "ui:requerido_visual": true
+    },
+    "expectativas_de_la_consulta": {
+      "ui:widget": "textarea"
+    },
+    "preocupacion_principal": {
+      "ui:widget": "textarea"
+    },
+    "objetivo_sentido_por_el_paciente": {
+      "ui:widget": "textarea"
+    }
+  },
+  "valores_impacto": {
+    "ui:titulo": "Valores e impacto",
+    "ui:descripcion": "Conectar el cambio con areas importantes de la vida diaria.",
+    "ui:orden_campos": [
+      "impacto_actual_en_la_vida",
+      "valor_o_area_importante",
+      "beneficio_esperado"
+    ],
+    "impacto_actual_en_la_vida": {
+      "ui:widget": "textarea"
+    },
+    "valor_o_area_importante": {
+      "ui:widget": "checkboxes"
+    },
+    "beneficio_esperado": {
+      "ui:widget": "textarea"
+    }
+  },
+  "ambivalencia": {
+    "ui:titulo": "Ambivalencia",
+    "ui:descripcion": "Explorar ambos lados del cambio sin confrontar.",
+    "ui:ayuda": "No discutir. Reflejar ambos lados: por un lado..., y por otro...",
+    "ui:orden_campos": [
+      "razones_para_cambiar",
+      "razones_para_no_cambiar",
+      "frase_de_ambivalencia",
+      "reflexion_doble_usada"
+    ],
+    "razones_para_cambiar": {
+      "ui:widget": "textarea"
+    },
+    "razones_para_no_cambiar": {
+      "ui:widget": "textarea"
+    },
+    "frase_de_ambivalencia": {
+      "ui:widget": "textarea"
+    },
+    "reflexion_doble_usada": {
+      "ui:widget": "textarea"
+    }
+  },
+  "escalas_cambio": {
+    "ui:titulo": "Escalas de cambio",
+    "ui:descripcion": "Explorar importancia, confianza y disposicion en escala 0 a 10.",
+    "ui:ayuda": "Preguntar por que eligio ese numero y no uno mas bajo.",
+    "ui:orden_campos": [
+      "importancia_0_10",
+      "confianza_0_10",
+      "disposicion_0_10",
+      "por_que_no_mas_bajo",
+      "que_subiria_un_punto"
+    ],
+    "importancia_0_10": {
+      "ui:widget": "number"
+    },
+    "confianza_0_10": {
+      "ui:widget": "number"
+    },
+    "disposicion_0_10": {
+      "ui:widget": "number"
+    },
+    "por_que_no_mas_bajo": {
+      "ui:widget": "textarea"
+    },
+    "que_subiria_un_punto": {
+      "ui:widget": "textarea"
+    }
+  },
+  "barreras_recursos": {
+    "ui:titulo": "Barreras y recursos",
+    "ui:descripcion": "Identificar barreras y apoyos para adaptar el plan.",
+    "ui:ayuda": "La barrera modifica el plan; no define al paciente.",
+    "ui:orden_campos": [
+      "barrera_principal",
+      "otras_barreras",
+      "recursos_personales",
+      "apoyo_familiar_social",
+      "estrategia_para_barrera_principal"
+    ],
+    "barrera_principal": {
+      "ui:widget": "textarea",
+      "ui:requerido_visual": true
+    },
+    "otras_barreras": {
+      "ui:widget": "checkboxes"
+    },
+    "recursos_personales": {
+      "ui:widget": "textarea"
+    },
+    "apoyo_familiar_social": {
+      "ui:widget": "textarea"
+    },
+    "estrategia_para_barrera_principal": {
+      "ui:widget": "textarea"
+    }
+  },
+  "lenguaje_cambio": {
+    "ui:titulo": "Lenguaje de cambio",
+    "ui:descripcion": "Registrar frases breves que indiquen cambio o mantenimiento.",
+    "ui:ayuda": "Anotar una frase textual breve del paciente.",
+    "ui:orden_campos": [
+      "frases_de_cambio",
+      "frases_de_mantenimiento",
+      "senal_de_preparacion"
+    ],
+    "frases_de_cambio": {
+      "ui:widget": "textarea"
+    },
+    "frases_de_mantenimiento": {
+      "ui:widget": "textarea"
+    },
+    "senal_de_preparacion": {
+      "ui:widget": "checkboxes"
+    }
+  },
+  "informacion_medica_permiso": {
+    "ui:titulo": "Informacion medica con permiso",
+    "ui:descripcion": "Documentar informacion explicada despues de pedir permiso.",
+    "ui:ayuda": "Preguntar, explicar breve y preguntar que piensa.",
+    "ui:orden_campos": [
+      "permiso_para_explicar",
+      "informacion_medica_explicada",
+      "respuesta_del_paciente",
+      "duda_principal"
+    ],
+    "permiso_para_explicar": {
+      "ui:widget": "select"
+    },
+    "informacion_medica_explicada": {
+      "ui:widget": "checkboxes"
+    },
+    "respuesta_del_paciente": {
+      "ui:widget": "textarea"
+    },
+    "duda_principal": {
+      "ui:widget": "textarea"
+    }
+  },
+  "primer_paso": {
+    "ui:titulo": "Primer paso posible",
+    "ui:descripcion": "Acordar un paso pequeno, concreto y revisable.",
+    "ui:ayuda": "Debe ser pequeno, concreto y revisable.",
+    "ui:orden_campos": [
+      "area_elegida",
+      "primer_paso_posible",
+      "frecuencia",
+      "momento_del_dia",
+      "barrera_anticipada",
+      "plan_si_falla",
+      "compromiso_0_10"
+    ],
+    "area_elegida": {
+      "ui:widget": "select"
+    },
+    "primer_paso_posible": {
+      "ui:widget": "textarea",
+      "ui:requerido_visual": true
+    },
+    "frecuencia": {
+      "ui:widget": "text"
+    },
+    "momento_del_dia": {
+      "ui:widget": "text"
+    },
+    "barrera_anticipada": {
+      "ui:widget": "textarea"
+    },
+    "plan_si_falla": {
+      "ui:widget": "textarea"
+    },
+    "compromiso_0_10": {
+      "ui:widget": "number"
+    }
+  },
+  "seguimiento": {
+    "ui:titulo": "Acuerdo de seguimiento",
+    "ui:descripcion": "Definir que se revisara en el siguiente contacto.",
+    "ui:orden_campos": [
+      "acuerdo_de_seguimiento",
+      "plazo_de_revision",
+      "tema_a_retomar",
+      "observaciones_para_siguiente_consulta"
+    ],
+    "acuerdo_de_seguimiento": {
+      "ui:widget": "textarea",
+      "ui:requerido_visual": true
+    },
+    "plazo_de_revision": {
+      "ui:widget": "text"
+    },
+    "tema_a_retomar": {
+      "ui:widget": "textarea"
+    },
+    "observaciones_para_siguiente_consulta": {
+      "ui:widget": "textarea"
+    }
+  },
+  "notas_internas": {
+    "ui:titulo": "Notas internas del clinico",
+    "ui:descripcion": "Notas tecnicas para adaptar comunicacion y plan.",
+    "ui:ayuda": "Evitar etiquetas culpabilizantes.",
+    "ui:orden_campos": [
+      "impresion_motivacional",
+      "riesgo_de_plan_irrealista",
+      "ajuste_recomendado_del_estilo_de_plan",
+      "observaciones_clinicas_internas"
+    ],
+    "impresion_motivacional": {
+      "ui:widget": "select"
+    },
+    "riesgo_de_plan_irrealista": {
+      "ui:widget": "select"
+    },
+    "ajuste_recomendado_del_estilo_de_plan": {
+      "ui:widget": "select"
+    },
+    "observaciones_clinicas_internas": {
+      "ui:widget": "textarea"
+    }
+  },
+  "metadatos": {
+    "ui:titulo": "Metadatos",
+    "ui:descripcion": "Campos tecnicos para sistema digital futuro.",
+    "ui:orden_campos": [
+      "creado_en",
+      "actualizado_en",
+      "capturado_por",
+      "clasificacion_datos",
+      "ejemplo_es_ficticio"
+    ],
+    "ui:widget": "hidden",
+    "ui:oculto": true,
+    "creado_en": {
+      "ui:widget": "hidden"
+    },
+    "actualizado_en": {
+      "ui:widget": "hidden"
+    },
+    "capturado_por": {
+      "ui:widget": "hidden"
+    },
+    "clasificacion_datos": {
+      "ui:widget": "hidden"
+    },
+    "ejemplo_es_ficticio": {
+      "ui:widget": "hidden"
+    }
+  }
+}

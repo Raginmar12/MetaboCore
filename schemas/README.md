@@ -14,6 +14,11 @@ Los schemas no implementan backend, frontend, base de datos ni expediente electr
 - Los ejemplos viven en `schemas/examples/`.
 - Los mapas operativos navegables de flujo viven en `schemas/flows/`.
 
+## Formatos estructurados disponibles
+
+- `ficha_inicial`: ficha inicial de identificación y contexto breve.
+- `entrevista_motivacional`: formato técnico interno para entrevista motivacional breve del personal clínico.
+
 ## Alcance normativo
 
 Los schemas pueden estructurar datos que alimenten la capa documental NOM-004, pero no declaran cumplimiento completo de la NOM-004.

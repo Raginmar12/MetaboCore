@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.1.13 - Schema de entrevista motivacional
+
+- Agrega schema, UI schema y ejemplo ficticio del formato técnico interno de entrevista motivacional.
+
 ## v0.1.12 - Formato técnico interno de entrevista motivacional
 
 - Define la primera versión documental del formato técnico interno de entrevista motivacional.

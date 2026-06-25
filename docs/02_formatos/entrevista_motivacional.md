@@ -281,12 +281,12 @@ Estas alternativas describen el estado de la conversación o del plan sin defini
 
 ---
 
-## Relación futura con schema
+## Relación con schema estructurado
 
-Este documento será fuente documental para versiones futuras de:
+Este documento es la fuente documental del schema inicial del formato técnico interno de entrevista motivacional. La primera versión estructurada ya está disponible en:
 
 - `schemas/forms/entrevista_motivacional.schema.json`
 - `schemas/ui/entrevista_motivacional.ui.json`
 - `schemas/examples/entrevista_motivacional.example.json`
 
-Esos archivos no se crean en esta versión. La conversión a schema, UI schema o ejemplo JSON deberá hacerse en una tarea posterior, cuidando que el resultado siga siendo una herramienta clínica interna y no un expediente clínico electrónico.
+Estos archivos mantienen el formato como herramienta técnica interna para personal clínico. No agregan captura persistente, modelos clínicos, expediente clínico electrónico, formato para paciente ni declaración de cumplimiento completo NOM-004.

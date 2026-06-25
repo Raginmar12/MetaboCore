@@ -1,0 +1,470 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://metabocore.local/schemas/forms/entrevista_motivacional.schema.json",
+  "title": "Entrevista motivacional MetaboCore",
+  "description": "Schema de datos para el formato tecnico interno de entrevista motivacional breve de MetaboCore. Es una herramienta para personal clinico, no para pacientes. No declara cumplimiento completo NOM-004.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "formato_id",
+    "version_schema",
+    "motivo_expectativas",
+    "barreras_recursos",
+    "primer_paso",
+    "seguimiento",
+    "metadatos"
+  ],
+  "properties": {
+    "formato_id": {
+      "type": "string",
+      "const": "entrevista_motivacional"
+    },
+    "version_schema": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "datos_encuentro": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "fecha": {
+          "type": "string",
+          "format": "date"
+        },
+        "tipo_de_consulta": {
+          "type": "string",
+          "enum": [
+            "primera_consulta",
+            "seguimiento",
+            "interconsulta",
+            "otro"
+          ]
+        },
+        "nombre_o_referencia": {
+          "type": "string"
+        },
+        "profesional": {
+          "type": "string"
+        }
+      }
+    },
+    "encuadre_permiso": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "permiso_para_hablar_de_peso_y_metabolismo": {
+          "type": "string",
+          "enum": [
+            "si",
+            "no",
+            "parcial",
+            "no_explorado"
+          ]
+        },
+        "tema_autorizado": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "peso",
+              "glucosa",
+              "presion",
+              "alimentacion",
+              "actividad_fisica",
+              "sueno",
+              "energia",
+              "medicamentos",
+              "laboratorios",
+              "metabolismo",
+              "otro"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "tema_preferido_por_el_paciente": {
+          "type": "string"
+        },
+        "observaciones_de_permiso": {
+          "type": "string"
+        }
+      }
+    },
+    "motivo_expectativas": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "motivo_principal_en_palabras_del_paciente": {
+          "type": "string",
+          "minLength": 1
+        },
+        "expectativas_de_la_consulta": {
+          "type": "string"
+        },
+        "preocupacion_principal": {
+          "type": "string"
+        },
+        "objetivo_sentido_por_el_paciente": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "motivo_principal_en_palabras_del_paciente"
+      ]
+    },
+    "valores_impacto": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "impacto_actual_en_la_vida": {
+          "type": "string"
+        },
+        "valor_o_area_importante": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "energia",
+              "movilidad",
+              "familia",
+              "trabajo",
+              "sueno",
+              "dolor",
+              "autoimagen",
+              "sexualidad",
+              "independencia",
+              "prevencion_de_complicaciones",
+              "tranquilidad",
+              "rendimiento_fisico",
+              "otro"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "beneficio_esperado": {
+          "type": "string"
+        }
+      }
+    },
+    "ambivalencia": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "razones_para_cambiar": {
+          "type": "string"
+        },
+        "razones_para_no_cambiar": {
+          "type": "string"
+        },
+        "frase_de_ambivalencia": {
+          "type": "string"
+        },
+        "reflexion_doble_usada": {
+          "type": "string"
+        }
+      }
+    },
+    "escalas_cambio": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "importancia_0_10": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "confianza_0_10": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "disposicion_0_10": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "por_que_no_mas_bajo": {
+          "type": "string"
+        },
+        "que_subiria_un_punto": {
+          "type": "string"
+        }
+      }
+    },
+    "barreras_recursos": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "barrera_principal": {
+          "type": "string",
+          "minLength": 1
+        },
+        "otras_barreras": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "tiempo",
+              "trabajo",
+              "dinero",
+              "cansancio",
+              "dolor",
+              "sueno",
+              "hambre",
+              "ansiedad",
+              "familia",
+              "horarios",
+              "comidas_fuera_de_casa",
+              "falta_de_apoyo",
+              "falta_de_comprension_del_plan",
+              "experiencias_previas_de_fracaso",
+              "miedo_a_medicamentos",
+              "miedo_a_estudios",
+              "verguenza_o_estigma",
+              "otro"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "recursos_personales": {
+          "type": "string"
+        },
+        "apoyo_familiar_social": {
+          "type": "string"
+        },
+        "estrategia_para_barrera_principal": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "barrera_principal"
+      ]
+    },
+    "lenguaje_cambio": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "frases_de_cambio": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "frases_de_mantenimiento": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "senal_de_preparacion": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "deseo",
+              "capacidad",
+              "razones",
+              "necesidad",
+              "compromiso",
+              "activacion",
+              "pasos_dados",
+              "no_identificada"
+            ]
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "informacion_medica_permiso": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "permiso_para_explicar": {
+          "type": "string",
+          "enum": [
+            "si",
+            "no",
+            "parcial",
+            "no_aplica"
+          ]
+        },
+        "informacion_medica_explicada": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "resistencia_a_la_insulina",
+              "grasa_visceral",
+              "higado_graso",
+              "riesgo_cardiometabolico",
+              "glucosa",
+              "presion_arterial",
+              "lipidos",
+              "medicamento",
+              "analisis_corporal",
+              "laboratorios",
+              "otro"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "respuesta_del_paciente": {
+          "type": "string"
+        },
+        "duda_principal": {
+          "type": "string"
+        }
+      }
+    },
+    "primer_paso": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "area_elegida": {
+          "type": "string",
+          "enum": [
+            "alimentacion",
+            "actividad_fisica",
+            "sueno",
+            "estres",
+            "medicamento",
+            "laboratorios",
+            "hidratacion",
+            "horarios",
+            "registro",
+            "otro"
+          ]
+        },
+        "primer_paso_posible": {
+          "type": "string",
+          "minLength": 1
+        },
+        "frecuencia": {
+          "type": "string"
+        },
+        "momento_del_dia": {
+          "type": "string"
+        },
+        "barrera_anticipada": {
+          "type": "string"
+        },
+        "plan_si_falla": {
+          "type": "string"
+        },
+        "compromiso_0_10": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10
+        }
+      },
+      "required": [
+        "primer_paso_posible"
+      ]
+    },
+    "seguimiento": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "acuerdo_de_seguimiento": {
+          "type": "string",
+          "minLength": 1
+        },
+        "plazo_de_revision": {
+          "type": "string"
+        },
+        "tema_a_retomar": {
+          "type": "string"
+        },
+        "observaciones_para_siguiente_consulta": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "acuerdo_de_seguimiento"
+      ]
+    },
+    "notas_internas": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "impresion_motivacional": {
+          "type": "string",
+          "enum": [
+            "alta_importancia_alta_confianza",
+            "alta_importancia_baja_confianza",
+            "baja_importancia_baja_confianza",
+            "ambivalencia_alta",
+            "listo_para_plan",
+            "requiere_mas_exploracion",
+            "prefiere_no_hablar_del_tema",
+            "priorizar_seguridad_clinica",
+            "otro"
+          ]
+        },
+        "riesgo_de_plan_irrealista": {
+          "type": "string",
+          "enum": [
+            "bajo",
+            "moderado",
+            "alto",
+            "no_valorado"
+          ]
+        },
+        "ajuste_recomendado_del_estilo_de_plan": {
+          "type": "string",
+          "enum": [
+            "plan_mas_simple",
+            "educacion_gradual",
+            "mas_apoyo",
+            "seguimiento_cercano",
+            "mantener_plan_actual",
+            "priorizar_seguridad",
+            "otro"
+          ]
+        },
+        "observaciones_clinicas_internas": {
+          "type": "string"
+        }
+      }
+    },
+    "metadatos": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "creado_en": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "actualizado_en": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "capturado_por": {
+          "type": "string"
+        },
+        "clasificacion_datos": {
+          "type": "string",
+          "const": "datos_personales_clinicos"
+        },
+        "ejemplo_es_ficticio": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "creado_en",
+        "clasificacion_datos"
+      ]
+    }
+  },
+  "x-metabocore": {
+    "flujo": "primera_consulta",
+    "bloque": "bloque_4_entrevista_motivacional_breve",
+    "formato": "entrevista_motivacional",
+    "uso": "tecnico_interno",
+    "para_paciente": false,
+    "contiene_datos_paciente": true,
+    "declara_cumplimiento_nom_004": false,
+    "guia_clinica_base": "docs/05_guias_clinicas/entrevista_motivacional_metabocare.md",
+    "manual_operativo": "docs/01_flujo_consulta/entrevista_motivacional_operativa.md",
+    "documento_formato": "docs/02_formatos/entrevista_motivacional.md"
+  }
+}
