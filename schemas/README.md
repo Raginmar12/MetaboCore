@@ -12,6 +12,7 @@ Los schemas no implementan backend, frontend, base de datos ni expediente electr
 - Los schemas de datos viven en `schemas/forms/`.
 - Los schemas de presentación viven en `schemas/ui/`.
 - Los ejemplos viven en `schemas/examples/`.
+- Los mapas operativos navegables de flujo viven en `schemas/flows/`.
 
 ## Alcance normativo
 
@@ -35,7 +36,15 @@ Los campos `required` de los schemas representan requeridos técnicos para valid
 
 Los schemas pueden ser usados por el visor Django de `metabocore_app/` para renderizar formatos clínicos en HTML. El renderizado no cambia el contrato del schema y el visor no guarda datos.
 
-Los schemas pueden alimentar el visor estructural, los ejemplos ficticios y distintas salidas imprimibles según variante. Las variantes imprimibles no cambian el contrato del schema, no implican captura electrónica, no guardan datos y no declaran cumplimiento completo NOM-004.
+Los schemas pueden alimentar el visor estructural, los ejemplos ficticios, distintas salidas imprimibles según variante y el visor read-only de flujos. Las variantes imprimibles y las vistas de flujo no cambian el contrato del schema, no implican captura electrónica, no guardan datos y no declaran cumplimiento completo NOM-004.
+
+## Flujos operativos navegables
+
+La carpeta `schemas/flows/` contiene mapas operativos estructurados para renderizar el flujo de consulta en el visor Django. Estos JSON no reemplazan la documentación humana de `docs/01_flujo_consulta/`; solo permiten navegar macro-etapas, bloques, asociaciones de formatos y mostrar la capa NOM como referencia documental secundaria.
+
+Los archivos `*.flow.json` pueden incluir `etapas` para agrupar bloques por macro-etapas clínicas. Las etapas solo agrupan y describen; no son estados de captura, no indican avance, no son checklist y no reemplazan el Markdown humano.
+
+Los JSON de flujo deben evitar duplicar todo el contenido del Markdown. Deben conservar lo necesario para navegación, timeline, enlaces a formatos y advertencias read-only. No deben agregar estados de captura, completado, persistencia ni datos de pacientes.
 
 ## Convención de nombres
 

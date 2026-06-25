@@ -1,0 +1,29 @@
+<div class="flow-format-list">
+  {% for formato in formatos %}
+    <div class="flow-format-card flow-format-{{ formato.badge }}">
+      <div class="flow-format-heading">
+        <strong>{{ formato.nombre }}</strong>
+        <code>{{ formato.formato_id }}</code>
+        <span class="flow-badge flow-badge-{{ formato.badge }}">
+          {% if formato.badge == "schema" %}schema disponible{% elif formato.badge == "documento" %}documento{% elif formato.badge == "futuro" %}futuro{% elif formato.badge == "referencia" %}referencia{% else %}sin schema{% endif %}
+        </span>
+      </div>
+      {% if formato.momento_uso %}<p class="muted">{{ formato.momento_uso }}</p>{% endif %}
+      {% if formato.links %}
+        <nav class="quick-links" aria-label="Enlaces para {{ formato.formato_id }}">
+          {% for link in formato.links %}
+            {% if link.url %}
+              <a href="{{ link.url }}">{{ link.label }}</a>
+            {% else %}
+              <span>{{ link.label }}</span>
+            {% endif %}
+          {% endfor %}
+        </nav>
+      {% else %}
+        <p class="muted">Sin enlaces disponibles en el visor.</p>
+      {% endif %}
+    </div>
+  {% empty %}
+    <p class="muted">Sin formatos asociados para este bloque.</p>
+  {% endfor %}
+</div>

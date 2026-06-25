@@ -68,3 +68,12 @@ La vista imprimible técnica puede mostrar más detalle operativo, pero no debe 
 No agregar captura persistente, modelos clínicos ni datos reales para hacer formatos imprimibles.
 
 La generación de PDF backend, captura electrónica persistente o documentos NOM generados requiere revisión arquitectónica posterior.
+
+## Visor de flujos de consulta
+
+- Mantener `docs/01_flujo_consulta/` como documentación humana principal del flujo.
+- Mantener `schemas/flows/` como mapa operativo navegable derivado del Markdown, no como expediente ni checklist obligatoria.
+- Al cambiar bloques de flujo o asociaciones de formatos, revisar sincronía entre Markdown y `schemas/flows/`.
+- No agregar estados de completado, captura persistente, guardado, pacientes, expedientes ni consultas al visor de flujos sin ADR y revisión NOM-004 posterior.
+- Las `etapas` de `schemas/flows/` solo agrupan bloques; no convertirlas en workflow de captura ni checklist rígida.
+- No duplicar en `schemas/flows/` todo el contenido clínico del Markdown; mantener el JSON como mapa operativo navegable.

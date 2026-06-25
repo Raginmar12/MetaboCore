@@ -1,0 +1,71 @@
+{% extends "form_viewer/base.html" %}
+
+{% block title %}{{ flow.titulo }} · MetaboCore{% endblock %}
+
+{% block content %}
+<section class="card">
+  <p><a href="{% url 'form_viewer:flow_list' %}">← Volver a flujos</a></p>
+  <p class="flow-kicker">{{ flow.estado }} · versión {{ flow.version }}</p>
+  <h1>{{ flow.titulo }}</h1>
+  <p>{{ flow.proposito }}</p>
+  <p class="readonly-note">{{ read_only_note }}</p>
+  <p class="muted">Documento humano principal: <code>{{ flow.doc_fuente }}</code></p>
+</section>
+
+<section class="stage-list" aria-label="Macro-etapas de {{ flow.titulo }}">
+  {% for stage in stages %}
+    <article class="card flow-stage" id="{{ stage.slug }}">
+      <header class="stage-header">
+        <p class="flow-kicker">Etapa {{ stage.orden }}</p>
+        <h2>{{ stage.titulo }}</h2>
+        {% if stage.descripcion %}<p>{{ stage.descripcion }}</p>{% endif %}
+      </header>
+
+      <div class="timeline" aria-label="Bloques de {{ stage.titulo }}">
+        {% for block in stage.bloques %}
+          <section class="timeline-item stage-block" id="{{ block.slug }}">
+            <div class="timeline-number" aria-hidden="true">{{ block.orden }}</div>
+            <div class="timeline-content">
+              <h3>{{ block.titulo }}</h3>
+              <p><strong>Objetivo:</strong> {{ block.objetivo }}</p>
+
+              <div class="flow-columns">
+                <section>
+                  <h4>Qué hace el médico</h4>
+                  <ul>
+                    {% for item in block.que_hace_el_medico %}<li>{{ item }}</li>{% endfor %}
+                  </ul>
+                </section>
+                <section>
+                  <h4>Qué registra</h4>
+                  <ul>
+                    {% for item in block.que_registra %}<li>{{ item }}</li>{% endfor %}
+                  </ul>
+                </section>
+              </div>
+
+              <section>
+                <h4>Formatos asociados</h4>
+                {% include "form_viewer/flow_format_links.html" with formatos=block.formatos_asociados %}
+              </section>
+
+              <p><strong>Salida:</strong> {{ block.salida }}</p>
+
+              {% if block.nom_004 %}
+                <section class="nom-layer">
+                  <h4>Capa documental NOM-004</h4>
+                  <ul>
+                    {% for item in block.nom_004 %}<li>{{ item }}</li>{% endfor %}
+                  </ul>
+                </section>
+              {% endif %}
+
+              <p><a href="{% url 'form_viewer:flow_block' flow.slug block.slug %}">Ver bloque</a></p>
+            </div>
+          </section>
+        {% endfor %}
+      </div>
+    </article>
+  {% endfor %}
+</section>
+{% endblock %}
