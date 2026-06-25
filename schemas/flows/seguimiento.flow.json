@@ -1,0 +1,122 @@
+{
+  "flow_id": "seguimiento",
+  "slug": "seguimiento",
+  "titulo": "Seguimiento MetaboCare",
+  "version": "0.1.0",
+  "estado": "borrador_operativo",
+  "doc_fuente": "docs/01_flujo_consulta/seguimiento.md",
+  "proposito": "Evaluar respuesta, seguridad, adherencia, barreras y ajustes del plan durante una consulta de seguimiento.",
+  "advertencias": [
+    "Vista read-only.",
+    "No guardar datos.",
+    "No usar datos reales.",
+    "No declara cumplimiento completo NOM-004.",
+    "La NOM-004 es capa documental, no orden conversacional."
+  ],
+  "bloques": [
+    {
+      "bloque_id": "recepcion_breve",
+      "slug": "recepcion-breve",
+      "orden": 1,
+      "titulo": "Recepción breve",
+      "objetivo": "Identificar cómo se ha sentido la persona desde la última consulta y detectar eventos relevantes.",
+      "que_hace_el_medico": ["Saluda y pregunta cómo se ha sentido desde la última consulta.", "Identifica eventos relevantes, urgencias, cambios de salud o medicamentos."],
+      "que_registra": ["Preocupaciones principales del seguimiento.", "Cambios clínicos o de medicamentos."],
+      "formatos_asociados": [{"formato_id": "nota_evolucion", "estado": "futuro", "tipo": "formato", "momento_uso": "Como insumo futuro para nota de evolución.", "enlaces": []}],
+      "salida": "Contexto inicial del seguimiento identificado.",
+      "nom_004": ["Evolución clínica desde la consulta previa."],
+      "nota_diseno": "Recepción breve sin convertir el seguimiento en captura rígida."
+    },
+    {
+      "bloque_id": "revision_objetivo_previo",
+      "slug": "revision-objetivo-previo",
+      "orden": 2,
+      "titulo": "Revisión de objetivo previo",
+      "objetivo": "Revisar la meta acordada y explorar logros parciales, dificultades y aprendizajes.",
+      "que_hace_el_medico": ["Revisa la meta acordada en la consulta anterior.", "Pregunta qué pudo realizar y qué no.", "Explora logros parciales, no solo fallas."],
+      "que_registra": ["Avance respecto al objetivo previo.", "Logros parciales.", "Dificultades principales."],
+      "formatos_asociados": [{"formato_id": "objetivos_y_plan", "estado": "existente", "tipo": "formato", "momento_uso": "Para revisar y actualizar objetivos clínicos y personales.", "enlaces": ["documento"]}],
+      "salida": "Respuesta inicial al objetivo previo clarificada.",
+      "nom_004": ["Respuesta al tratamiento.", "Adherencia y barreras."],
+      "nota_diseno": "La revisión debe aprender del proceso, no regañar al paciente."
+    },
+    {
+      "bloque_id": "revision_mediciones_signos",
+      "slug": "revision-mediciones-signos",
+      "orden": 3,
+      "titulo": "Revisión de mediciones y signos",
+      "objetivo": "Revisar peso, cintura, signos vitales, síntomas y mediciones relevantes según riesgo.",
+      "que_hace_el_medico": ["Registra peso y cintura cuando aplique.", "Revisa presión arterial, frecuencia cardiaca u otras mediciones según riesgo.", "Interpreta tendencias, no solo datos aislados."],
+      "que_registra": ["Peso y cintura cuando aplique.", "Signos vitales relevantes.", "Síntomas nuevos o cambios percibidos."],
+      "formatos_asociados": [{"formato_id": "analisis_corporal", "estado": "existente", "tipo": "formato", "momento_uso": "Para revisar mediciones clínicas y tendencias.", "enlaces": ["documento"]}],
+      "salida": "Tendencia clínica objetiva interpretada en contexto.",
+      "nom_004": ["Signos vitales y mediciones relevantes."],
+      "nota_diseno": "Las mediciones se interpretan como tendencia clínica, no como juicio aislado."
+    },
+    {
+      "bloque_id": "revision_adherencia_barreras",
+      "slug": "revision-adherencia-barreras",
+      "orden": 4,
+      "titulo": "Revisión de adherencia y barreras",
+      "objetivo": "Entender qué partes del plan fueron posibles, cuáles no y qué barreras influyeron.",
+      "que_hace_el_medico": ["Revisa alimentación, actividad física, sueño, estrés, estudios y medicamentos si aplica.", "Identifica qué parte del plan fue más fácil y cuál fue más difícil.", "Explora barreras prácticas, económicas, familiares, laborales, emocionales o de comprensión."],
+      "que_registra": ["Adherencia general.", "Barrera principal.", "Estrategia de ajuste."],
+      "formatos_asociados": [{"formato_id": "nota_evolucion", "estado": "futuro", "tipo": "formato", "momento_uso": "Como insumo futuro para nota de evolución.", "enlaces": []}],
+      "salida": "Barreras y adherencia entendidas para ajustar el plan.",
+      "nom_004": ["Adherencia y barreras."],
+      "nota_diseno": "La información se usa para ajustar el plan, no para sancionar."
+    },
+    {
+      "bloque_id": "revision_estudios_sintomas",
+      "slug": "revision-estudios-sintomas",
+      "orden": 5,
+      "titulo": "Revisión de estudios y síntomas",
+      "objetivo": "Revisar resultados, síntomas, tolerancia y efectos adversos cuando haya tratamiento.",
+      "que_hace_el_medico": ["Revisa estudios solicitados y síntomas nuevos.", "Pregunta por efectos adversos si hay medicamento.", "Define si se mantiene, ajusta o suspende el tratamiento cuando aplique."],
+      "que_registra": ["Resultados relevantes.", "Síntomas nuevos.", "Efectos adversos, dosis, horario y tolerancia si aplica."],
+      "formatos_asociados": [{"formato_id": "nota_evolucion", "estado": "futuro", "tipo": "formato", "momento_uso": "Como insumo futuro para nota de evolución.", "enlaces": []}],
+      "salida": "Seguridad y respuesta clínica revisadas.",
+      "nom_004": ["Efectos adversos.", "Respuesta al tratamiento."],
+      "nota_diseno": "La seguridad clínica guía ajustes sin generar persistencia digital en esta fase."
+    },
+    {
+      "bloque_id": "ajuste_plan",
+      "slug": "ajuste-plan",
+      "orden": 6,
+      "titulo": "Ajuste de plan",
+      "objetivo": "Ajustar el plan según respuesta, seguridad, adherencia y barreras.",
+      "que_hace_el_medico": ["Ajusta alimentación, actividad física, sueño/estrés, estudios o tratamiento farmacológico según respuesta y seguridad.", "Mantiene el plan simple y priorizado.", "Documenta cambios concretos."],
+      "que_registra": ["Cambios concretos del plan.", "Indicaciones nuevas o ajustadas.", "Motivo del ajuste."],
+      "formatos_asociados": [{"formato_id": "objetivos_y_plan", "estado": "existente", "tipo": "formato", "momento_uso": "Para actualizar plan, indicaciones y prioridades.", "enlaces": ["documento"]}],
+      "salida": "Plan ajustado de forma simple, priorizada y segura.",
+      "nom_004": ["Ajustes terapéuticos.", "Nuevas indicaciones."],
+      "nota_diseno": "El ajuste no debe convertirse en una lista extensa difícil de seguir."
+    },
+    {
+      "bloque_id": "nuevas_metas",
+      "slug": "nuevas-metas",
+      "orden": 7,
+      "titulo": "Nuevas metas",
+      "objetivo": "Definir una o dos metas medibles y realistas antes de la próxima cita.",
+      "que_hace_el_medico": ["Define una o dos metas medibles.", "Confirma que el paciente las perciba como realistas.", "Registra el primer paso concreto."],
+      "que_registra": ["Metas nuevas.", "Primer paso concreto.", "Confianza o factibilidad percibida."],
+      "formatos_asociados": [{"formato_id": "objetivos_y_plan", "estado": "existente", "tipo": "formato", "momento_uso": "Para definir metas nuevas y primer paso concreto.", "enlaces": ["documento"]}],
+      "salida": "Metas de seguimiento claras y factibles.",
+      "nom_004": ["Pronóstico y plan de seguimiento."],
+      "nota_diseno": "Las metas deben ser pocas, claras y factibles."
+    },
+    {
+      "bloque_id": "cierre_proxima_cita",
+      "slug": "cierre-proxima-cita",
+      "orden": 8,
+      "titulo": "Cierre y próxima cita",
+      "objetivo": "Definir continuidad, intervalo de seguimiento y motivos para contactar antes de la cita.",
+      "que_hace_el_medico": ["Define intervalo de seguimiento según riesgo y estabilidad clínica.", "Indica motivos para contactar antes de la cita.", "Cierra con dirección clara."],
+      "que_registra": ["Intervalo de seguimiento.", "Motivos de contacto anticipado.", "Resumen del plan de seguimiento."],
+      "formatos_asociados": [{"formato_id": "nota_evolucion", "estado": "futuro", "tipo": "formato", "momento_uso": "Como insumo futuro para nota de evolución.", "enlaces": []}],
+      "salida": "Seguimiento cerrado con continuidad definida.",
+      "nom_004": ["Pronóstico y plan de seguimiento."],
+      "nota_diseno": "El cierre mantiene continuidad clínica sin generar documento NOM formal en esta fase."
+    }
+  ]
+}

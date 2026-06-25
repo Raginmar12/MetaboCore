@@ -5,11 +5,55 @@ from django.apps import apps
 from django.test import Client, TestCase
 from jsonschema import validate
 
+from .flow_loaders import (
+    FlowViewerError,
+    list_flow_ids,
+    load_flow,
+    load_flow_by_slug,
+    validate_flow_id,
+    validate_slug,
+)
 from .loaders import get_form_bundle, list_form_ids
 from .renderers import build_print_sections
 
 WARNING_FRAGMENT = "No introducir datos reales"
 
+
+
+
+class FlowViewerLoaderTests(TestCase):
+    def test_list_flow_ids_includes_initial_flows(self):
+        self.assertIn("primera_consulta", list_flow_ids())
+        self.assertIn("seguimiento", list_flow_ids())
+
+    def test_load_primera_consulta_flow(self):
+        flow = load_flow("primera_consulta")
+        self.assertEqual(flow.data["titulo"], "Primera consulta MetaboCare")
+        self.assertEqual(len(flow.data["bloques"]), 12)
+        self.assertEqual(flow.slug, "primera-consulta")
+
+    def test_load_flow_by_slug(self):
+        flow = load_flow_by_slug("primera-consulta")
+        self.assertEqual(flow.flow_id, "primera_consulta")
+
+    def test_unsafe_flow_id_fails(self):
+        with self.assertRaises(FlowViewerError):
+            validate_flow_id("../primera_consulta")
+
+    def test_unsafe_slug_fails(self):
+        with self.assertRaises(FlowViewerError):
+            validate_slug("../primera-consulta")
+
+    def test_bienvenida_links_to_ficha_inicial(self):
+        flow = load_flow("primera_consulta")
+        block = next(
+            block
+            for block in flow.data["bloques"]
+            if block["slug"] == "bienvenida-y-encuadre"
+        )
+        formatos = block["formatos_asociados"]
+        self.assertEqual(formatos[0]["formato_id"], "ficha_inicial")
+        self.assertTrue(formatos[0]["tiene_schema"])
 
 class FormViewerLoaderTests(TestCase):
     def test_list_form_ids_includes_ficha_inicial(self):
@@ -232,6 +276,52 @@ class FormViewerRouteTests(TestCase):
             "/formatos/ficha_inicial/imprimir/tecnica/",
         ):
             response = self.client.post(path, {"nombre_completo": "No guardar"})
+            self.assertEqual(response.status_code, 405)
+
+    def test_flow_list_responds_200(self):
+        response = self.client.get("/flujos/")
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Flujos de consulta")
+        self.assertContains(response, "Primera consulta MetaboCare")
+        self.assertContains(response, "Seguimiento MetaboCare")
+        self.assert_warning_present(response)
+
+    def test_flow_detail_responds_200(self):
+        response = self.client.get("/flujos/primera-consulta/")
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Primera consulta MetaboCare")
+        self.assertContains(response, "Bienvenida y encuadre")
+        self.assertContains(response, "Ficha inicial")
+        self.assertContains(response, "Mapa operativo")
+        self.assertNotContains(response, "Guardar")
+        self.assertNotContains(response, "<input")
+        self.assertNotContains(response, "completado")
+        self.assert_warning_present(response)
+
+    def test_flow_block_responds_200_and_links_to_ficha_inicial_views(self):
+        response = self.client.get(
+            "/flujos/primera-consulta/bloque/bienvenida-y-encuadre/"
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Bienvenida y encuadre")
+        self.assertContains(response, "Ficha inicial")
+        self.assertContains(response, "/formatos/ficha_inicial/")
+        self.assertContains(response, "/formatos/ficha_inicial/imprimir/paciente/")
+        self.assertContains(response, "/formatos/ficha_inicial/imprimir/tecnica/")
+        self.assertContains(response, "/formatos/ficha_inicial/schema/")
+        self.assertContains(response, "/formatos/ficha_inicial/ui-schema/")
+        self.assertContains(response, "/formatos/ficha_inicial/json-ejemplo/")
+        self.assertNotContains(response, "Guardar")
+        self.assertNotContains(response, "<input")
+        self.assertNotContains(response, "completado")
+
+    def test_flow_post_is_not_allowed(self):
+        for path in (
+            "/flujos/",
+            "/flujos/primera-consulta/",
+            "/flujos/primera-consulta/bloque/bienvenida-y-encuadre/",
+        ):
+            response = self.client.post(path, {"dato": "No guardar"})
             self.assertEqual(response.status_code, 405)
 
     def test_schema_view_responds_200(self):

@@ -1,0 +1,27 @@
+{% extends "form_viewer/base.html" %}
+
+{% block title %}Flujos de consulta · MetaboCore{% endblock %}
+
+{% block content %}
+<section class="card">
+  <h1>Flujos de consulta</h1>
+  <p>Mapas operativos read-only para revisar el diseño de la consulta y ubicar los formatos clínicos en su momento de uso.</p>
+  <p class="readonly-note">Vista read-only. No usar datos reales. No guarda información. No declara cumplimiento NOM-004.</p>
+</section>
+
+<section class="grid">
+  {% for flow in flows %}
+    <article class="card flow-card">
+      <p class="flow-kicker">{{ flow.estado }}</p>
+      <h2>{{ flow.titulo }}</h2>
+      <p>{{ flow.proposito }}</p>
+      <p class="muted">Fuente humana: <code>{{ flow.doc_fuente }}</code></p>
+      <a class="button-link" href="{% url 'form_viewer:flow_detail' flow.slug %}">Ver flujo</a>
+    </article>
+  {% empty %}
+    <article class="card">
+      <p>No se encontraron flujos en <code>schemas/flows/</code>.</p>
+    </article>
+  {% endfor %}
+</section>
+{% endblock %}

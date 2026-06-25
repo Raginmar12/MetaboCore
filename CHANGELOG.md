@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.1.9 - Visor del flujo de consulta
+
+- Agrega `schemas/flows/` como mapa operativo estructurado de flujos de consulta.
+- Agrega visor read-only de flujos en Django.
+- Agrega rutas `/flujos/`, `/flujos/primera-consulta/` y vista de bloque.
+- Conecta bloques del flujo con formatos clínicos y sus vistas disponibles.
+- Agrega ADR-0008 sobre visor del flujo de consulta.
+
 ## v0.1.8 - Variantes imprimibles para pacientes y técnica
 
 - Separa la impresión en vista para pacientes y vista técnica.
