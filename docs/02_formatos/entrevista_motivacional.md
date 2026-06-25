@@ -2,11 +2,14 @@
 
 > Ejemplo de uso: este formato debe llenarse solo con información del paciente real dentro del sistema clínico correspondiente. En este repositorio no deben guardarse datos reales de pacientes.
 
-## Referencia clínica base
+## Referencias de apoyo
 
-Este formato se apoya en la guía clínica `docs/05_guias_clinicas/entrevista_motivacional_metabocare.md` para mantener lenguaje centrado en la persona, exploración de barreras y uso operativo de entrevista motivacional en MetaboCare.
+Este formato se apoya en:
 
-La guía orienta el criterio clínico y conversacional; no convierte este formato en schema, expediente, protocolo rígido ni declaración de cumplimiento NOM-004.
+- Guía clínica base: `docs/05_guias_clinicas/entrevista_motivacional_metabocare.md`.
+- Manual operativo pendiente: `docs/01_flujo_consulta/entrevista_motivacional_operativa.md`.
+
+Estas referencias ayudan a mantener lenguaje centrado en la persona, exploración de barreras y uso operativo de entrevista motivacional en MetaboCare. No convierten este formato en manual completo, schema, expediente, protocolo rígido ni declaración de cumplimiento NOM-004.
 
 ## Datos básicos
 

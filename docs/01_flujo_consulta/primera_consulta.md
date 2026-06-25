@@ -136,7 +136,11 @@ Base de confianza para explorar motivación, historia y plan.
 
 Referencia clínica base: `docs/05_guias_clinicas/entrevista_motivacional_metabocare.md`.
 
-Esta referencia orienta el lenguaje y la exploración de motivación, barreras y confianza; no sustituye el flujo de consulta ni convierte el bloque en protocolo rígido.
+Manual operativo pendiente: `docs/01_flujo_consulta/entrevista_motivacional_operativa.md`.
+
+Formato relacionado: `docs/02_formatos/entrevista_motivacional.md`.
+
+Estas referencias orientan el lenguaje y la exploración de motivación, barreras y confianza; no sustituyen el flujo de consulta ni convierten el bloque en protocolo rígido.
 
 ### Objetivo
 Explorar disposición al cambio, motivaciones personales, obstáculos y nivel de confianza del paciente.

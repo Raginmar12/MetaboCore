@@ -6,6 +6,7 @@ Este repositorio contiene la documentación clínica-operativa inicial de Metabo
 
 - Antes de crear código, lea `docs/01_flujo_consulta/`.
 - Antes de modificar flujos, formatos o schemas relacionados con entrevista motivacional, adherencia, barreras, comunicación clínica, estigma de peso u objetivos de cambio, revise las guías clínicas relevantes en `docs/05_guias_clinicas/`.
+- Antes de desarrollar o modificar `docs/01_flujo_consulta/entrevista_motivacional_operativa.md`, revise `docs/05_guias_clinicas/entrevista_motivacional_metabocare.md` y `docs/01_flujo_consulta/primera_consulta.md`; no convierta ese manual en formato, schema, NOM, expediente clínico ni protocolo rígido.
 - No cree modelos de expediente clínico genérico antes de entender el flujo MetaboCare.
 - No trate la NOM como el flujo principal de consulta.
 - La NOM es una capa documental de cumplimiento, no el orden conversacional de la consulta.
