@@ -239,6 +239,7 @@ Uso interno: registrar hipótesis operativas útiles para adaptar el estilo de c
 
 Si se usa una versión abreviada, los campos indispensables son:
 
+- `permiso_para_hablar_de_peso_y_metabolismo`
 - `motivo_principal_en_palabras_del_paciente`
 - `razones_para_cambiar`
 - `razones_para_no_cambiar`
@@ -251,6 +252,8 @@ Si se usa una versión abreviada, los campos indispensables son:
 - `acuerdo_de_seguimiento`
 
 Este núcleo mínimo permite conservar la lógica clínica de la entrevista motivacional breve aun cuando el tiempo sea limitado.
+
+El permiso se incluye en el núcleo mínimo porque protege el enfoque no estigmatizante del formato antes de hablar de peso, hábitos o metabolismo.
 
 ---
 

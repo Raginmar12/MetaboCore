@@ -8,6 +8,7 @@
   "required": [
     "formato_id",
     "version_schema",
+    "encuadre_permiso",
     "motivo_expectativas",
     "barreras_recursos",
     "primer_paso",
@@ -87,7 +88,10 @@
         "observaciones_de_permiso": {
           "type": "string"
         }
-      }
+      },
+      "required": [
+        "permiso_para_hablar_de_peso_y_metabolismo"
+      ]
     },
     "motivo_expectativas": {
       "type": "object",

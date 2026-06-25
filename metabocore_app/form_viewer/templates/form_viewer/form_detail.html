@@ -6,7 +6,9 @@
 <section class="card">
   <p><a href="{% url 'form_viewer:form_list' %}">← Volver a formatos</a></p>
   <p>
-    <a href="{% url 'form_viewer:form_print_patient' formato_id %}">Imprimir paciente</a> ·
+    {% if supports_patient_print %}
+      <a href="{% url 'form_viewer:form_print_patient' formato_id %}">Imprimir paciente</a> ·
+    {% endif %}
     <a href="{% url 'form_viewer:form_print_technical' formato_id %}">Imprimir técnica</a>
   </p>
   <h1>{{ title }}</h1>

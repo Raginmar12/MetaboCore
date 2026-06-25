@@ -55,7 +55,9 @@
       "observaciones_de_permiso"
     ],
     "permiso_para_hablar_de_peso_y_metabolismo": {
-      "ui:widget": "select"
+      "ui:widget": "select",
+      "ui:requerido_visual": true,
+      "ui:ayuda": "Campo indispensable: pedir permiso antes de hablar de peso, habitos o metabolismo."
     },
     "tema_autorizado": {
       "ui:widget": "checkboxes"

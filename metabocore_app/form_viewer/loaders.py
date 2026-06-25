@@ -84,6 +84,14 @@ def list_form_ids() -> list[str]:
     return sorted(form_ids)
 
 
+
+def supports_patient_print(schema: dict[str, Any]) -> bool:
+    """Return whether a schema allows a patient-facing print variant."""
+    metadata = schema.get("x-metabocore", {})
+    if isinstance(metadata, dict) and metadata.get("para_paciente") is False:
+        return False
+    return True
+
 def load_form_schema(formato_id: str) -> dict[str, Any]:
     formato_id = validate_formato_id(formato_id)
     return _load_json("forms", f"{formato_id}.schema.json")

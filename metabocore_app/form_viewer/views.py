@@ -14,6 +14,7 @@ from .loaders import (
     get_form_bundle_or_404,
     list_form_ids,
     load_form_schema,
+    supports_patient_print,
     load_ui_schema,
     validate_formato_id,
 )
@@ -80,7 +81,15 @@ def flow_block(request, flow_slug: str, block_slug: str):
 
 
 def form_list(request):
-    formatos = [{"formato_id": formato_id} for formato_id in list_form_ids()]
+    formatos = []
+    for formato_id in list_form_ids():
+        schema = load_form_schema(formato_id)
+        formatos.append(
+            {
+                "formato_id": formato_id,
+                "supports_patient_print": supports_patient_print(schema),
+            }
+        )
     return render(
         request,
         "form_viewer/form_list.html",
@@ -101,6 +110,7 @@ def form_detail(request, formato_id: str):
             "description": bundle.schema.get("description", ""),
             "sections": sections,
             "is_example": False,
+            "supports_patient_print": supports_patient_print(bundle.schema),
         },
     )
 
@@ -118,6 +128,7 @@ def form_example(request, formato_id: str):
             "description": bundle.schema.get("description", ""),
             "sections": sections,
             "is_example": True,
+            "supports_patient_print": supports_patient_print(bundle.schema),
         },
     )
 
@@ -139,6 +150,8 @@ def _patient_title(schema: dict, formato_id: str) -> str:
 
 def _render_print_view(request, formato_id: str, variant: str):
     formato_id, schema, ui_schema = _load_print_assets_or_404(formato_id)
+    if variant == "paciente" and not supports_patient_print(schema):
+        raise Http404("Este formato técnico interno no tiene variante para paciente.")
     sections = build_print_sections(schema, ui_schema, variant=variant)
     title = _patient_title(schema, formato_id)
     is_patient = variant == "paciente"

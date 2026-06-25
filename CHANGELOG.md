@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.1.14 - Permiso y variante interna de entrevista motivacional
+
+- Incluye permiso en el núcleo mínimo del formato de entrevista motivacional y evita variante paciente para formatos técnicos internos.
+
 ## v0.1.13 - Schema de entrevista motivacional
 
 - Agrega schema, UI schema y ejemplo ficticio del formato técnico interno de entrevista motivacional.
