@@ -11,6 +11,7 @@
     <span>→</span>
     <span>{{ flow_block.titulo }}</span>
   </nav>
+  {% if flow_block.stage %}<p class="stage-label">Etapa: {{ flow_block.stage.titulo }}</p>{% endif %}
   <p class="flow-kicker">Bloque {{ flow_block.orden }}</p>
   <h1>{{ flow_block.titulo }}</h1>
   <p class="readonly-note">{{ read_only_note }}</p>

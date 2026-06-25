@@ -113,6 +113,60 @@ def build_flow_timeline(flow: dict[str, Any]) -> list[dict[str, Any]]:
     return timeline
 
 
+def _blocks_by_id(flow: dict[str, Any]) -> dict[str, dict[str, Any]]:
+    return {str(block.get("bloque_id", "")): block for block in build_flow_timeline(flow)}
+
+
+def build_flow_stages(flow: dict[str, Any]) -> list[dict[str, Any]]:
+    """Build ordered flow stages with associated blocks.
+
+    Flows without `etapas` are returned as one operational stage so older or
+    smaller flow maps continue rendering.
+    """
+    stages = flow.get("etapas", [])
+    if not stages:
+        return [
+            {
+                "etapa_id": "flujo_operativo",
+                "slug": "flujo-operativo",
+                "orden": 1,
+                "titulo": "Flujo operativo",
+                "descripcion": "Bloques clínico-operativos del flujo.",
+                "bloques": build_flow_timeline(flow),
+            }
+        ]
+
+    block_map = _blocks_by_id(flow)
+    rendered_stages = []
+    for stage in sorted(stages, key=lambda item: item.get("orden", 0)):
+        stage_blocks = [
+            block_map[block_id]
+            for block_id in stage.get("bloques", [])
+            if block_id in block_map
+        ]
+        rendered_stages.append(
+            {
+                **stage,
+                "bloques": stage_blocks,
+            }
+        )
+    return rendered_stages
+
+
+def find_stage_for_block(flow: dict[str, Any], block_slug: str) -> dict[str, Any] | None:
+    for stage in build_flow_stages(flow):
+        for block in stage.get("bloques", []):
+            if block.get("slug") == block_slug:
+                return {
+                    "etapa_id": stage.get("etapa_id", ""),
+                    "slug": stage.get("slug", ""),
+                    "orden": stage.get("orden", ""),
+                    "titulo": stage.get("titulo", ""),
+                    "descripcion": stage.get("descripcion", ""),
+                }
+    return None
+
+
 def build_block_detail(flow: dict[str, Any], block_slug: str) -> dict[str, Any]:
     """Build one block with previous/next navigation metadata."""
     blocks = build_flow_timeline(flow)
@@ -122,6 +176,7 @@ def build_block_detail(flow: dict[str, Any], block_slug: str) -> dict[str, Any]:
             next_block = blocks[index + 1] if index + 1 < len(blocks) else None
             return {
                 **block,
+                "stage": find_stage_for_block(flow, block_slug),
                 "previous_block": previous_block,
                 "next_block": next_block,
             }

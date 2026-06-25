@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.1.10 - Macro-etapas del flujo de primera consulta
+
+- Agrupa la primera consulta en macro-etapas clínicas.
+- Reordena antecedentes clínicos relevantes antes de hábitos actuales.
+- Renombra antecedentes relevantes como antecedentes clínicos relevantes y seguridad.
+- Actualiza el visor de flujo para mostrar etapas y bloques.
+
 ## v0.1.9 - Visor del flujo de consulta
 
 - Agrega `schemas/flows/` como mapa operativo estructurado de flujos de consulta.

@@ -31,6 +31,35 @@ class FlowViewerLoaderTests(TestCase):
         self.assertEqual(flow.data["titulo"], "Primera consulta MetaboCare")
         self.assertEqual(len(flow.data["bloques"]), 12)
         self.assertEqual(flow.slug, "primera-consulta")
+        self.assertIn("etapas", flow.data)
+
+    def test_primera_consulta_flow_has_expected_stages(self):
+        flow = load_flow("primera_consulta")
+        stage_ids = [stage["etapa_id"] for stage in flow.data["etapas"]]
+        self.assertEqual(
+            stage_ids,
+            [
+                "datos_iniciales",
+                "conexion_clinica",
+                "historial_clinico_y_antecedentes",
+                "medicion_objetiva",
+                "integracion_clinica",
+                "plan_y_continuidad",
+            ],
+        )
+
+    def test_antecedentes_before_habitos(self):
+        flow = load_flow("primera_consulta")
+        blocks = {block["bloque_id"]: block for block in flow.data["bloques"]}
+        antecedentes = blocks["antecedentes_clinicos_relevantes_y_seguridad"]
+        habitos = blocks["habitos_actuales"]
+        self.assertEqual(antecedentes["orden"], 7)
+        self.assertEqual(habitos["orden"], 8)
+        self.assertLess(antecedentes["orden"], habitos["orden"])
+        self.assertEqual(
+            antecedentes["titulo"],
+            "Antecedentes clínicos relevantes y seguridad",
+        )
 
     def test_load_flow_by_slug(self):
         flow = load_flow_by_slug("primera-consulta")
@@ -290,7 +319,15 @@ class FormViewerRouteTests(TestCase):
         response = self.client.get("/flujos/primera-consulta/")
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Primera consulta MetaboCare")
+        self.assertContains(response, "Datos iniciales")
+        self.assertContains(response, "Conexión clínica")
+        self.assertContains(response, "Historial clínico y antecedentes")
+        self.assertContains(response, "Medición objetiva")
+        self.assertContains(response, "Integración clínica")
+        self.assertContains(response, "Plan y continuidad")
         self.assertContains(response, "Bienvenida y encuadre")
+        self.assertContains(response, "Antecedentes clínicos relevantes y seguridad")
+        self.assertContains(response, "Hábitos actuales")
         self.assertContains(response, "Ficha inicial")
         self.assertContains(response, "Mapa operativo")
         self.assertNotContains(response, "Guardar")
@@ -314,6 +351,27 @@ class FormViewerRouteTests(TestCase):
         self.assertNotContains(response, "Guardar")
         self.assertNotContains(response, "<input")
         self.assertNotContains(response, "completado")
+
+
+    def test_new_antecedentes_and_habitos_block_routes_respond_200(self):
+        antecedentes_response = self.client.get(
+            "/flujos/primera-consulta/bloque/antecedentes-clinicos-relevantes-y-seguridad/"
+        )
+        self.assertEqual(antecedentes_response.status_code, 200)
+        self.assertContains(
+            antecedentes_response,
+            "Antecedentes clínicos relevantes y seguridad",
+        )
+        self.assertContains(
+            antecedentes_response,
+            "Etapa: Historial clínico y antecedentes",
+        )
+
+        habitos_response = self.client.get(
+            "/flujos/primera-consulta/bloque/habitos-actuales/"
+        )
+        self.assertEqual(habitos_response.status_code, 200)
+        self.assertContains(habitos_response, "Hábitos actuales")
 
     def test_flow_post_is_not_allowed(self):
         for path in (

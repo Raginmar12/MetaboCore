@@ -8,7 +8,7 @@ from django.shortcuts import render
 from django.views.decorators.http import require_GET
 
 from .flow_loaders import get_block_or_404, get_flow_or_404, list_flows
-from .flow_renderers import build_block_detail, build_flow_timeline
+from .flow_renderers import build_block_detail, build_flow_stages, build_flow_timeline
 from .loaders import (
     FormViewerError,
     get_form_bundle_or_404,
@@ -45,6 +45,7 @@ def flow_list(request):
 def flow_detail(request, flow_slug: str):
     flow = get_flow_or_404(flow_slug)
     timeline = build_flow_timeline(flow.data)
+    stages = build_flow_stages(flow.data)
     return render(
         request,
         "form_viewer/flow_detail.html",
@@ -52,6 +53,7 @@ def flow_detail(request, flow_slug: str):
             **_base_context(),
             "flow": flow.data,
             "timeline": timeline,
+            "stages": stages,
             "read_only_note": (
                 "Mapa operativo de consulta; no es expediente clínico electrónico."
             ),

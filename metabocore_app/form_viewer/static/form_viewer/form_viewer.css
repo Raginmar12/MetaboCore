@@ -614,3 +614,42 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monos
 }
 
 .block-nav { justify-content: space-between; }
+
+.stage-list {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.flow-stage {
+  border-left: 5px solid var(--accent);
+}
+
+.stage-header {
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+}
+
+.stage-header h2 {
+  margin: 0.15rem 0 0.35rem;
+}
+
+.stage-block {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  box-shadow: none;
+  margin-bottom: 0.75rem;
+  padding: 0.9rem;
+}
+
+.stage-label {
+  background: #f0fdfa;
+  border: 1px solid #99f6e4;
+  border-radius: 999px;
+  color: #115e59;
+  display: inline-block;
+  font-weight: 800;
+  margin: 0 0 0.75rem;
+  padding: 0.25rem 0.7rem;
+}

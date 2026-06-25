@@ -13,6 +13,80 @@
     "No declara cumplimiento completo NOM-004.",
     "La NOM-004 es capa documental, no orden conversacional."
   ],
+  "etapas": [
+    {
+      "etapa_id": "datos_iniciales",
+      "slug": "datos-iniciales",
+      "orden": 1,
+      "titulo": "Datos iniciales",
+      "descripcion": "Recepción, encuadre inicial y datos mínimos para iniciar la consulta.",
+      "formato_principal": "ficha_inicial",
+      "bloques": [
+        "bienvenida_y_encuadre"
+      ]
+    },
+    {
+      "etapa_id": "conexion_clinica",
+      "slug": "conexion-clinica",
+      "orden": 2,
+      "titulo": "Conexión clínica",
+      "descripcion": "Motivo de consulta, rapport, expectativas y entrevista motivacional breve.",
+      "formato_principal": "entrevista_motivacional",
+      "bloques": [
+        "motivo_consulta_expectativas",
+        "rapport",
+        "entrevista_motivacional_breve"
+      ]
+    },
+    {
+      "etapa_id": "historial_clinico_y_antecedentes",
+      "slug": "historial-clinico-y-antecedentes",
+      "orden": 3,
+      "titulo": "Historial clínico y antecedentes",
+      "descripcion": "Historial metabólico, historia de peso, tratamientos previos, antecedentes clínicos de seguridad y hábitos actuales.",
+      "formato_principal": "antecedentes_clinicos",
+      "bloques": [
+        "historia_metabolica_dirigida",
+        "historia_peso_tratamientos_previos",
+        "antecedentes_clinicos_relevantes_y_seguridad",
+        "habitos_actuales"
+      ]
+    },
+    {
+      "etapa_id": "medicion_objetiva",
+      "slug": "medicion-objetiva",
+      "orden": 4,
+      "titulo": "Medición objetiva",
+      "descripcion": "Mediciones clínicas y análisis corporal para establecer línea base y seguimiento.",
+      "formato_principal": "analisis_corporal",
+      "bloques": [
+        "mediciones_analisis_corporal"
+      ]
+    },
+    {
+      "etapa_id": "integracion_clinica",
+      "slug": "integracion-clinica",
+      "orden": 5,
+      "titulo": "Integración clínica",
+      "descripcion": "Síntesis clínica comprensible que conecta historia, hábitos, mediciones y riesgos.",
+      "formato_principal": "nucleo_conceptual",
+      "bloques": [
+        "integracion_clinica"
+      ]
+    },
+    {
+      "etapa_id": "plan_y_continuidad",
+      "slug": "plan-y-continuidad",
+      "orden": 6,
+      "titulo": "Plan y continuidad",
+      "descripcion": "Plan inicial, primer paso concreto, cierre y seguimiento.",
+      "formato_principal": "objetivos_y_plan",
+      "bloques": [
+        "plan_inicial",
+        "cierre_y_seguimiento"
+      ]
+    }
+  ],
   "bloques": [
     {
       "bloque_id": "bienvenida_y_encuadre",
@@ -36,11 +110,22 @@
           "estado": "existente",
           "tipo": "formato",
           "momento_uso": "Antes de consulta, durante recepción o al inicio del bloque.",
-          "enlaces": ["preview", "ejemplo_ficticio", "imprimir_paciente", "imprimir_tecnica", "schema", "ui_schema", "json_ejemplo"]
+          "enlaces": [
+            "preview",
+            "ejemplo_ficticio",
+            "imprimir_paciente",
+            "imprimir_tecnica",
+            "schema",
+            "ui_schema",
+            "json_ejemplo"
+          ]
         }
       ],
       "salida": "Paciente orientado sobre el proceso de consulta y disposición inicial para conversar.",
-      "nom_004": ["Identificación del paciente, cuando aplique en el sistema formal.", "Inicio de padecimiento actual o motivo de atención."],
+      "nom_004": [
+        "Identificación del paciente, cuando aplique en el sistema formal.",
+        "Inicio de padecimiento actual o motivo de atención."
+      ],
       "nota_diseno": "La ficha inicial debe mantenerse breve y no reemplaza el rapport ni la exploración del motivo de consulta."
     },
     {
@@ -49,11 +134,32 @@
       "orden": 2,
       "titulo": "Motivo de consulta y expectativas",
       "objetivo": "Identificar por qué acude el paciente, qué espera lograr y qué resultado consideraría valioso.",
-      "que_hace_el_medico": ["Escucha el motivo en palabras del paciente.", "Diferencia motivo principal, expectativas y preocupaciones.", "Aclara expectativas poco realistas sin invalidarlas."],
-      "que_registra": ["Motivo principal.", "Expectativa clínica o personal.", "Preocupación dominante."],
-      "formatos_asociados": [{"formato_id": "entrevista_motivacional", "estado": "existente", "tipo": "formato", "momento_uso": "Durante exploración de expectativas y motivo de consulta.", "enlaces": ["documento"]}],
+      "que_hace_el_medico": [
+        "Escucha el motivo en palabras del paciente.",
+        "Diferencia motivo principal, expectativas y preocupaciones.",
+        "Aclara expectativas poco realistas sin invalidarlas."
+      ],
+      "que_registra": [
+        "Motivo principal.",
+        "Expectativa clínica o personal.",
+        "Preocupación dominante."
+      ],
+      "formatos_asociados": [
+        {
+          "formato_id": "entrevista_motivacional",
+          "estado": "existente",
+          "tipo": "formato",
+          "momento_uso": "Durante exploración de expectativas y motivo de consulta.",
+          "enlaces": [
+            "documento"
+          ]
+        }
+      ],
       "salida": "Motivo de consulta claro y expectativas iniciales identificadas.",
-      "nom_004": ["Padecimiento actual.", "Motivo de consulta."],
+      "nom_004": [
+        "Padecimiento actual.",
+        "Motivo de consulta."
+      ],
       "nota_diseno": "El motivo debe conservar el lenguaje principal del paciente cuando sea útil."
     },
     {
@@ -62,11 +168,32 @@
       "orden": 3,
       "titulo": "Rapport",
       "objetivo": "Construir una relación de confianza y colaboración antes de entrar a recomendaciones o decisiones terapéuticas.",
-      "que_hace_el_medico": ["Valida experiencias previas.", "Reconoce dificultad del proceso metabólico y de control de peso.", "Evita culpar al paciente."],
-      "que_registra": ["Experiencias previas relevantes.", "Elementos que generan confianza o resistencia.", "Preferencias de comunicación."],
-      "formatos_asociados": [{"formato_id": "entrevista_motivacional", "estado": "existente", "tipo": "formato", "momento_uso": "Durante rapport y exploración de experiencias previas.", "enlaces": ["documento"]}],
+      "que_hace_el_medico": [
+        "Valida experiencias previas.",
+        "Reconoce dificultad del proceso metabólico y de control de peso.",
+        "Evita culpar al paciente."
+      ],
+      "que_registra": [
+        "Experiencias previas relevantes.",
+        "Elementos que generan confianza o resistencia.",
+        "Preferencias de comunicación."
+      ],
+      "formatos_asociados": [
+        {
+          "formato_id": "entrevista_motivacional",
+          "estado": "existente",
+          "tipo": "formato",
+          "momento_uso": "Durante rapport y exploración de experiencias previas.",
+          "enlaces": [
+            "documento"
+          ]
+        }
+      ],
       "salida": "Base de confianza para explorar motivación, historia y plan.",
-      "nom_004": ["Padecimiento actual.", "Contexto clínico relevante."],
+      "nom_004": [
+        "Padecimiento actual.",
+        "Contexto clínico relevante."
+      ],
       "nota_diseno": "El rapport no debe comprimirse en una plantilla administrativa."
     },
     {
@@ -75,11 +202,35 @@
       "orden": 4,
       "titulo": "Entrevista motivacional breve",
       "objetivo": "Explorar disposición al cambio, motivaciones personales, obstáculos y nivel de confianza del paciente.",
-      "que_hace_el_medico": ["Pregunta por objetivos personales.", "Usa escalas de importancia y confianza.", "Identifica obstáculos y un primer cambio posible."],
-      "que_registra": ["Objetivo principal del paciente.", "Escala de importancia.", "Escala de confianza.", "Obstáculo principal.", "Primer cambio posible."],
-      "formatos_asociados": [{"formato_id": "entrevista_motivacional", "estado": "existente", "tipo": "formato", "momento_uso": "Durante exploración de motivación, obstáculos y primer cambio posible.", "enlaces": ["documento"]}],
+      "que_hace_el_medico": [
+        "Pregunta por objetivos personales.",
+        "Usa escalas de importancia y confianza.",
+        "Identifica obstáculos y un primer cambio posible."
+      ],
+      "que_registra": [
+        "Objetivo principal del paciente.",
+        "Escala de importancia.",
+        "Escala de confianza.",
+        "Obstáculo principal.",
+        "Primer cambio posible."
+      ],
+      "formatos_asociados": [
+        {
+          "formato_id": "entrevista_motivacional",
+          "estado": "existente",
+          "tipo": "formato",
+          "momento_uso": "Durante exploración de motivación, obstáculos y primer cambio posible.",
+          "enlaces": [
+            "documento"
+          ]
+        }
+      ],
       "salida": "Una meta inicial realista y expresada en lenguaje del paciente.",
-      "nom_004": ["Padecimiento actual.", "Plan terapéutico.", "Pronóstico y seguimiento, cuando aplique."],
+      "nom_004": [
+        "Padecimiento actual.",
+        "Plan terapéutico.",
+        "Pronóstico y seguimiento, cuando aplique."
+      ],
       "nota_diseno": "El bloque orienta la conversación, no califica al paciente."
     },
     {
@@ -88,11 +239,32 @@
       "orden": 5,
       "titulo": "Historia metabólica dirigida",
       "objetivo": "Explorar datos clínicos relacionados con el eje cardiometabólico y sus manifestaciones principales.",
-      "que_hace_el_medico": ["Investiga antecedentes de glucosa, presión, lípidos, hígado graso, ácido úrico y eventos cardiovasculares.", "Revisa síntomas y estudios previos disponibles.", "Identifica patrones de progresión."],
-      "que_registra": ["Problemas cardiometabólicos conocidos.", "Fecha aproximada de diagnóstico o detección.", "Estudios disponibles y pendientes.", "Síntomas relevantes."],
-      "formatos_asociados": [{"formato_id": "historia_clinica_metabolica", "estado": "futuro", "tipo": "formato", "momento_uso": "Durante la exploración dirigida del eje cardiometabólico.", "enlaces": []}],
+      "que_hace_el_medico": [
+        "Investiga antecedentes de glucosa, presión, lípidos, hígado graso, ácido úrico y eventos cardiovasculares.",
+        "Revisa síntomas y estudios previos disponibles.",
+        "Identifica patrones de progresión."
+      ],
+      "que_registra": [
+        "Problemas cardiometabólicos conocidos.",
+        "Fecha aproximada de diagnóstico o detección.",
+        "Estudios disponibles y pendientes.",
+        "Síntomas relevantes."
+      ],
+      "formatos_asociados": [
+        {
+          "formato_id": "historia_clinica_metabolica",
+          "estado": "futuro",
+          "tipo": "formato",
+          "momento_uso": "Durante la exploración dirigida del eje cardiometabólico.",
+          "enlaces": []
+        }
+      ],
       "salida": "Mapa inicial de riesgos y manifestaciones cardiometabólicas.",
-      "nom_004": ["Antecedentes personales patológicos.", "Padecimiento actual.", "Diagnósticos o problemas clínicos."],
+      "nom_004": [
+        "Antecedentes personales patológicos.",
+        "Padecimiento actual.",
+        "Diagnósticos o problemas clínicos."
+      ],
       "nota_diseno": "Formato pendiente; no debe adelantarse como expediente genérico."
     },
     {
@@ -101,38 +273,102 @@
       "orden": 6,
       "titulo": "Historia de peso y tratamientos previos",
       "objetivo": "Comprender trayectoria de peso, intentos previos, respuestas, recaídas y factores que modificaron el peso.",
-      "que_hace_el_medico": ["Explora peso habitual, peso máximo, cambios relevantes y eventos asociados.", "Revisa dietas, medicamentos, suplementos, ejercicio y procedimientos previos.", "Identifica qué funcionó, qué no y por qué."],
-      "que_registra": ["Línea de tiempo de peso.", "Tratamientos previos y respuesta.", "Efectos adversos o experiencias negativas.", "Factores asociados a aumento o pérdida de peso."],
-      "formatos_asociados": [{"formato_id": "historia_peso_tratamientos", "estado": "futuro", "tipo": "formato", "momento_uso": "Durante revisión de trayectoria de peso e intentos previos.", "enlaces": []}],
+      "que_hace_el_medico": [
+        "Explora peso habitual, peso máximo, cambios relevantes y eventos asociados.",
+        "Revisa dietas, medicamentos, suplementos, ejercicio y procedimientos previos.",
+        "Identifica qué funcionó, qué no y por qué."
+      ],
+      "que_registra": [
+        "Línea de tiempo de peso.",
+        "Tratamientos previos y respuesta.",
+        "Efectos adversos o experiencias negativas.",
+        "Factores asociados a aumento o pérdida de peso."
+      ],
+      "formatos_asociados": [
+        {
+          "formato_id": "historia_peso_tratamientos",
+          "estado": "futuro",
+          "tipo": "formato",
+          "momento_uso": "Durante revisión de trayectoria de peso e intentos previos.",
+          "enlaces": []
+        }
+      ],
       "salida": "Comprensión de trayectoria de peso y lecciones para el plan actual.",
-      "nom_004": ["Padecimiento actual.", "Antecedentes terapéuticos relevantes."],
+      "nom_004": [
+        "Padecimiento actual.",
+        "Antecedentes terapéuticos relevantes."
+      ],
       "nota_diseno": "El formato futuro debe capturar trayectoria sin culpabilizar al paciente."
+    },
+    {
+      "bloque_id": "antecedentes_clinicos_relevantes_y_seguridad",
+      "slug": "antecedentes-clinicos-relevantes-y-seguridad",
+      "orden": 7,
+      "titulo": "Antecedentes clínicos relevantes y seguridad",
+      "objetivo": "Identificar antecedentes personales, familiares, quirúrgicos, medicamentos, alergias y condiciones que modifiquen riesgo, seguridad o decisiones terapéuticas.",
+      "que_hace_el_medico": [
+        "Revisa enfermedades previas, cirugías, cesáreas si aplica y fracturas relevantes.",
+        "Revisa medicamentos actuales, alergias y antecedentes familiares cardiometabólicos.",
+        "Considera salud reproductiva, enfermedad renal o hepática y otras condiciones que modifiquen seguridad terapéutica cuando aplique."
+      ],
+      "que_registra": [
+        "Antecedentes personales patológicos, quirúrgicos y eventos relevantes de seguridad.",
+        "Medicamentos actuales y alergias.",
+        "Antecedentes heredofamiliares cardiometabólicos.",
+        "Condiciones renales, hepáticas o reproductivas relevantes cuando aplique."
+      ],
+      "formatos_asociados": [
+        {
+          "formato_id": "antecedentes_clinicos",
+          "estado": "futuro",
+          "tipo": "formato",
+          "momento_uso": "Durante revisión de antecedentes y perfil de seguridad clínica.",
+          "enlaces": []
+        }
+      ],
+      "salida": "Perfil de seguridad clínica y riesgo para decisiones terapéuticas.",
+      "nom_004": [
+        "Antecedentes heredofamiliares.",
+        "Antecedentes personales patológicos y no patológicos.",
+        "Terapéutica empleada."
+      ],
+      "nota_diseno": "Este bloque se ubica antes de hábitos actuales para cerrar el historial previo y perfil de seguridad antes de pasar al presente funcional."
     },
     {
       "bloque_id": "habitos_actuales",
       "slug": "habitos-actuales",
-      "orden": 7,
+      "orden": 8,
       "titulo": "Hábitos actuales",
       "objetivo": "Explorar alimentación, actividad física, sueño, estrés, consumo de alcohol/tabaco y rutinas que influyen en el plan.",
-      "que_hace_el_medico": ["Pregunta por patrones, no solo por cantidades.", "Detecta oportunidades de cambio realistas.", "Evita convertir la consulta en interrogatorio alimentario extenso si no es necesario."],
-      "que_registra": ["Patrón alimentario general.", "Actividad física actual.", "Sueño y estrés.", "Barreras prácticas."],
-      "formatos_asociados": [{"formato_id": "objetivos_y_plan", "estado": "existente", "tipo": "formato", "momento_uso": "Durante identificación de hábitos y barreras que condicionan el plan.", "enlaces": ["documento"]}],
+      "que_hace_el_medico": [
+        "Pregunta por patrones, no solo por cantidades.",
+        "Detecta oportunidades de cambio realistas.",
+        "Evita convertir la consulta en interrogatorio alimentario extenso si no es necesario."
+      ],
+      "que_registra": [
+        "Patrón alimentario general.",
+        "Actividad física actual.",
+        "Sueño y estrés.",
+        "Barreras prácticas."
+      ],
+      "formatos_asociados": [
+        {
+          "formato_id": "objetivos_y_plan",
+          "estado": "existente",
+          "tipo": "formato",
+          "momento_uso": "Durante identificación de hábitos y barreras que condicionan el plan.",
+          "enlaces": [
+            "documento"
+          ]
+        }
+      ],
       "salida": "Lista de hábitos y barreras que condicionan el plan inicial.",
-      "nom_004": ["Interrogatorio por aparatos y sistemas, cuando aplique.", "Padecimiento actual.", "Plan terapéutico."],
+      "nom_004": [
+        "Interrogatorio por aparatos y sistemas, cuando aplique.",
+        "Padecimiento actual.",
+        "Plan terapéutico."
+      ],
       "nota_diseno": "El bloque orienta decisiones realistas, no una auditoría rígida de hábitos."
-    },
-    {
-      "bloque_id": "antecedentes_relevantes",
-      "slug": "antecedentes-relevantes",
-      "orden": 8,
-      "titulo": "Antecedentes relevantes",
-      "objetivo": "Identificar antecedentes personales, familiares, medicamentos, alergias y condiciones que modifiquen riesgo o tratamiento.",
-      "que_hace_el_medico": ["Revisa enfermedades previas, cirugías, medicamentos y alergias.", "Explora antecedentes familiares cardiometabólicos.", "Considera salud reproductiva cuando aplique."],
-      "que_registra": ["Antecedentes personales patológicos.", "Medicamentos actuales.", "Alergias.", "Antecedentes heredofamiliares."],
-      "formatos_asociados": [{"formato_id": "antecedentes_clinicos", "estado": "futuro", "tipo": "formato", "momento_uso": "Durante revisión de antecedentes y perfil de seguridad clínica.", "enlaces": []}],
-      "salida": "Perfil de seguridad clínica y riesgo para decisiones terapéuticas.",
-      "nom_004": ["Antecedentes heredofamiliares.", "Antecedentes personales patológicos y no patológicos.", "Terapéutica empleada."],
-      "nota_diseno": "Formato pendiente; debe derivarse del flujo y de revisión NOM posterior."
     },
     {
       "bloque_id": "mediciones_analisis_corporal",
@@ -140,11 +376,33 @@
       "orden": 9,
       "titulo": "Mediciones y análisis corporal",
       "objetivo": "Obtener mediciones clínicas útiles para estimar riesgo, establecer línea base y dar seguimiento.",
-      "que_hace_el_medico": ["Realiza o revisa mediciones con técnica adecuada.", "Explica el significado de los datos sin reducir al paciente a sus números.", "Identifica mediciones que requieren seguimiento prioritario."],
-      "que_registra": ["Peso, talla, IMC, cintura, presión arterial y frecuencia cardiaca.", "Grasa corporal, masa muscular y grasa visceral si el equipo las reporta.", "Observaciones de técnica o limitaciones."],
-      "formatos_asociados": [{"formato_id": "analisis_corporal", "estado": "existente", "tipo": "formato", "momento_uso": "Durante mediciones clínicas y análisis corporal.", "enlaces": ["documento"]}],
+      "que_hace_el_medico": [
+        "Realiza o revisa mediciones con técnica adecuada.",
+        "Explica el significado de los datos sin reducir al paciente a sus números.",
+        "Identifica mediciones que requieren seguimiento prioritario."
+      ],
+      "que_registra": [
+        "Peso, talla, IMC, cintura, presión arterial y frecuencia cardiaca.",
+        "Grasa corporal, masa muscular y grasa visceral si el equipo las reporta.",
+        "Observaciones de técnica o limitaciones."
+      ],
+      "formatos_asociados": [
+        {
+          "formato_id": "analisis_corporal",
+          "estado": "existente",
+          "tipo": "formato",
+          "momento_uso": "Durante mediciones clínicas y análisis corporal.",
+          "enlaces": [
+            "documento"
+          ]
+        }
+      ],
       "salida": "Línea base objetiva para integración clínica y seguimiento.",
-      "nom_004": ["Exploración física.", "Signos vitales.", "Datos antropométricos."],
+      "nom_004": [
+        "Exploración física.",
+        "Signos vitales.",
+        "Datos antropométricos."
+      ],
       "nota_diseno": "Las mediciones complementan la conversación clínica y no sustituyen la integración del caso."
     },
     {
@@ -153,11 +411,34 @@
       "orden": 10,
       "titulo": "Integración clínica",
       "objetivo": "Unir historia, hábitos, mediciones y riesgos en una explicación clínica comprensible.",
-      "que_hace_el_medico": ["Identifica problemas principales y procesos subyacentes.", "Distingue núcleo metabólico, moduladores y condiciones asociadas.", "Explica al paciente el modelo integrador de su caso."],
-      "que_registra": ["Problemas clínicos principales.", "Hipótesis de núcleo metabólico.", "Moduladores relevantes.", "Condiciones asociadas."],
-      "formatos_asociados": [{"formato_id": "nucleo_conceptual", "estado": "referencia", "tipo": "referencia", "momento_uso": "Como marco conceptual para explicar la integración clínica.", "enlaces": ["documento"]}],
+      "que_hace_el_medico": [
+        "Identifica problemas principales y procesos subyacentes.",
+        "Distingue núcleo metabólico, moduladores y condiciones asociadas.",
+        "Explica al paciente el modelo integrador de su caso."
+      ],
+      "que_registra": [
+        "Problemas clínicos principales.",
+        "Hipótesis de núcleo metabólico.",
+        "Moduladores relevantes.",
+        "Condiciones asociadas."
+      ],
+      "formatos_asociados": [
+        {
+          "formato_id": "nucleo_conceptual",
+          "estado": "referencia",
+          "tipo": "referencia",
+          "momento_uso": "Como marco conceptual para explicar la integración clínica.",
+          "enlaces": [
+            "documento"
+          ]
+        }
+      ],
       "salida": "Interpretación clínica compartida entre médico y paciente.",
-      "nom_004": ["Diagnósticos o problemas clínicos.", "Pronóstico.", "Justificación del plan."],
+      "nom_004": [
+        "Diagnósticos o problemas clínicos.",
+        "Pronóstico.",
+        "Justificación del plan."
+      ],
       "nota_diseno": "La integración debe ser explicación clínica comprensible, no solo etiquetas diagnósticas."
     },
     {
@@ -166,11 +447,35 @@
       "orden": 11,
       "titulo": "Plan inicial",
       "objetivo": "Construir un plan inicial realista, medible y ajustable con prioridades clínicas y un primer paso concreto.",
-      "que_hace_el_medico": ["Define objetivos clínicos y personales.", "Indica cambios de alimentación, actividad, sueño/estrés, estudios o medicamentos si aplica.", "Asegura comprensión y factibilidad."],
-      "que_registra": ["Objetivo principal y secundarios.", "Indicaciones iniciales.", "Estudios solicitados.", "Medicamento si aplica.", "Señales de alarma."],
-      "formatos_asociados": [{"formato_id": "objetivos_y_plan", "estado": "existente", "tipo": "formato", "momento_uso": "Durante construcción del plan inicial e indicaciones.", "enlaces": ["documento"]}],
+      "que_hace_el_medico": [
+        "Define objetivos clínicos y personales.",
+        "Indica cambios de alimentación, actividad, sueño/estrés, estudios o medicamentos si aplica.",
+        "Asegura comprensión y factibilidad."
+      ],
+      "que_registra": [
+        "Objetivo principal y secundarios.",
+        "Indicaciones iniciales.",
+        "Estudios solicitados.",
+        "Medicamento si aplica.",
+        "Señales de alarma."
+      ],
+      "formatos_asociados": [
+        {
+          "formato_id": "objetivos_y_plan",
+          "estado": "existente",
+          "tipo": "formato",
+          "momento_uso": "Durante construcción del plan inicial e indicaciones.",
+          "enlaces": [
+            "documento"
+          ]
+        }
+      ],
       "salida": "Plan inicial acordado, comprensible y accionable.",
-      "nom_004": ["Plan terapéutico.", "Receta e indicaciones.", "Solicitud de estudios."],
+      "nom_004": [
+        "Plan terapéutico.",
+        "Receta e indicaciones.",
+        "Solicitud de estudios."
+      ],
       "nota_diseno": "El plan debe ser priorizado y factible, no una lista extensa de obligaciones."
     },
     {
@@ -179,11 +484,33 @@
       "orden": 12,
       "titulo": "Cierre y seguimiento",
       "objetivo": "Confirmar comprensión, resolver dudas y establecer continuidad.",
-      "que_hace_el_medico": ["Resume hallazgos y plan en lenguaje claro.", "Confirma el primer paso antes de la próxima consulta.", "Agenda o indica intervalo de seguimiento."],
-      "que_registra": ["Resumen entregado.", "Meta inmediata.", "Fecha o intervalo de seguimiento.", "Dudas relevantes."],
-      "formatos_asociados": [{"formato_id": "objetivos_y_plan", "estado": "existente", "tipo": "formato", "momento_uso": "Durante cierre, resumen y definición de seguimiento.", "enlaces": ["documento"]}],
+      "que_hace_el_medico": [
+        "Resume hallazgos y plan en lenguaje claro.",
+        "Confirma el primer paso antes de la próxima consulta.",
+        "Agenda o indica intervalo de seguimiento."
+      ],
+      "que_registra": [
+        "Resumen entregado.",
+        "Meta inmediata.",
+        "Fecha o intervalo de seguimiento.",
+        "Dudas relevantes."
+      ],
+      "formatos_asociados": [
+        {
+          "formato_id": "objetivos_y_plan",
+          "estado": "existente",
+          "tipo": "formato",
+          "momento_uso": "Durante cierre, resumen y definición de seguimiento.",
+          "enlaces": [
+            "documento"
+          ]
+        }
+      ],
       "salida": "Consulta cerrada con dirección clara y seguimiento definido.",
-      "nom_004": ["Pronóstico y seguimiento.", "Nota médica o plan terapéutico."],
+      "nom_004": [
+        "Pronóstico y seguimiento.",
+        "Nota médica o plan terapéutico."
+      ],
       "nota_diseno": "El cierre debe dejar continuidad clara sin convertirse en generación documental formal."
     }
   ]

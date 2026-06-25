@@ -40,7 +40,9 @@ Los schemas pueden alimentar el visor estructural, los ejemplos ficticios, disti
 
 ## Flujos operativos navegables
 
-La carpeta `schemas/flows/` contiene mapas operativos estructurados para renderizar el flujo de consulta en el visor Django. Estos JSON no reemplazan la documentación humana de `docs/01_flujo_consulta/`; solo permiten navegar bloques, asociar formatos y mostrar la capa NOM como referencia documental secundaria.
+La carpeta `schemas/flows/` contiene mapas operativos estructurados para renderizar el flujo de consulta en el visor Django. Estos JSON no reemplazan la documentación humana de `docs/01_flujo_consulta/`; solo permiten navegar macro-etapas, bloques, asociaciones de formatos y mostrar la capa NOM como referencia documental secundaria.
+
+Los archivos `*.flow.json` pueden incluir `etapas` para agrupar bloques por macro-etapas clínicas. Las etapas solo agrupan y describen; no son estados de captura, no indican avance, no son checklist y no reemplazan el Markdown humano.
 
 Los JSON de flujo deben evitar duplicar todo el contenido del Markdown. Deben conservar lo necesario para navegación, timeline, enlaces a formatos y advertencias read-only. No deben agregar estados de captura, completado, persistencia ni datos de pacientes.
 

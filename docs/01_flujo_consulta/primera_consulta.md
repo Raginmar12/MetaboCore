@@ -12,6 +12,19 @@ Definir el flujo operativo de la primera consulta MetaboCare para comprender a l
 - Las mediciones complementan la consulta, no la sustituyen.
 - El cierre debe dejar un primer paso concreto y seguimiento definido.
 
+## Macro-etapas de la primera consulta
+
+La primera consulta se organiza en seis macro-etapas:
+
+1. Datos iniciales.
+2. Conexión clínica.
+3. Historial clínico y antecedentes.
+4. Medición objetiva.
+5. Integración clínica.
+6. Plan y continuidad.
+
+Estas etapas no son una checklist rígida. Funcionan como mapa clínico-operativo para mantener el flujo humano de la consulta. La NOM-004 permanece como capa documental secundaria y no reemplaza el orden conversacional ni convierte la consulta en expediente.
+
 ## Flujo general
 
 1. Bienvenida y encuadre.
@@ -20,8 +33,8 @@ Definir el flujo operativo de la primera consulta MetaboCare para comprender a l
 4. Entrevista motivacional breve.
 5. Historia metabólica dirigida.
 6. Historia de peso y tratamientos previos.
-7. Hábitos actuales.
-8. Antecedentes relevantes.
+7. Antecedentes clínicos relevantes y seguridad.
+8. Hábitos actuales.
 9. Mediciones y análisis corporal.
 10. Integración clínica.
 11. Plan inicial.
@@ -218,7 +231,40 @@ Formato futuro de historia de peso.
 ### Salida del bloque
 Comprensión de trayectoria de peso y lecciones para el plan actual.
 
-## Bloque 7. Hábitos actuales
+## Bloque 7. Antecedentes clínicos relevantes y seguridad
+
+### Objetivo
+Identificar antecedentes personales, familiares, quirúrgicos, medicamentos, alergias y condiciones que modifiquen riesgo, seguridad o decisiones terapéuticas.
+
+### Qué hace el médico
+- Revisa enfermedades previas, cirugías, cesáreas si aplica y fracturas relevantes.
+- Revisa medicamentos actuales, alergias y antecedentes familiares cardiometabólicos.
+- Considera salud reproductiva, enfermedad renal o hepática y otras condiciones que modifiquen seguridad terapéutica cuando aplique.
+
+### Preguntas guía
+- ¿Qué enfermedades importantes ha tenido?
+- ¿Qué medicamentos toma actualmente?
+- ¿Tiene alergias conocidas?
+- ¿Hay diabetes, hipertensión, infartos o enfermedad renal en su familia?
+
+### Registro operativo
+- Antecedentes personales patológicos, quirúrgicos y eventos relevantes de seguridad.
+- Medicamentos actuales y alergias.
+- Antecedentes heredofamiliares cardiometabólicos.
+- Condiciones renales, hepáticas o reproductivas relevantes cuando aplique.
+
+### Formato asociado
+Formato futuro de antecedentes clínicos.
+
+### Alimenta capa NOM
+- Antecedentes heredofamiliares.
+- Antecedentes personales patológicos y no patológicos.
+- Terapéutica empleada.
+
+### Salida del bloque
+Perfil de seguridad clínica y riesgo para decisiones terapéuticas antes de revisar hábitos actuales.
+
+## Bloque 8. Hábitos actuales
 
 ### Objetivo
 Explorar alimentación, actividad física, sueño, estrés, consumo de alcohol/tabaco y rutinas que influyen en el plan.
@@ -250,39 +296,6 @@ Explorar alimentación, actividad física, sueño, estrés, consumo de alcohol/t
 
 ### Salida del bloque
 Lista de hábitos y barreras que condicionan el plan inicial.
-
-## Bloque 8. Antecedentes relevantes
-
-### Objetivo
-Identificar antecedentes personales, familiares, medicamentos, alergias y condiciones que modifiquen riesgo o tratamiento.
-
-### Qué hace el médico
-- Revisa enfermedades previas, cirugías, medicamentos y alergias.
-- Explora antecedentes familiares cardiometabólicos.
-- Considera salud reproductiva cuando aplique.
-
-### Preguntas guía
-- ¿Qué enfermedades importantes ha tenido?
-- ¿Qué medicamentos toma actualmente?
-- ¿Tiene alergias conocidas?
-- ¿Hay diabetes, hipertensión, infartos o enfermedad renal en su familia?
-
-### Registro operativo
-- Antecedentes personales patológicos.
-- Medicamentos actuales.
-- Alergias.
-- Antecedentes heredofamiliares.
-
-### Formato asociado
-Formato futuro de antecedentes clínicos.
-
-### Alimenta capa NOM
-- Antecedentes heredofamiliares.
-- Antecedentes personales patológicos y no patológicos.
-- Terapéutica empleada.
-
-### Salida del bloque
-Perfil de seguridad clínica y riesgo para decisiones terapéuticas.
 
 ## Bloque 9. Mediciones y análisis corporal
 

@@ -83,7 +83,7 @@ Rutas iniciales disponibles:
 
 ### Visor read-only de flujos de consulta
 
-El visor también permite revisar mapas operativos del flujo de consulta para ubicar en qué momento se usa cada formato clínico.
+El visor también permite revisar mapas operativos del flujo de consulta, organizados por macro-etapas clínicas, para ubicar en qué momento se usa cada formato clínico.
 
 Los flujos se describen como una capa estructurada en `schemas/flows/`, derivada de la documentación humana de `docs/01_flujo_consulta/`. Esta vista es read-only: no guarda datos, no procesa POST, no es expediente clínico electrónico y no declara cumplimiento NOM-004.
 
