@@ -64,6 +64,8 @@ def build_format_links(format_data: dict[str, Any]) -> list[dict[str, str]]:
         if link_key in SCHEMA_LINKS:
             if not format_data.get("tiene_schema"):
                 continue
+            if link_key == "imprimir_paciente" and not format_data.get("supports_patient_print", True):
+                continue
             route_name = FORMAT_ROUTE_NAMES[link_key]
             links.append(
                 {

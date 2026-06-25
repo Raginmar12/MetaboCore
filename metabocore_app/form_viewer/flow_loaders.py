@@ -14,7 +14,13 @@ from typing import Any
 from django.conf import settings
 from django.http import Http404
 
-from .loaders import SAFE_FORM_ID_RE, list_form_ids
+from .loaders import (
+    SAFE_FORM_ID_RE,
+    FormViewerError,
+    load_form_schema,
+    list_form_ids,
+    supports_patient_print,
+)
 
 SAFE_FLOW_ID_RE = re.compile(r"^[a-z0-9_]+$")
 SAFE_SLUG_RE = re.compile(r"^[a-z0-9-]+$")
@@ -117,8 +123,15 @@ def _enrich_format(format_data: dict[str, Any], schema_form_ids: set[str]) -> di
     has_safe_id = bool(SAFE_FORM_ID_RE.fullmatch(formato_id))
     doc_path = _doc_path_for_format(formato_id, tipo) if has_safe_id else None
     has_schema = has_safe_id and formato_id in schema_form_ids
+    supports_patient = True
+    if has_schema:
+        try:
+            supports_patient = supports_patient_print(load_form_schema(formato_id))
+        except FormViewerError:
+            supports_patient = True
     has_document = bool(doc_path and doc_path.exists())
     enriched["tiene_schema"] = has_schema
+    enriched["supports_patient_print"] = supports_patient
     enriched["tiene_documento"] = has_document
     enriched["documento_path"] = str(doc_path.relative_to(Path(settings.BASE_DIR).resolve().parent)) if has_document and doc_path else ""
     return enriched

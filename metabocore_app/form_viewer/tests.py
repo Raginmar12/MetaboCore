@@ -118,6 +118,22 @@ class FormViewerLoaderTests(TestCase):
     def test_list_form_ids_includes_ficha_inicial(self):
         self.assertIn("ficha_inicial", list_form_ids())
 
+
+    def test_list_form_ids_includes_entrevista_motivacional(self):
+        self.assertIn("entrevista_motivacional", list_form_ids())
+
+    def test_load_entrevista_motivacional_bundle_marks_internal_use(self):
+        bundle = get_form_bundle("entrevista_motivacional")
+        metadata = bundle.schema["x-metabocore"]
+        self.assertEqual(metadata["uso"], "tecnico_interno")
+        self.assertFalse(metadata["para_paciente"])
+        self.assertFalse(metadata["declara_cumplimiento_nom_004"])
+        self.assertTrue(
+            bundle.ui_schema["encuadre_permiso"]
+            ["permiso_para_hablar_de_peso_y_metabolismo"]
+            ["ui:requerido_visual"]
+        )
+
     def test_load_ficha_inicial_bundle(self):
         bundle = get_form_bundle("ficha_inicial")
         self.assertEqual(bundle.schema["properties"]["formato_id"]["const"], "ficha_inicial")
@@ -272,6 +288,36 @@ class FormViewerRouteTests(TestCase):
         self.assertContains(response, "/formatos/ficha_inicial/imprimir/paciente/")
         self.assertContains(response, "/formatos/ficha_inicial/imprimir/tecnica/")
 
+
+    def test_entrevista_motivacional_does_not_offer_patient_print_links(self):
+        list_response = self.client.get("/formatos/")
+        self.assertEqual(list_response.status_code, 200)
+        self.assertContains(list_response, "/formatos/entrevista_motivacional/imprimir/tecnica/")
+        self.assertNotContains(
+            list_response, "/formatos/entrevista_motivacional/imprimir/paciente/"
+        )
+
+        detail_response = self.client.get("/formatos/entrevista_motivacional/")
+        self.assertEqual(detail_response.status_code, 200)
+        self.assertContains(detail_response, "Imprimir técnica")
+        self.assertContains(
+            detail_response, "/formatos/entrevista_motivacional/imprimir/tecnica/"
+        )
+        self.assertNotContains(detail_response, "Imprimir paciente")
+        self.assertNotContains(
+            detail_response, "/formatos/entrevista_motivacional/imprimir/paciente/"
+        )
+
+    def test_entrevista_motivacional_patient_print_returns_404(self):
+        response = self.client.get("/formatos/entrevista_motivacional/imprimir/paciente/")
+        self.assertEqual(response.status_code, 404)
+
+    def test_entrevista_motivacional_technical_print_responds_200(self):
+        response = self.client.get("/formatos/entrevista_motivacional/imprimir/tecnica/")
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Vista imprimible técnica")
+        self.assertContains(response, "Entrevista motivacional")
+
     def assert_patient_print_response(self, response):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Ficha inicial")
@@ -382,6 +428,17 @@ class FormViewerRouteTests(TestCase):
         self.assertNotContains(response, "<input")
         self.assertNotContains(response, "completado")
 
+
+
+    def test_flow_block_omits_patient_print_for_internal_entrevista_motivacional(self):
+        response = self.client.get(
+            "/flujos/primera-consulta/bloque/entrevista-motivacional-breve/"
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "entrevista_motivacional")
+        self.assertNotContains(
+            response, "/formatos/entrevista_motivacional/imprimir/paciente/"
+        )
 
     def test_new_antecedentes_and_habitos_block_routes_respond_200(self):
         antecedentes_response = self.client.get(

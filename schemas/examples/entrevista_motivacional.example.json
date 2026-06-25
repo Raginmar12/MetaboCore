@@ -1,0 +1,115 @@
+{
+  "formato_id": "entrevista_motivacional",
+  "version_schema": "0.1.0",
+  "datos_encuentro": {
+    "fecha": "2026-06-25",
+    "tipo_de_consulta": "primera_consulta",
+    "nombre_o_referencia": "Paciente ficticia EM-001",
+    "profesional": "Medico ficticio MetaboCore"
+  },
+  "encuadre_permiso": {
+    "permiso_para_hablar_de_peso_y_metabolismo": "si",
+    "tema_autorizado": [
+      "glucosa",
+      "alimentacion",
+      "actividad_fisica",
+      "metabolismo"
+    ],
+    "tema_preferido_por_el_paciente": "Hablar primero de prediabetes y energia durante el dia.",
+    "observaciones_de_permiso": "Ejemplo ficticio: acepta hablar de metabolismo, prefiere evitar comentarios centrados solo en peso."
+  },
+  "motivo_expectativas": {
+    "motivo_principal_en_palabras_del_paciente": "Me preocupa que en mi familia hay diabetes y quiero hacer algo antes de que avance.",
+    "expectativas_de_la_consulta": "Entender que cambios son realistas sin sentir que todo depende de una dieta estricta.",
+    "preocupacion_principal": "Teme no sostener cambios por horarios laborales.",
+    "objetivo_sentido_por_el_paciente": "Tener mas energia y reducir riesgo de diabetes."
+  },
+  "valores_impacto": {
+    "impacto_actual_en_la_vida": "Refiere cansancio por la tarde y preocupacion al ver estudios recientes.",
+    "valor_o_area_importante": [
+      "energia",
+      "familia",
+      "prevencion_de_complicaciones",
+      "tranquilidad"
+    ],
+    "beneficio_esperado": "Sentirse con mas control y poder jugar con su familia sin agotarse."
+  },
+  "ambivalencia": {
+    "razones_para_cambiar": "Quiere prevenir diabetes y mejorar energia.",
+    "razones_para_no_cambiar": "Le preocupa no tener tiempo para cocinar ni hacer ejercicio formal.",
+    "frase_de_ambivalencia": "Quiero cuidarme, pero siento que mi horario siempre me gana.",
+    "reflexion_doble_usada": "Por un lado quiere prevenir diabetes, y por otro necesita un plan que no choque con su horario."
+  },
+  "escalas_cambio": {
+    "importancia_0_10": 8,
+    "confianza_0_10": 5,
+    "disposicion_0_10": 6,
+    "por_que_no_mas_bajo": "Porque ya vio laboratorios alterados en un ejemplo ficticio y quiere prevenir complicaciones.",
+    "que_subiria_un_punto": "Tener un paso muy pequeno y apoyo para planear comidas simples."
+  },
+  "barreras_recursos": {
+    "barrera_principal": "Horarios laborales variables.",
+    "otras_barreras": [
+      "tiempo",
+      "trabajo",
+      "cansancio",
+      "horarios",
+      "comidas_fuera_de_casa"
+    ],
+    "recursos_personales": "Ha logrado caminar en otros periodos cuando lo agenda temprano.",
+    "apoyo_familiar_social": "Familia ficticia dispuesta a acompanar caminatas cortas.",
+    "estrategia_para_barrera_principal": "Elegir una caminata breve antes de iniciar actividades laborales cuando sea posible."
+  },
+  "lenguaje_cambio": {
+    "frases_de_cambio": [
+      "Si empiezo pequeno, creo que si puedo sostenerlo.",
+      "No quiero esperar a tener diabetes para actuar."
+    ],
+    "frases_de_mantenimiento": [
+      "Cuando salgo tarde termino comprando lo primero que encuentro."
+    ],
+    "senal_de_preparacion": [
+      "razones",
+      "capacidad",
+      "activacion"
+    ]
+  },
+  "informacion_medica_permiso": {
+    "permiso_para_explicar": "si",
+    "informacion_medica_explicada": [
+      "resistencia_a_la_insulina",
+      "glucosa",
+      "riesgo_cardiometabolico"
+    ],
+    "respuesta_del_paciente": "Dice que le ayuda entender que no se trata solo de fuerza de voluntad.",
+    "duda_principal": "Pregunta cuanto tiempo tardaria en ver cambios en estudios."
+  },
+  "primer_paso": {
+    "area_elegida": "actividad_fisica",
+    "primer_paso_posible": "Caminar 10 minutos despues de dejar a su familia en una actividad matutina ficticia.",
+    "frecuencia": "3 veces por semana",
+    "momento_del_dia": "Manana",
+    "barrera_anticipada": "Cambios de horario laboral.",
+    "plan_si_falla": "Si no camina en la manana, hacer 5 minutos en casa por la tarde sin considerar el dia perdido.",
+    "compromiso_0_10": 7
+  },
+  "seguimiento": {
+    "acuerdo_de_seguimiento": "Revisar caminatas, barreras de horario y confianza en la siguiente consulta.",
+    "plazo_de_revision": "2 a 4 semanas",
+    "tema_a_retomar": "Energia, glucosa y ajustes al primer paso.",
+    "observaciones_para_siguiente_consulta": "Ejemplo ficticio; valorar si requiere plan aun mas simple."
+  },
+  "notas_internas": {
+    "impresion_motivacional": "alta_importancia_baja_confianza",
+    "riesgo_de_plan_irrealista": "moderado",
+    "ajuste_recomendado_del_estilo_de_plan": "plan_mas_simple",
+    "observaciones_clinicas_internas": "Mantener lenguaje no estigmatizante; reforzar recursos y autonomia."
+  },
+  "metadatos": {
+    "creado_en": "2026-06-25T00:00:00Z",
+    "actualizado_en": "2026-06-25T00:00:00Z",
+    "capturado_por": "Medico ficticio MetaboCore",
+    "clasificacion_datos": "datos_personales_clinicos",
+    "ejemplo_es_ficticio": true
+  }
+}
