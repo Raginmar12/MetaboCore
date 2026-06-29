@@ -252,11 +252,14 @@
       ],
       "formatos_asociados": [
         {
-          "formato_id": "historia_clinica_metabolica",
-          "estado": "futuro",
+          "formato_id": "historia_metabolica_dirigida",
+          "titulo": "Historia metabólica dirigida",
+          "estado": "documento",
           "tipo": "formato",
           "momento_uso": "Durante la exploración dirigida del eje cardiometabólico.",
-          "enlaces": []
+          "enlaces": [
+            "documento"
+          ]
         }
       ],
       "salida": "Mapa inicial de riesgos y manifestaciones cardiometabólicas.",
@@ -265,7 +268,7 @@
         "Padecimiento actual.",
         "Diagnósticos o problemas clínicos."
       ],
-      "nota_diseno": "Formato pendiente; no debe adelantarse como expediente genérico."
+      "nota_diseno": "Documento operativo disponible; no tiene schema, UI schema, JSON ejemplo ni variantes imprimibles derivadas de schema."
     },
     {
       "bloque_id": "historia_peso_tratamientos_previos",

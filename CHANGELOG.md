@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.1.16 - Sincronía del mapa de historia metabólica dirigida
+
+- Sincroniza el bloque de historia metabólica dirigida del mapa navegable con su documento operativo.
+
 ## v0.1.15 - Historia metabólica dirigida
 
 - Agrega documento operativo inicial de historia metabólica dirigida.
