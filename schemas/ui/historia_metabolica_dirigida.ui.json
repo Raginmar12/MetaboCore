@@ -1,0 +1,548 @@
+{
+  "ui:formato": "historia_metabolica_dirigida",
+  "ui:version": "0.1.0",
+  "ui:orden_secciones": [
+    "datos_encuentro",
+    "motivo_contexto",
+    "glucosa_insulina_diabetes",
+    "presion_riesgo_vascular",
+    "lipidos_riesgo_aterogenico",
+    "higado_graso",
+    "acido_urico_gota",
+    "sueno_apnea",
+    "estudios_previos",
+    "patron_progresion",
+    "problemas_activos",
+    "banderas_rojas",
+    "metadatos"
+  ],
+  "formato_id": {
+    "ui:widget": "hidden"
+  },
+  "version_schema": {
+    "ui:widget": "hidden"
+  },
+  "datos_encuentro": {
+    "ui:titulo": "Datos del encuentro",
+    "ui:descripcion": "Ubicacion operativa de la historia metabolica dirigida.",
+    "ui:ayuda": "Ubicacion operativa de la historia metabolica dirigida.",
+    "ui:orden_campos": [
+      "fecha",
+      "tipo_de_consulta",
+      "nombre_o_referencia",
+      "profesional"
+    ],
+    "fecha": {
+      "ui:widget": "date"
+    },
+    "tipo_de_consulta": {
+      "ui:widget": "select"
+    },
+    "nombre_o_referencia": {
+      "ui:widget": "text"
+    },
+    "profesional": {
+      "ui:widget": "text"
+    }
+  },
+  "motivo_contexto": {
+    "ui:titulo": "Motivo metabolico y contexto",
+    "ui:descripcion": "Ubicar como se detecto el problema metabolico sin duplicar ficha inicial.",
+    "ui:ayuda": "Ubicar como se detecto el problema metabolico sin duplicar ficha inicial.",
+    "ui:orden_campos": [
+      "motivo_metabolico_principal",
+      "preocupacion_metabolica_principal",
+      "diagnosticos_o_hallazgos_referidos",
+      "como_se_detecto_el_problema",
+      "tiempo_de_evolucion_referido",
+      "cambio_reciente_relevante"
+    ],
+    "motivo_metabolico_principal": {
+      "ui:widget": "textarea",
+      "ui:requerido_visual": true
+    },
+    "preocupacion_metabolica_principal": {
+      "ui:widget": "textarea"
+    },
+    "diagnosticos_o_hallazgos_referidos": {
+      "ui:widget": "textarea",
+      "ui:requerido_visual": true
+    },
+    "como_se_detecto_el_problema": {
+      "ui:widget": "select"
+    },
+    "tiempo_de_evolucion_referido": {
+      "ui:widget": "textarea",
+      "ui:requerido_visual": true
+    },
+    "cambio_reciente_relevante": {
+      "ui:widget": "textarea"
+    }
+  },
+  "glucosa_insulina_diabetes": {
+    "ui:titulo": "Glucosa, insulina y diabetes",
+    "ui:descripcion": "Registrar datos referidos y sintomas; no cerrar diagnostico automatico.",
+    "ui:ayuda": "Registrar datos referidos y sintomas; no cerrar diagnostico automatico.",
+    "ui:orden_campos": [
+      "glucosa_alta_referida",
+      "prediabetes_referida",
+      "diabetes_tipo_2_referida",
+      "fecha_aproximada_deteccion_glucosa",
+      "ultimo_valor_glucosa_referido",
+      "ultima_hba1c_referida",
+      "sintomas_hiperglucemia",
+      "sintomas_hipoglucemia_o_bajones",
+      "somnolencia_postprandial",
+      "antojos_o_hambre_intensa",
+      "infecciones_recurrentes",
+      "cicatrizacion_lenta",
+      "observaciones_glucosa_insulina"
+    ],
+    "glucosa_alta_referida": {
+      "ui:widget": "select"
+    },
+    "prediabetes_referida": {
+      "ui:widget": "select"
+    },
+    "diabetes_tipo_2_referida": {
+      "ui:widget": "select"
+    },
+    "fecha_aproximada_deteccion_glucosa": {
+      "ui:widget": "textarea"
+    },
+    "ultimo_valor_glucosa_referido": {
+      "ui:widget": "textarea"
+    },
+    "ultima_hba1c_referida": {
+      "ui:widget": "textarea"
+    },
+    "sintomas_hiperglucemia": {
+      "ui:widget": "checkboxes"
+    },
+    "sintomas_hipoglucemia_o_bajones": {
+      "ui:widget": "checkboxes"
+    },
+    "somnolencia_postprandial": {
+      "ui:widget": "select"
+    },
+    "antojos_o_hambre_intensa": {
+      "ui:widget": "select"
+    },
+    "infecciones_recurrentes": {
+      "ui:widget": "select"
+    },
+    "cicatrizacion_lenta": {
+      "ui:widget": "select"
+    },
+    "observaciones_glucosa_insulina": {
+      "ui:widget": "textarea"
+    }
+  },
+  "presion_riesgo_vascular": {
+    "ui:titulo": "Presion arterial y riesgo vascular",
+    "ui:descripcion": "Si hay sintomas actuales de alarma, priorizar seguridad clinica.",
+    "ui:ayuda": "Si hay sintomas actuales de alarma, priorizar seguridad clinica.",
+    "ui:orden_campos": [
+      "presion_alta_referida",
+      "fecha_aproximada_deteccion_presion",
+      "mediciones_previas_presion",
+      "cefalea_frecuente",
+      "mareo",
+      "palpitaciones",
+      "dolor_toracico",
+      "falta_de_aire",
+      "edema",
+      "evento_cardiovascular_referido",
+      "observaciones_presion_vascular"
+    ],
+    "presion_alta_referida": {
+      "ui:widget": "select"
+    },
+    "fecha_aproximada_deteccion_presion": {
+      "ui:widget": "textarea"
+    },
+    "mediciones_previas_presion": {
+      "ui:widget": "textarea"
+    },
+    "cefalea_frecuente": {
+      "ui:widget": "select"
+    },
+    "mareo": {
+      "ui:widget": "select"
+    },
+    "palpitaciones": {
+      "ui:widget": "select"
+    },
+    "dolor_toracico": {
+      "ui:widget": "select"
+    },
+    "falta_de_aire": {
+      "ui:widget": "select"
+    },
+    "edema": {
+      "ui:widget": "select"
+    },
+    "evento_cardiovascular_referido": {
+      "ui:widget": "textarea"
+    },
+    "observaciones_presion_vascular": {
+      "ui:widget": "textarea"
+    }
+  },
+  "lipidos_riesgo_aterogenico": {
+    "ui:titulo": "Lipidos y riesgo aterogenico",
+    "ui:descripcion": "Registrar datos referidos o estudios disponibles; interpretar despues.",
+    "ui:ayuda": "Registrar datos referidos o estudios disponibles; interpretar despues.",
+    "ui:orden_campos": [
+      "colesterol_alto_referido",
+      "trigliceridos_altos_referidos",
+      "hdl_bajo_referido",
+      "ldl_alto_referido",
+      "fecha_aproximada_deteccion_lipidos",
+      "ultimos_lipidos_referidos",
+      "tratamiento_previo_lipidos_referido",
+      "antecedente_pancreatitis_referido",
+      "observaciones_lipidos"
+    ],
+    "colesterol_alto_referido": {
+      "ui:widget": "select"
+    },
+    "trigliceridos_altos_referidos": {
+      "ui:widget": "select"
+    },
+    "hdl_bajo_referido": {
+      "ui:widget": "select"
+    },
+    "ldl_alto_referido": {
+      "ui:widget": "select"
+    },
+    "fecha_aproximada_deteccion_lipidos": {
+      "ui:widget": "textarea"
+    },
+    "ultimos_lipidos_referidos": {
+      "ui:widget": "textarea"
+    },
+    "tratamiento_previo_lipidos_referido": {
+      "ui:widget": "textarea"
+    },
+    "antecedente_pancreatitis_referido": {
+      "ui:widget": "select"
+    },
+    "observaciones_lipidos": {
+      "ui:widget": "textarea"
+    }
+  },
+  "higado_graso": {
+    "ui:titulo": "Higado graso metabolico",
+    "ui:descripcion": "No asumir origen metabolico sin considerar alcohol, medicamentos u otras causas.",
+    "ui:ayuda": "No asumir origen metabolico sin considerar alcohol, medicamentos u otras causas.",
+    "ui:orden_campos": [
+      "higado_graso_referido",
+      "fecha_aproximada_deteccion_higado_graso",
+      "ultrasonido_hepatico_previo",
+      "transaminasas_altas_referidas",
+      "dolor_o_pesadez_hipocondrio_derecho",
+      "consumo_alcohol_referido",
+      "otros_factores_hepaticos_referidos",
+      "observaciones_higado_graso"
+    ],
+    "higado_graso_referido": {
+      "ui:widget": "select"
+    },
+    "fecha_aproximada_deteccion_higado_graso": {
+      "ui:widget": "textarea"
+    },
+    "ultrasonido_hepatico_previo": {
+      "ui:widget": "select"
+    },
+    "transaminasas_altas_referidas": {
+      "ui:widget": "select"
+    },
+    "dolor_o_pesadez_hipocondrio_derecho": {
+      "ui:widget": "select"
+    },
+    "consumo_alcohol_referido": {
+      "ui:widget": "select"
+    },
+    "otros_factores_hepaticos_referidos": {
+      "ui:widget": "textarea"
+    },
+    "observaciones_higado_graso": {
+      "ui:widget": "textarea"
+    }
+  },
+  "acido_urico_gota": {
+    "ui:titulo": "Acido urico, hiperuricemia y gota",
+    "ui:descripcion": "Explorar acido urico, crisis articulares, litiasis y desencadenantes referidos.",
+    "ui:ayuda": "Explorar acido urico, crisis articulares, litiasis y desencadenantes referidos.",
+    "ui:orden_campos": [
+      "acido_urico_alto_referido",
+      "fecha_aproximada_deteccion_acido_urico",
+      "crisis_gota_referida",
+      "articulaciones_afectadas",
+      "dolor_articular_recurrente",
+      "litiasis_renal_referida",
+      "desencadenantes_referidos",
+      "observaciones_acido_urico_gota"
+    ],
+    "acido_urico_alto_referido": {
+      "ui:widget": "select"
+    },
+    "fecha_aproximada_deteccion_acido_urico": {
+      "ui:widget": "textarea"
+    },
+    "crisis_gota_referida": {
+      "ui:widget": "select"
+    },
+    "articulaciones_afectadas": {
+      "ui:widget": "textarea"
+    },
+    "dolor_articular_recurrente": {
+      "ui:widget": "select"
+    },
+    "litiasis_renal_referida": {
+      "ui:widget": "select"
+    },
+    "desencadenantes_referidos": {
+      "ui:widget": "textarea"
+    },
+    "observaciones_acido_urico_gota": {
+      "ui:widget": "textarea"
+    }
+  },
+  "sueno_apnea": {
+    "ui:titulo": "Sueno con impacto metabolico o apnea",
+    "ui:descripcion": "Explorar sospecha de apnea; la rutina de sueno se aborda en habitos.",
+    "ui:ayuda": "Explorar sospecha de apnea; la rutina de sueno se aborda en habitos.",
+    "ui:orden_campos": [
+      "ronquido_fuerte",
+      "pausas_respiratorias_observadas",
+      "somnolencia_diurna",
+      "sueno_no_reparador",
+      "cefalea_matutina",
+      "despertares_nocturnos",
+      "riesgo_apnea_sueno",
+      "observaciones_apnea_sueno"
+    ],
+    "ronquido_fuerte": {
+      "ui:widget": "select"
+    },
+    "pausas_respiratorias_observadas": {
+      "ui:widget": "select"
+    },
+    "somnolencia_diurna": {
+      "ui:widget": "select"
+    },
+    "sueno_no_reparador": {
+      "ui:widget": "select"
+    },
+    "cefalea_matutina": {
+      "ui:widget": "select"
+    },
+    "despertares_nocturnos": {
+      "ui:widget": "select"
+    },
+    "riesgo_apnea_sueno": {
+      "ui:widget": "select"
+    },
+    "observaciones_apnea_sueno": {
+      "ui:widget": "textarea"
+    }
+  },
+  "estudios_previos": {
+    "ui:titulo": "Estudios previos",
+    "ui:descripcion": "Registrar disponibilidad y faltantes; no convertir aqui en solicitud formal.",
+    "ui:ayuda": "Registrar disponibilidad y faltantes; no convertir aqui en solicitud formal.",
+    "ui:orden_campos": [
+      "estudios_previos_disponibles",
+      "fecha_estudios_previos",
+      "glucosa_disponible",
+      "hba1c_disponible",
+      "perfil_lipidos_disponible",
+      "pruebas_hepaticas_disponibles",
+      "acido_urico_disponible",
+      "creatinina_o_funcion_renal_disponible",
+      "ego_o_albuminuria_disponible",
+      "ultrasonido_hepatico_disponible",
+      "otros_estudios_relevantes",
+      "estudios_pendientes_o_necesarios"
+    ],
+    "estudios_previos_disponibles": {
+      "ui:widget": "select",
+      "ui:requerido_visual": true
+    },
+    "fecha_estudios_previos": {
+      "ui:widget": "textarea"
+    },
+    "glucosa_disponible": {
+      "ui:widget": "select"
+    },
+    "hba1c_disponible": {
+      "ui:widget": "select"
+    },
+    "perfil_lipidos_disponible": {
+      "ui:widget": "select"
+    },
+    "pruebas_hepaticas_disponibles": {
+      "ui:widget": "select"
+    },
+    "acido_urico_disponible": {
+      "ui:widget": "select"
+    },
+    "creatinina_o_funcion_renal_disponible": {
+      "ui:widget": "select"
+    },
+    "ego_o_albuminuria_disponible": {
+      "ui:widget": "select"
+    },
+    "ultrasonido_hepatico_disponible": {
+      "ui:widget": "select"
+    },
+    "otros_estudios_relevantes": {
+      "ui:widget": "textarea"
+    },
+    "estudios_pendientes_o_necesarios": {
+      "ui:widget": "textarea"
+    }
+  },
+  "patron_progresion": {
+    "ui:titulo": "Patron de progresion",
+    "ui:descripcion": "Reconstruir que aparecio primero y como ha evolucionado.",
+    "ui:ayuda": "Reconstruir que aparecio primero y como ha evolucionado.",
+    "ui:orden_campos": [
+      "primer_hallazgo_metabolico_referido",
+      "secuencia_de_aparicion_problemas",
+      "progresion_referida",
+      "empeoramiento_reciente",
+      "factores_asociados_a_empeoramiento",
+      "periodos_de_mejoria",
+      "observaciones_patron_progresion"
+    ],
+    "primer_hallazgo_metabolico_referido": {
+      "ui:widget": "textarea"
+    },
+    "secuencia_de_aparicion_problemas": {
+      "ui:widget": "textarea"
+    },
+    "progresion_referida": {
+      "ui:widget": "select"
+    },
+    "empeoramiento_reciente": {
+      "ui:widget": "textarea"
+    },
+    "factores_asociados_a_empeoramiento": {
+      "ui:widget": "textarea"
+    },
+    "periodos_de_mejoria": {
+      "ui:widget": "textarea"
+    },
+    "observaciones_patron_progresion": {
+      "ui:widget": "textarea",
+      "ui:requerido_visual": true
+    }
+  },
+  "problemas_activos": {
+    "ui:titulo": "Problemas metabolicos activos",
+    "ui:descripcion": "Sintesis para integracion clinica; no plan terapeutico.",
+    "ui:ayuda": "Sintesis para integracion clinica; no plan terapeutico.",
+    "ui:orden_campos": [
+      "problemas_metabolicos_conocidos",
+      "problemas_metabolicos_sospechados",
+      "riesgos_a_priorizar",
+      "datos_que_faltan",
+      "requiere_ampliar_antecedentes_seguridad",
+      "requiere_mediciones",
+      "requiere_laboratorios",
+      "observaciones_para_integracion"
+    ],
+    "problemas_metabolicos_conocidos": {
+      "ui:widget": "checkboxes"
+    },
+    "problemas_metabolicos_sospechados": {
+      "ui:widget": "checkboxes",
+      "ui:requerido_visual": true
+    },
+    "riesgos_a_priorizar": {
+      "ui:widget": "textarea"
+    },
+    "datos_que_faltan": {
+      "ui:widget": "textarea",
+      "ui:requerido_visual": true
+    },
+    "requiere_ampliar_antecedentes_seguridad": {
+      "ui:widget": "checkbox"
+    },
+    "requiere_mediciones": {
+      "ui:widget": "checkbox"
+    },
+    "requiere_laboratorios": {
+      "ui:widget": "checkbox"
+    },
+    "observaciones_para_integracion": {
+      "ui:widget": "textarea"
+    }
+  },
+  "banderas_rojas": {
+    "ui:titulo": "Banderas rojas y prioridad clinica",
+    "ui:descripcion": "Si hay datos de urgencia, priorizar seguridad sobre completar el formato.",
+    "ui:ayuda": "Si hay datos de urgencia, priorizar seguridad sobre completar el formato.",
+    "ui:orden_campos": [
+      "banderas_rojas_presentes",
+      "tipo_bandera_roja",
+      "detalle_bandera_roja",
+      "accion_recomendada",
+      "requiere_referencia",
+      "requiere_atencion_urgente",
+      "observaciones_seguridad"
+    ],
+    "banderas_rojas_presentes": {
+      "ui:widget": "select",
+      "ui:requerido_visual": true
+    },
+    "tipo_bandera_roja": {
+      "ui:widget": "checkboxes"
+    },
+    "detalle_bandera_roja": {
+      "ui:widget": "textarea"
+    },
+    "accion_recomendada": {
+      "ui:widget": "select"
+    },
+    "requiere_referencia": {
+      "ui:widget": "checkbox"
+    },
+    "requiere_atencion_urgente": {
+      "ui:widget": "checkbox"
+    },
+    "observaciones_seguridad": {
+      "ui:widget": "textarea"
+    }
+  },
+  "metadatos": {
+    "ui:titulo": "Metadatos",
+    "ui:descripcion": "Datos tecnicos del formato; no sustituyen expediente ni trazabilidad formal.",
+    "ui:ayuda": "Datos tecnicos del formato; no sustituyen expediente ni trazabilidad formal.",
+    "ui:orden_campos": [
+      "creado_en",
+      "actualizado_en",
+      "capturado_por",
+      "clasificacion_datos",
+      "ejemplo_es_ficticio"
+    ],
+    "creado_en": {
+      "ui:widget": "hidden"
+    },
+    "actualizado_en": {
+      "ui:widget": "hidden"
+    },
+    "capturado_por": {
+      "ui:widget": "hidden"
+    },
+    "clasificacion_datos": {
+      "ui:widget": "hidden"
+    },
+    "ejemplo_es_ficticio": {
+      "ui:widget": "checkbox"
+    }
+  }
+}

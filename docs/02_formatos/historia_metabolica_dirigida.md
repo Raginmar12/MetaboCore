@@ -392,15 +392,15 @@ En una fase posterior puede tener impresión técnica para revisión interna. Si
 
 ---
 
-## 8. Relación futura con schema
+## 8. Relación con schema estructurado
 
-Este documento podrá alimentar en fases futuras:
+Este documento es la fuente documental del paquete estructurado inicial del formato técnico interno de historia metabólica dirigida. La primera versión estructurada ya está disponible en:
 
 - `schemas/forms/historia_metabolica_dirigida.schema.json`
 - `schemas/ui/historia_metabolica_dirigida.ui.json`
 - `schemas/examples/historia_metabolica_dirigida.example.json`
 
-Esos archivos no existen todavía y no deben crearse en esta fase. Cuando se definan, deberán mantener campos en español, `snake_case`, sin acentos ni `ñ`, ejemplos ficticios y alcance read-only sin persistencia clínica.
+Estos archivos no agregan persistencia, expediente clínico electrónico, formato para paciente, generación PDF backend ni declaración de cumplimiento completo NOM-004. El ejemplo debe permanecer ficticio y claramente identificado como tal.
 
 ---
 

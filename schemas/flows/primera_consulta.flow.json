@@ -254,10 +254,16 @@
         {
           "formato_id": "historia_metabolica_dirigida",
           "titulo": "Historia metabólica dirigida",
-          "estado": "documento",
+          "estado": "existente",
           "tipo": "formato",
           "momento_uso": "Durante la exploración dirigida del eje cardiometabólico.",
           "enlaces": [
+            "preview",
+            "ejemplo_ficticio",
+            "imprimir_tecnica",
+            "schema",
+            "ui_schema",
+            "json_ejemplo",
             "documento"
           ]
         }
@@ -268,7 +274,7 @@
         "Padecimiento actual.",
         "Diagnósticos o problemas clínicos."
       ],
-      "nota_diseno": "Documento operativo disponible; no tiene schema, UI schema, JSON ejemplo ni variantes imprimibles derivadas de schema."
+      "nota_diseno": "Schema inicial disponible para visor read-only; no ofrece impresión paciente ni captura persistente por ser formato técnico interno."
     },
     {
       "bloque_id": "historia_peso_tratamientos_previos",

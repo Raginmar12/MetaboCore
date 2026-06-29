@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.1.17 - Schema de historia metabólica dirigida
+
+- Agrega schema, UI schema y ejemplo ficticio de historia metabólica dirigida.
+
 ## v0.1.16 - Sincronía del mapa de historia metabólica dirigida
 
 - Sincroniza el bloque de historia metabólica dirigida del mapa navegable con su documento operativo.

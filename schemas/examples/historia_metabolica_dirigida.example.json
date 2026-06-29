@@ -1,0 +1,150 @@
+{
+  "formato_id": "historia_metabolica_dirigida",
+  "version_schema": "0.1.0",
+  "datos_encuentro": {
+    "fecha": "2026-06-29",
+    "tipo_de_consulta": "primera_consulta",
+    "nombre_o_referencia": "Paciente ficticia HMD-001",
+    "profesional": "Medico ficticio MetaboCore"
+  },
+  "motivo_contexto": {
+    "motivo_metabolico_principal": "Acude por estudios recientes con glucosa alterada y trigliceridos elevados en un caso ficticio.",
+    "preocupacion_metabolica_principal": "Prevenir progresion a diabetes y entender higado graso referido.",
+    "diagnosticos_o_hallazgos_referidos": "Glucosa en ayuno alterada, trigliceridos altos e higado graso por ultrasonido previo.",
+    "como_se_detecto_el_problema": "laboratorio",
+    "tiempo_de_evolucion_referido": "Hallazgos comentados desde hace aproximadamente seis meses en ejemplo ficticio.",
+    "cambio_reciente_relevante": "Mayor cansancio despues de comidas principales."
+  },
+  "glucosa_insulina_diabetes": {
+    "glucosa_alta_referida": "si",
+    "prediabetes_referida": "desconocido",
+    "diabetes_tipo_2_referida": "no",
+    "fecha_aproximada_deteccion_glucosa": "Hace seis meses",
+    "ultimo_valor_glucosa_referido": "112 mg/dL referido por la paciente ficticia",
+    "ultima_hba1c_referida": "No disponible",
+    "sintomas_hiperglucemia": [
+      "ninguno_referido"
+    ],
+    "sintomas_hipoglucemia_o_bajones": [
+      "mejora_al_comer"
+    ],
+    "somnolencia_postprandial": "si",
+    "antojos_o_hambre_intensa": "si",
+    "infecciones_recurrentes": "no",
+    "cicatrizacion_lenta": "no",
+    "observaciones_glucosa_insulina": "Explorar con laboratorios confirmatorios en integracion, sin cerrar diagnostico automatico."
+  },
+  "presion_riesgo_vascular": {
+    "presion_alta_referida": "desconocido",
+    "fecha_aproximada_deteccion_presion": "No recuerda cifras previas",
+    "mediciones_previas_presion": "Refiere mediciones ocasionalmente elevadas sin registro.",
+    "cefalea_frecuente": "no",
+    "mareo": "no",
+    "palpitaciones": "no",
+    "dolor_toracico": "no",
+    "falta_de_aire": "no",
+    "edema": "no",
+    "evento_cardiovascular_referido": "Ninguno referido en ejemplo ficticio.",
+    "observaciones_presion_vascular": "Sin sintomas actuales de alarma referidos."
+  },
+  "lipidos_riesgo_aterogenico": {
+    "colesterol_alto_referido": "desconocido",
+    "trigliceridos_altos_referidos": "si",
+    "hdl_bajo_referido": "desconocido",
+    "ldl_alto_referido": "desconocido",
+    "fecha_aproximada_deteccion_lipidos": "Hace seis meses",
+    "ultimos_lipidos_referidos": "Trigliceridos altos referidos; no trae reporte completo.",
+    "tratamiento_previo_lipidos_referido": "No refiere tratamiento previo.",
+    "antecedente_pancreatitis_referido": "no",
+    "observaciones_lipidos": "Solicitar reporte para interpretar riesgo aterogenico posteriormente."
+  },
+  "higado_graso": {
+    "higado_graso_referido": "si",
+    "fecha_aproximada_deteccion_higado_graso": "Hace un año",
+    "ultrasonido_hepatico_previo": "si",
+    "transaminasas_altas_referidas": "desconocido",
+    "dolor_o_pesadez_hipocondrio_derecho": "no",
+    "consumo_alcohol_referido": "ocasional",
+    "otros_factores_hepaticos_referidos": "No explorados de forma amplia en este formato.",
+    "observaciones_higado_graso": "No asumir origen metabolico sin completar antecedentes y revision de estudios."
+  },
+  "acido_urico_gota": {
+    "acido_urico_alto_referido": "desconocido",
+    "fecha_aproximada_deteccion_acido_urico": "No explorado",
+    "crisis_gota_referida": "no",
+    "articulaciones_afectadas": "No aplica",
+    "dolor_articular_recurrente": "no",
+    "litiasis_renal_referida": "no",
+    "desencadenantes_referidos": "No referidos",
+    "observaciones_acido_urico_gota": "Dato pendiente si hay laboratorios disponibles."
+  },
+  "sueno_apnea": {
+    "ronquido_fuerte": "si",
+    "pausas_respiratorias_observadas": "desconocido",
+    "somnolencia_diurna": "si",
+    "sueno_no_reparador": "si",
+    "cefalea_matutina": "no",
+    "despertares_nocturnos": "si",
+    "riesgo_apnea_sueno": "moderado",
+    "observaciones_apnea_sueno": "Exploracion inicial sugiere valorar apnea; rutina de sueno se abordara en habitos."
+  },
+  "estudios_previos": {
+    "estudios_previos_disponibles": "parcial",
+    "fecha_estudios_previos": "Reporte parcial de hace seis meses",
+    "glucosa_disponible": "si",
+    "hba1c_disponible": "no",
+    "perfil_lipidos_disponible": "si",
+    "pruebas_hepaticas_disponibles": "desconocido",
+    "acido_urico_disponible": "desconocido",
+    "creatinina_o_funcion_renal_disponible": "desconocido",
+    "ego_o_albuminuria_disponible": "no_explorado",
+    "ultrasonido_hepatico_disponible": "si",
+    "otros_estudios_relevantes": "Ultrasonido hepatico referido sin copia en el ejemplo ficticio.",
+    "estudios_pendientes_o_necesarios": "Faltan HbA1c, funcion hepatica, funcion renal y reporte completo de lipidos para integracion."
+  },
+  "patron_progresion": {
+    "primer_hallazgo_metabolico_referido": "Aumento de trigliceridos referido.",
+    "secuencia_de_aparicion_problemas": "Primero trigliceridos altos, despues glucosa alterada e higado graso referido.",
+    "progresion_referida": "progresiva",
+    "empeoramiento_reciente": "Mas somnolencia despues de comer en meses recientes.",
+    "factores_asociados_a_empeoramiento": "Horarios laborales y comidas tardias se exploraran en habitos.",
+    "periodos_de_mejoria": "Refiere mejoria cuando caminaba con regularidad en periodo ficticio previo.",
+    "observaciones_patron_progresion": "Patron compatible con progresion cardiometabolica a confirmar con estudios y mediciones."
+  },
+  "problemas_activos": {
+    "problemas_metabolicos_conocidos": [
+      "glucosa_alta_o_diabetes",
+      "dislipidemia",
+      "higado_graso"
+    ],
+    "problemas_metabolicos_sospechados": [
+      "resistencia_insulina_probable",
+      "dislipidemia_probable",
+      "higado_graso_probable",
+      "apnea_sueno_probable",
+      "requiere_mas_datos"
+    ],
+    "riesgos_a_priorizar": "Riesgo cardiometabolico global y posible apnea del sueno.",
+    "datos_que_faltan": "HbA1c, perfil de lipidos completo, funcion hepatica, funcion renal, presion y mediciones antropometricas.",
+    "requiere_ampliar_antecedentes_seguridad": true,
+    "requiere_mediciones": true,
+    "requiere_laboratorios": true,
+    "observaciones_para_integracion": "Usar estos datos como insumo para integracion clinica, no como plan terapeutico."
+  },
+  "banderas_rojas": {
+    "banderas_rojas_presentes": "no",
+    "tipo_bandera_roja": [],
+    "detalle_bandera_roja": "Sin banderas rojas actuales referidas en ejemplo ficticio.",
+    "accion_recomendada": "continuar_consulta",
+    "requiere_referencia": false,
+    "requiere_atencion_urgente": false,
+    "observaciones_seguridad": "Continuar flujo y completar antecedentes, mediciones y laboratorios segun criterio clinico."
+  },
+  "metadatos": {
+    "creado_en": "2026-06-29T00:00:00Z",
+    "actualizado_en": "2026-06-29T00:00:00Z",
+    "capturado_por": "Medico ficticio MetaboCore",
+    "clasificacion_datos": "datos_personales_clinicos",
+    "ejemplo_es_ficticio": true
+  }
+}
