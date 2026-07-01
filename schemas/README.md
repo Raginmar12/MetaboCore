@@ -18,6 +18,7 @@ Los schemas no implementan backend, frontend, base de datos ni expediente electr
 
 - `ficha_inicial`: ficha inicial de identificación y contexto breve.
 - `entrevista_motivacional`: formato técnico interno para entrevista motivacional breve del personal clínico.
+- `historia_metabolica_dirigida`: formato técnico interno para exploración dirigida del eje cardiometabólico en primera consulta.
 
 ## Alcance normativo
 

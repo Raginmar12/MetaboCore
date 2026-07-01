@@ -1,0 +1,829 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://metabocore.local/schemas/forms/historia_metabolica_dirigida.schema.json",
+  "title": "Historia metabólica dirigida MetaboCore",
+  "description": "Schema de datos para el formato tecnico interno de historia metabolica dirigida de MetaboCore. Es una herramienta para personal clinico, no para pacientes; no es expediente clinico, no realiza diagnostico automatico y no declara cumplimiento completo NOM-004.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "formato_id",
+    "version_schema",
+    "motivo_contexto",
+    "problemas_activos",
+    "banderas_rojas",
+    "metadatos"
+  ],
+  "properties": {
+    "formato_id": {
+      "type": "string",
+      "const": "historia_metabolica_dirigida"
+    },
+    "version_schema": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "datos_encuentro": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "fecha": {
+          "type": "string",
+          "format": "date"
+        },
+        "tipo_de_consulta": {
+          "type": "string",
+          "enum": [
+            "primera_consulta",
+            "seguimiento",
+            "actualizacion_clinica",
+            "otro"
+          ]
+        },
+        "nombre_o_referencia": {
+          "type": "string"
+        },
+        "profesional": {
+          "type": "string"
+        }
+      }
+    },
+    "motivo_contexto": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "motivo_metabolico_principal": {
+          "type": "string",
+          "minLength": 1
+        },
+        "preocupacion_metabolica_principal": {
+          "type": "string"
+        },
+        "diagnosticos_o_hallazgos_referidos": {
+          "type": "string"
+        },
+        "como_se_detecto_el_problema": {
+          "type": "string",
+          "enum": [
+            "sintomas",
+            "revision",
+            "laboratorio",
+            "consulta_previa",
+            "hallazgo_incidental",
+            "recomendacion_externa",
+            "otro",
+            "no_explorado"
+          ]
+        },
+        "tiempo_de_evolucion_referido": {
+          "type": "string"
+        },
+        "cambio_reciente_relevante": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "motivo_metabolico_principal"
+      ]
+    },
+    "glucosa_insulina_diabetes": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "glucosa_alta_referida": {
+          "type": "string",
+          "enum": [
+            "si",
+            "no",
+            "desconocido",
+            "no_explorado"
+          ]
+        },
+        "prediabetes_referida": {
+          "type": "string",
+          "enum": [
+            "si",
+            "no",
+            "desconocido",
+            "no_explorado"
+          ]
+        },
+        "diabetes_tipo_2_referida": {
+          "type": "string",
+          "enum": [
+            "si",
+            "no",
+            "desconocido",
+            "no_explorado"
+          ]
+        },
+        "fecha_aproximada_deteccion_glucosa": {
+          "type": "string"
+        },
+        "ultimo_valor_glucosa_referido": {
+          "type": "string"
+        },
+        "ultima_hba1c_referida": {
+          "type": "string"
+        },
+        "sintomas_hiperglucemia": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "sed_excesiva",
+              "orina_frecuente",
+              "vision_borrosa",
+              "hambre_excesiva",
+              "perdida_peso_inexplicada",
+              "ninguno_referido",
+              "no_explorado"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "sintomas_hipoglucemia_o_bajones": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "temblor",
+              "sudoracion",
+              "debilidad",
+              "ansiedad_o_irritabilidad",
+              "mejora_al_comer",
+              "ninguno_referido",
+              "no_explorado"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "somnolencia_postprandial": {
+          "type": "string",
+          "enum": [
+            "si",
+            "no",
+            "desconocido",
+            "no_explorado"
+          ]
+        },
+        "antojos_o_hambre_intensa": {
+          "type": "string",
+          "enum": [
+            "si",
+            "no",
+            "desconocido",
+            "no_explorado"
+          ]
+        },
+        "infecciones_recurrentes": {
+          "type": "string",
+          "enum": [
+            "si",
+            "no",
+            "desconocido",
+            "no_explorado"
+          ]
+        },
+        "cicatrizacion_lenta": {
+          "type": "string",
+          "enum": [
+            "si",
+            "no",
+            "desconocido",
+            "no_explorado"
+          ]
+        },
+        "observaciones_glucosa_insulina": {
+          "type": "string"
+        }
+      }
+    },
+    "presion_riesgo_vascular": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "presion_alta_referida": {
+          "type": "string",
+          "enum": [
+            "si",
+            "no",
+            "desconocido",
+            "no_explorado"
+          ]
+        },
+        "fecha_aproximada_deteccion_presion": {
+          "type": "string"
+        },
+        "mediciones_previas_presion": {
+          "type": "string"
+        },
+        "cefalea_frecuente": {
+          "type": "string",
+          "enum": [
+            "si",
+            "no",
+            "desconocido",
+            "no_explorado"
+          ]
+        },
+        "mareo": {
+          "type": "string",
+          "enum": [
+            "si",
+            "no",
+            "desconocido",
+            "no_explorado"
+          ]
+        },
+        "palpitaciones": {
+          "type": "string",
+          "enum": [
+            "si",
+            "no",
+            "desconocido",
+            "no_explorado"
+          ]
+        },
+        "dolor_toracico": {
+          "type": "string",
+          "enum": [
+            "si",
+            "no",
+            "desconocido",
+            "no_explorado"
+          ]
+        },
+        "falta_de_aire": {
+          "type": "string",
+          "enum": [
+            "si",
+            "no",
+            "desconocido",
+            "no_explorado"
+          ]
+        },
+        "edema": {
+          "type": "string",
+          "enum": [
+            "si",
+            "no",
+            "desconocido",
+            "no_explorado"
+          ]
+        },
+        "evento_cardiovascular_referido": {
+          "type": "string"
+        },
+        "observaciones_presion_vascular": {
+          "type": "string"
+        }
+      }
+    },
+    "lipidos_riesgo_aterogenico": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "colesterol_alto_referido": {
+          "type": "string",
+          "enum": [
+            "si",
+            "no",
+            "desconocido",
+            "no_explorado"
+          ]
+        },
+        "trigliceridos_altos_referidos": {
+          "type": "string",
+          "enum": [
+            "si",
+            "no",
+            "desconocido",
+            "no_explorado"
+          ]
+        },
+        "hdl_bajo_referido": {
+          "type": "string",
+          "enum": [
+            "si",
+            "no",
+            "desconocido",
+            "no_explorado"
+          ]
+        },
+        "ldl_alto_referido": {
+          "type": "string",
+          "enum": [
+            "si",
+            "no",
+            "desconocido",
+            "no_explorado"
+          ]
+        },
+        "fecha_aproximada_deteccion_lipidos": {
+          "type": "string"
+        },
+        "ultimos_lipidos_referidos": {
+          "type": "string"
+        },
+        "tratamiento_previo_lipidos_referido": {
+          "type": "string"
+        },
+        "antecedente_pancreatitis_referido": {
+          "type": "string",
+          "enum": [
+            "si",
+            "no",
+            "desconocido",
+            "no_explorado"
+          ]
+        },
+        "observaciones_lipidos": {
+          "type": "string"
+        }
+      }
+    },
+    "higado_graso": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "higado_graso_referido": {
+          "type": "string",
+          "enum": [
+            "si",
+            "no",
+            "desconocido",
+            "no_explorado"
+          ]
+        },
+        "fecha_aproximada_deteccion_higado_graso": {
+          "type": "string"
+        },
+        "ultrasonido_hepatico_previo": {
+          "type": "string",
+          "enum": [
+            "si",
+            "no",
+            "desconocido",
+            "no_explorado"
+          ]
+        },
+        "transaminasas_altas_referidas": {
+          "type": "string",
+          "enum": [
+            "si",
+            "no",
+            "desconocido",
+            "no_explorado"
+          ]
+        },
+        "dolor_o_pesadez_hipocondrio_derecho": {
+          "type": "string",
+          "enum": [
+            "si",
+            "no",
+            "desconocido",
+            "no_explorado"
+          ]
+        },
+        "consumo_alcohol_referido": {
+          "type": "string",
+          "enum": [
+            "nulo",
+            "ocasional",
+            "moderado",
+            "alto",
+            "no_explorado"
+          ]
+        },
+        "otros_factores_hepaticos_referidos": {
+          "type": "string"
+        },
+        "observaciones_higado_graso": {
+          "type": "string"
+        }
+      }
+    },
+    "acido_urico_gota": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "acido_urico_alto_referido": {
+          "type": "string",
+          "enum": [
+            "si",
+            "no",
+            "desconocido",
+            "no_explorado"
+          ]
+        },
+        "fecha_aproximada_deteccion_acido_urico": {
+          "type": "string"
+        },
+        "crisis_gota_referida": {
+          "type": "string",
+          "enum": [
+            "si",
+            "no",
+            "desconocido",
+            "no_explorado"
+          ]
+        },
+        "articulaciones_afectadas": {
+          "type": "string"
+        },
+        "dolor_articular_recurrente": {
+          "type": "string",
+          "enum": [
+            "si",
+            "no",
+            "desconocido",
+            "no_explorado"
+          ]
+        },
+        "litiasis_renal_referida": {
+          "type": "string",
+          "enum": [
+            "si",
+            "no",
+            "desconocido",
+            "no_explorado"
+          ]
+        },
+        "desencadenantes_referidos": {
+          "type": "string"
+        },
+        "observaciones_acido_urico_gota": {
+          "type": "string"
+        }
+      }
+    },
+    "sueno_apnea": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "ronquido_fuerte": {
+          "type": "string",
+          "enum": [
+            "si",
+            "no",
+            "desconocido",
+            "no_explorado"
+          ]
+        },
+        "pausas_respiratorias_observadas": {
+          "type": "string",
+          "enum": [
+            "si",
+            "no",
+            "desconocido",
+            "no_explorado"
+          ]
+        },
+        "somnolencia_diurna": {
+          "type": "string",
+          "enum": [
+            "si",
+            "no",
+            "desconocido",
+            "no_explorado"
+          ]
+        },
+        "sueno_no_reparador": {
+          "type": "string",
+          "enum": [
+            "si",
+            "no",
+            "desconocido",
+            "no_explorado"
+          ]
+        },
+        "cefalea_matutina": {
+          "type": "string",
+          "enum": [
+            "si",
+            "no",
+            "desconocido",
+            "no_explorado"
+          ]
+        },
+        "despertares_nocturnos": {
+          "type": "string",
+          "enum": [
+            "si",
+            "no",
+            "desconocido",
+            "no_explorado"
+          ]
+        },
+        "riesgo_apnea_sueno": {
+          "type": "string",
+          "enum": [
+            "bajo",
+            "moderado",
+            "alto",
+            "no_valorado"
+          ]
+        },
+        "observaciones_apnea_sueno": {
+          "type": "string"
+        }
+      }
+    },
+    "estudios_previos": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "estudios_previos_disponibles": {
+          "type": "string",
+          "enum": [
+            "si",
+            "no",
+            "parcial",
+            "desconocido"
+          ]
+        },
+        "fecha_estudios_previos": {
+          "type": "string"
+        },
+        "glucosa_disponible": {
+          "type": "string",
+          "enum": [
+            "si",
+            "no",
+            "desconocido",
+            "no_explorado"
+          ]
+        },
+        "hba1c_disponible": {
+          "type": "string",
+          "enum": [
+            "si",
+            "no",
+            "desconocido",
+            "no_explorado"
+          ]
+        },
+        "perfil_lipidos_disponible": {
+          "type": "string",
+          "enum": [
+            "si",
+            "no",
+            "desconocido",
+            "no_explorado"
+          ]
+        },
+        "pruebas_hepaticas_disponibles": {
+          "type": "string",
+          "enum": [
+            "si",
+            "no",
+            "desconocido",
+            "no_explorado"
+          ]
+        },
+        "acido_urico_disponible": {
+          "type": "string",
+          "enum": [
+            "si",
+            "no",
+            "desconocido",
+            "no_explorado"
+          ]
+        },
+        "creatinina_o_funcion_renal_disponible": {
+          "type": "string",
+          "enum": [
+            "si",
+            "no",
+            "desconocido",
+            "no_explorado"
+          ]
+        },
+        "ego_o_albuminuria_disponible": {
+          "type": "string",
+          "enum": [
+            "si",
+            "no",
+            "desconocido",
+            "no_explorado"
+          ]
+        },
+        "ultrasonido_hepatico_disponible": {
+          "type": "string",
+          "enum": [
+            "si",
+            "no",
+            "desconocido",
+            "no_explorado"
+          ]
+        },
+        "otros_estudios_relevantes": {
+          "type": "string"
+        },
+        "estudios_pendientes_o_necesarios": {
+          "type": "string"
+        }
+      }
+    },
+    "patron_progresion": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "primer_hallazgo_metabolico_referido": {
+          "type": "string"
+        },
+        "secuencia_de_aparicion_problemas": {
+          "type": "string"
+        },
+        "progresion_referida": {
+          "type": "string",
+          "enum": [
+            "estable",
+            "progresiva",
+            "fluctuante",
+            "empeoramiento_reciente",
+            "mejoria_reciente",
+            "desconocida",
+            "no_explorada"
+          ]
+        },
+        "empeoramiento_reciente": {
+          "type": "string"
+        },
+        "factores_asociados_a_empeoramiento": {
+          "type": "string"
+        },
+        "periodos_de_mejoria": {
+          "type": "string"
+        },
+        "observaciones_patron_progresion": {
+          "type": "string"
+        }
+      }
+    },
+    "problemas_activos": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "problemas_metabolicos_conocidos": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "glucosa_alta_o_diabetes",
+              "hipertension",
+              "dislipidemia",
+              "higado_graso",
+              "hiperuricemia_gota",
+              "apnea_sueno",
+              "riesgo_cardiovascular",
+              "otro",
+              "ninguno_referido"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "problemas_metabolicos_sospechados": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "resistencia_insulina_probable",
+              "prediabetes_o_diabetes_probable",
+              "hipertension_probable",
+              "dislipidemia_probable",
+              "higado_graso_probable",
+              "hiperuricemia_gota_probable",
+              "apnea_sueno_probable",
+              "riesgo_cardiovascular_elevado",
+              "requiere_mas_datos"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "riesgos_a_priorizar": {
+          "type": "string"
+        },
+        "datos_que_faltan": {
+          "type": "string"
+        },
+        "requiere_ampliar_antecedentes_seguridad": {
+          "type": "boolean"
+        },
+        "requiere_mediciones": {
+          "type": "boolean"
+        },
+        "requiere_laboratorios": {
+          "type": "boolean"
+        },
+        "observaciones_para_integracion": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "problemas_metabolicos_sospechados"
+      ]
+    },
+    "banderas_rojas": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "banderas_rojas_presentes": {
+          "type": "string",
+          "enum": [
+            "si",
+            "no",
+            "no_explorado"
+          ]
+        },
+        "tipo_bandera_roja": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "dolor_toracico_actual",
+              "disnea_en_reposo",
+              "sincope",
+              "deficit_neurologico_focal",
+              "presion_muy_elevada_con_sintomas",
+              "hiperglucemia_sintomatica_importante",
+              "hipoglucemia_severa",
+              "datos_sugestivos_cetoacidosis",
+              "dolor_abdominal_severo_o_pancreatitis_sospechada",
+              "ictericia",
+              "perdida_peso_inexplicada",
+              "ideacion_suicida_o_riesgo_psiquiatrico",
+              "trastorno_conducta_alimentaria_sospechado",
+              "otro"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "detalle_bandera_roja": {
+          "type": "string"
+        },
+        "accion_recomendada": {
+          "type": "string",
+          "enum": [
+            "continuar_consulta",
+            "priorizar_evaluacion_clinica",
+            "referencia",
+            "urgencias",
+            "seguimiento_cercano",
+            "no_definida"
+          ]
+        },
+        "requiere_referencia": {
+          "type": "boolean"
+        },
+        "requiere_atencion_urgente": {
+          "type": "boolean"
+        },
+        "observaciones_seguridad": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "banderas_rojas_presentes"
+      ]
+    },
+    "metadatos": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "creado_en": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "actualizado_en": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "capturado_por": {
+          "type": "string"
+        },
+        "clasificacion_datos": {
+          "type": "string",
+          "const": "datos_personales_clinicos"
+        },
+        "ejemplo_es_ficticio": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "creado_en",
+        "clasificacion_datos"
+      ]
+    }
+  },
+  "x-metabocore": {
+    "flujo": "primera_consulta",
+    "bloque": "historia_metabolica_dirigida",
+    "formato": "historia_metabolica_dirigida",
+    "uso": "tecnico_interno",
+    "para_paciente": false,
+    "contiene_datos_paciente": true,
+    "declara_cumplimiento_nom_004": false,
+    "documento_formato": "docs/02_formatos/historia_metabolica_dirigida.md"
+  }
+}

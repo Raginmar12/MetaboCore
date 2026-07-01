@@ -197,7 +197,9 @@ Explorar datos clínicos relacionados con el eje cardiometabólico y sus manifes
 - Síntomas relevantes.
 
 ### Formato asociado
-Formato futuro de historia metabólica dirigida.
+`docs/02_formatos/historia_metabolica_dirigida.md`
+
+El formato técnico interno de historia metabólica dirigida documenta esta exploración sin sustituir antecedentes clínicos, historia de peso, hábitos, análisis corporal ni plan inicial.
 
 ### Alimenta capa NOM
 - Antecedentes personales patológicos.
