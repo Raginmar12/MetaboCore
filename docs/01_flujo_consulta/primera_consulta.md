@@ -232,7 +232,9 @@ Comprender trayectoria de peso, intentos previos, respuestas, recaídas y factor
 - Factores asociados a aumento o pérdida de peso.
 
 ### Formato asociado
-Formato futuro de historia de peso.
+`docs/02_formatos/historia_peso_tratamientos_previos.md`
+
+Documento operativo inicial del formato técnico interno. Aún no cuenta con schema estructurado, UI schema, ejemplo JSON, preview estructurado ni impresión técnica.
 
 ### Alimenta capa NOM
 - Padecimiento actual.
