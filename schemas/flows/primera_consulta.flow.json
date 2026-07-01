@@ -295,11 +295,14 @@
       ],
       "formatos_asociados": [
         {
-          "formato_id": "historia_peso_tratamientos",
-          "estado": "futuro",
+          "formato_id": "historia_peso_tratamientos_previos",
+          "estado": "existente",
           "tipo": "formato",
           "momento_uso": "Durante revisión de trayectoria de peso e intentos previos.",
-          "enlaces": []
+          "enlaces": [
+            "documento"
+          ],
+          "titulo": "Historia de peso y tratamientos previos"
         }
       ],
       "salida": "Comprensión de trayectoria de peso y lecciones para el plan actual.",
@@ -307,7 +310,7 @@
         "Padecimiento actual.",
         "Antecedentes terapéuticos relevantes."
       ],
-      "nota_diseno": "El formato futuro debe capturar trayectoria sin culpabilizar al paciente."
+      "nota_diseno": "Documento operativo inicial disponible; el formato debe capturar trayectoria sin culpabilizar al paciente. Aún no cuenta con schema estructurado, impresión técnica ni captura persistente."
     },
     {
       "bloque_id": "antecedentes_clinicos_relevantes_y_seguridad",
